@@ -1,0 +1,6421 @@
+/* ============================================================
+   A CASA DO DRAGÃO — HOUSE OF THE DRAGON
+   Premium Cinematic CSS · Senior Front-End Engineer
+   Medieval Dark Fantasy · HBO Premium Interface
+   ============================================================ */
+
+/* ============================================================
+   01 · RESET
+   ============================================================ */
+@import url('https://googleapis.com');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    user-select: none;
+
+    -webkit-user-select: none;
+
+    -moz-user-select: none;
+
+    -ms-user-select: none;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    
+}
+
+body {
+    background-color: var(--color-void);
+    color: var(--color-parchment);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+/* ============================================================
+   02 · DESIGN TOKENS / CSS VARIABLES
+   ============================================================ */
+
+:root {
+
+    /* --- Palette --- */
+    --color-void: #070608;
+    --color-charcoal: #0d0b0e;
+    --color-obsidian: #111015;
+    --color-ash: #1a1820;
+    --color-smoke: #2a2730;
+
+    /* Gold */
+    --color-gold: #c9a84c;
+    --color-gold-bright: #e8c76a;
+    --color-gold-dim: #8a6e2e;
+    --color-gold-glow: rgba(201, 168, 76, 0.18);
+    --color-gold-glow-sm: rgba(201, 168, 76, 0.10);
+
+    /* Green (Os Verdes) */
+    --color-green: #2d5a27;
+    --color-green-bright: #4a8f40;
+    --color-green-dark: #1a3518;
+    --color-green-glow: rgba(45, 90, 39, 0.25);
+    --color-green-glow-sm: rgba(74, 143, 64, 0.12);
+
+    /* Red / Ember */
+    --color-ember: #8b2a1a;
+    --color-ember-dim: #5a1a0d;
+    --color-ember-glow: rgba(139, 42, 26, 0.20);
+
+    /* Text */
+    --color-parchment: #e8dfc8;
+    --color-parchment-dim: #b8a888;
+    --color-ivory: #f5f0e8;
+    --color-muted: #7a7068;
+
+    /* --- Typography --- */
+    --font-title: 'Cinzel Decorative', 'Trajan Pro', Georgia, serif;
+    --font-display: 'Cinzel', 'Palatino Linotype', Georgia, serif;
+    --font-body: 'EB Garamond', 'Palatino Linotype', Georgia, serif;
+    --font-caption: 'Cinzel', Georgia, serif;
+
+    /* --- Spacing --- */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+    --space-xxl: 7rem;
+
+    /* --- Borders --- */
+    --border-gold: 1px solid rgba(201, 168, 76, 0.30);
+    --border-gold-bright: 1px solid rgba(201, 168, 76, 0.60);
+    --border-green: 1px solid rgba(74, 143, 64, 0.35);
+
+    /* --- Radii --- */
+    --radius-card: 12px;
+    --radius-btn: 3px;
+
+    /* --- Shadows --- */
+    --shadow-deep: 0 30px 80px rgba(0, 0, 0, 0.85);
+    --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.75), 0 4px 20px rgba(0, 0, 0, 0.60);
+    --shadow-gold: 0 0 40px rgba(201, 168, 76, 0.20), 0 0 80px rgba(201, 168, 76, 0.08);
+    --shadow-green: 0 0 40px rgba(45, 90, 39, 0.25), 0 0 80px rgba(45, 90, 39, 0.10);
+    --shadow-text-gold: 0 0 20px rgba(201, 168, 76, 0.60), 0 2px 6px rgba(0, 0, 0, 0.80);
+    --shadow-text: 0 2px 8px rgba(0, 0, 0, 0.90);
+
+    /* --- Transitions --- */
+    --ease-cinematic: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-sm: all 0.3s var(--ease-cinematic);
+    --transition-md: all 0.5s var(--ease-cinematic);
+    --transition-lg: all 0.8s var(--ease-cinematic);
+
+    /* --- Z-index layers --- */
+    --z-bg: 0;
+    --z-overlay: 1;
+    --z-content: 2;
+    --z-card: 3;
+    --z-header: 100;
+}
+
+/* ============================================================
+   03 · GOOGLE FONTS IMPORT
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+
+/* ============================================================
+   04 · GLOBAL UTILITIES
+   ============================================================ */
+
+.section-full {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.bg-fill img {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    max-width: none;
+
+    object-fit: cover;
+
+    object-position: 42% center;
+
+    transform: scale(1.08);
+
+    transform-origin: center;
+}
+
+.overlay-base {
+    position: absolute;
+    inset: 0;
+    z-index: var(--z-overlay);
+    pointer-events: none;
+}
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.header {
+    position: fixed;
+    top: 50px;
+    left: 60px;
+    right: 60px;
+    z-index: 50;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-logo {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.header-logo img {
+    width: 60px;
+    height: auto;
+    display: block;
+}
+
+.header-logo:hover {
+    transform: scale(1.04);
+}
+
+.header-menu-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.header-menu-btn img {
+    width: 48px;
+    height: auto;
+    filter: brightness(0) saturate(100%) invert(77%) sepia(26%) saturate(635%) hue-rotate(10deg);
+    transition: transform 0.3s ease;
+}
+
+.header-menu-btn:hover img {
+    transform: scale(1.08);
+}
+
+.menu-overlay {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at 70% 50%, rgba(20, 15, 15, 0.4) 0%, rgba(7, 6, 8, 1) 100%), #070608;
+
+    z-index: 100; 
+    
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.7s;
+}
+
+.menu-overlay.ativo {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.botao-fechar-menu {
+    position: absolute;
+    top: 50px;
+    right: 60px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+    line-height: 1;
+    transition: transform 0.3s ease;
+    transition:
+        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.botao-fechar-menu:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+
+    transform: rotate(90deg)
+}
+
+.conteudo-menu {
+    display: grid;
+    grid-template-columns: 60% 40%; 
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0; 
+    align-items: stretch;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.previa-personagem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100vh; 
+
+    overflow: hidden;
+    position: relative;
+}
+
+.previa-personagem::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, transparent 60%, rgba(7, 6, 8, 1) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+#imagem-previa-personagem {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover; 
+    margin-top: 10vh;
+    
+    object-position: center top; 
+
+    transition: opacity 0.4s ease-in-out;
+
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+    image-rendering: -webkit-optimize-contrast;
+    
+    transform: scale(1.1) translate3d(0, 0, 0);
+}
+
+.menu-overlay.ativo #imagem-previa-personagem {
+    animation: hboPanAndZoom 25s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite alternate;
+}
+
+#imagem-previa-personagem.mudando {
+    opacity: 0;
+}
+
+.lista-personagens-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 5vw;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background: linear-gradient(to right, rgba(7, 6, 8, 0) 0%, rgba(7, 6, 8, 0.4) 100%);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 40px;                 
+    margin-bottom: 50px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+    width: 100%;
+    padding-bottom: 12px;
+}
+
+.botao-aba {
+    background: none;
+    border: none;
+    color: var(--color-parchment-dim, #b8a888);
+    font-family: 'Cinzel', serif; 
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.35em;      
+    cursor: pointer;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.4s ease, opacity 0.4s ease;
+    opacity: 0.4;
+}
+
+.botao-aba:hover {
+    opacity: 0.8;
+    color: var(--color-parchment, #e8dfc8);
+}
+
+
+.botao-aba.ativo {
+    opacity: 1;
+    color: var(--color-gold, #c9a84c);
+    text-shadow: 0 0 15px rgba(201, 168, 76, 0.3);
+}
+
+.botao-aba.ativo::after {
+    content: '';
+    position: absolute;
+    bottom: -13px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-gold, #c9a84c), transparent);
+    box-shadow: 0 0 8px var(--color-gold, #c9a84c);
+}
+
+.lista-personagens {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}
+
+.lista-personagens li {
+    font-family: 'Cinzel', serif; 
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 400;
+    color: rgba(232, 223, 200, 0.35); 
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s ease, text-shadow 0.3s ease;
+    
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+
+.lista-personagens li:hover,
+.lista-personagens li.selecionado {
+    color: var(--color-gold-bright, #e8c76a); 
+    transform: translateX(15px); 
+    text-shadow: 
+        0 0 20px rgba(201, 168, 76, 0.4),
+        0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.lista-personagens li::before {
+    content: '—';
+    position: absolute;
+    left: -25px;
+    color: var(--color-gold, #c9a84c);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lista-personagens li:hover::before,
+.lista-personagens li.selecionado::before {
+    opacity: 1;
+}
+
+.menu-overlay.ativo .lista-personagens li {
+    animation: fadeUpIn 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.menu-overlay.ativo .lista-personagens li:nth-child(1) { animation-delay: 0.15s; }
+.menu-overlay.ativo .lista-personagens li:nth-child(2) { animation-delay: 0.22s; }
+.menu-overlay.ativo .lista-personagens li:nth-child(3) { animation-delay: 0.29s; }
+.menu-overlay.ativo .lista-personagens li:nth-child(4) { animation-delay: 0.36s; }
+.menu-overlay.ativo .lista-personagens li:nth-child(5) { animation-delay: 0.43s; }
+.menu-overlay.ativo .lista-personagens li:nth-child(6) { animation-delay: 0.50s; }
+
+@keyframes fadeUpIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes hboPanAndZoom {
+    0% {
+     
+        transform: scale(1.15) translate3d(0, 30px, 0);
+    }
+    50% {
+        transform: scale(1.2) translate3d(-20px, 25px, 0); 
+    }
+    100% {
+        transform: scale(1.15) translate3d(15px, 30px, 0);   
+    }
+}
+/* =========================================
+   MAIN
+========================================= */
+
+.main {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-fundo {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 1300px;
+
+    overflow: hidden;
+
+    z-index: 0;
+}
+
+.main-fundo img {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: 70% center;
+
+    transform: scale(1.08) translateY(-280px);
+    transform-origin: center center;
+
+    will-change: transform;
+}
+
+.main::before {
+    content: '';
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.15),
+            rgba(0, 0, 0, 0.65));
+}
+
+.main-conteudo {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    height: 100vh;
+
+    display: grid;
+    align-items: center;
+}
+
+/* ==========================================================
+   MAIN - PERSONAGENS
+========================================================== */
+
+.main-personagens {
+    position: absolute;
+    inset: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+.main-personagens img {
+    position: absolute;
+
+    width: auto;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 10px 40px rgba(0, 0, 0, 0.85));
+}
+
+.main-personagens img:first-child {
+    left: -9%;
+    bottom: 0;
+
+    height: 87vh;
+}
+
+.main-personagens img:last-child {
+    right: -8%;
+    bottom: 0;
+
+    height: 84vh;
+}
+
+.main-centro {
+    position: relative;
+
+    z-index: 5;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 5rem;
+}
+
+.main-centro img {
+    width: 500px;
+
+    max-width: 85vw;
+
+    margin-left: 50px;
+
+    transform: translateY(70px);
+
+    filter:
+        drop-shadow(0 0 25px rgba(0, 0, 0, 0.85));
+}
+
+/* ==========================================================
+   BOTÃO TRAILER
+========================================================== */
+
+.abrir-trailer {
+    position: relative;
+
+    background: transparent;
+    border: none;
+
+    color: #f1e2a4;
+
+    font-size: 20px;
+    font-weight: 500;
+
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+
+    transform: translateY(100px);
+    left: 15px;
+
+}
+
+.abrir-trailer::after {
+    content: '';
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -10px;
+
+    transform: translateX(-50%);
+
+    width: 60%;
+    height: 1px;
+
+    background:
+        rgba(241, 226, 164, 0.5);
+
+    transition: 0.3s ease;
+}
+
+.abrir-trailer:hover {
+    opacity: 0.8;
+    letter-spacing: 0.42em;
+}
+
+.abrir-trailer:hover::after {
+    width: 85%;
+}
+
+.trailer {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.92);
+
+    backdrop-filter: blur(12px);
+
+    z-index: 9999;
+
+    padding: 2rem;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.6s ease,
+        visibility 0.6s ease;
+}
+
+.trailer.trailer-aberto {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+.trailer-conteudo {
+    position: relative;
+
+    width: min(1200px, 100%);
+    aspect-ratio: 16 / 9;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    transform: translateY(0) scale(1);
+
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.85),
+        0 0 60px rgba(201, 168, 76, 0.12);
+}
+
+.video-trailer {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+}
+
+.overlay-trailer {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(to top,
+            rgba(0, 0, 0, 0.45),
+            transparent 35%);
+
+    pointer-events: none;
+}
+
+.fechar-trailer {
+    position: absolute;
+
+    bottom: 40px;
+
+    width: 56px;
+    height: 56px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(10px);
+
+    color: #fff;
+
+    font-size: 1.2rem;
+
+    z-index: 20;
+
+    transition:
+        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.fechar-trailer:hover {
+    background: rgba(255, 255, 255, 0.16);
+
+    border-color: rgba(255, 255, 255, 0.3);
+
+    transform: rotate(90deg)
+}
+
+.proximo-trailer {
+    position: absolute;
+
+    right: 50px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 64px;
+    height: 64px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(10px);
+
+    color: #fff;
+
+    font-size: 2rem;
+
+    z-index: 30;
+
+    transition:
+        transform 0.4s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        opacity 0.3s ease;
+
+    overflow: visible;
+}
+
+.proximo-trailer:hover {
+    background: rgba(255, 255, 255, 0.16);
+
+    border-color: rgba(255, 255, 255, 0.3);
+
+    transform: translateY(-50%) scale(1.05);
+}
+
+.proximo-trailer span {
+    position: absolute;
+
+    right: 85px;
+    top: 50%;
+
+    transform: translateY(-40%);
+
+    white-space: nowrap;
+
+    padding: 10px 16px;
+
+    border-radius: 6px;
+
+    background: rgba(0, 0, 0, 0.85);
+
+    border: 1px solid rgba(201, 168, 76, 0.25);
+
+    color: #f1e2a4;
+
+    font-size: 0.72rem;
+
+    letter-spacing: 0.18em;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: 0.3s ease;
+
+    pointer-events: none;
+}
+
+.proximo-trailer:hover span {
+    opacity: 1;
+    visibility: visible;
+
+    right: 95px;
+}
+
+/* ==========================================
+   LEALDADE
+========================================== */
+
+.lealdade-sessao {
+    width: 100%;
+    height: 100%;
+    min-height: 80vh;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background-position: center;
+    background-size: cover;
+    background-image: url('WALLPAPERS/WALLPAPER 1 - LEALDADE.png');
+
+    transition: background-color 0.6s ease;
+}
+
+.lealdade-fundo-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.92),
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.92));
+}
+
+.lealdade-conteudo {
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+
+    max-width: 820px;
+
+    padding: 2rem;
+}
+
+.lealdade-conteudo h1 {
+    font-size: clamp(2rem, 5vw, 5rem);
+
+    color: #d4af37;
+
+    letter-spacing: 0.12em;
+
+    line-height: 1.1;
+
+    margin-bottom: 2rem;
+
+    text-shadow:
+        0 0 25px rgba(212, 175, 55, 0.35);
+}
+
+.lealdade-conteudo p {
+    color: #d8d1c3;
+
+    font-size: 1rem;
+
+    line-height: 2;
+
+    letter-spacing: 0.08em;
+
+    margin-bottom: 2rem;
+}
+
+.lealdade-conteudo h2 {
+    color: #f5e6b7;
+
+    font-size: 0.9rem;
+
+    letter-spacing: 0.4em;
+
+    margin-bottom: 3rem;
+}
+
+.lealdade-botao {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 2rem;
+
+    flex-wrap: wrap;
+}
+
+.lado {
+    position: relative;
+}
+
+.frase-hover {
+    position: absolute;
+
+    left: 50%;
+    bottom: 120%;
+
+    transform:
+        translateX(-50%) translateY(10px);
+
+    opacity: 0;
+
+    white-space: nowrap;
+
+    color: #f5deb3;
+
+    font-size: 0.72rem;
+
+    letter-spacing: 0.22em;
+
+    transition: 0.4s ease;
+
+    pointer-events: none;
+}
+
+.lado:hover .frase-hover {
+    opacity: 1;
+
+    transform:
+        translateX(-50%) translateY(0);
+}
+
+.verde-btn,
+.preto-btn {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 1rem 2.5rem;
+
+    border-radius: 10px;
+
+    border: 1px solid transparent;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    color: white;
+
+    font-size: 0.78rem;
+
+    letter-spacing: 0.25em;
+
+    text-transform: uppercase;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+}
+
+.verde-btn::before,
+.preto-btn::before {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: -120%;
+
+    width: 120%;
+    height: 100%;
+
+    background:
+        linear-gradient(120deg,
+            transparent,
+            rgba(255, 255, 255, 0.20),
+            transparent);
+
+    transition: 0.7s ease;
+}
+
+.verde-btn:hover::before,
+.preto-btn:hover::before {
+    left: 120%;
+}
+
+.verde-btn {
+    border-color: rgba(80, 180, 90, 0.4);
+
+    background:
+        linear-gradient(135deg,
+            rgba(27, 65, 32, 0.45),
+            rgba(15, 30, 18, 0.35));
+
+    color: #d8ffd7;
+}
+
+.verde-btn:hover {
+    transform:
+        translateY(-5px) scale(1.05);
+
+    box-shadow:
+        0 0 30px rgba(80, 180, 90, 0.35),
+        0 0 80px rgba(80, 180, 90, 0.15);
+
+    border-color: #7dff94;
+}
+
+.preto-btn {
+    border-color: rgba(212, 175, 55, 0.4);
+
+    background:
+        linear-gradient(135deg,
+            rgba(120, 40, 20, 0.28),
+            rgba(30, 15, 10, 0.35));
+
+    color: #f5d98f;
+}
+
+.preto-btn:hover {
+    transform:
+        translateY(-5px) scale(1.05);
+
+    box-shadow:
+        0 0 30px rgba(212, 175, 55, 0.28),
+        0 0 80px rgba(212, 175, 55, 0.12);
+
+    border-color: #ffd56a;
+}
+
+.resultado-lealdade {
+    margin-top: 3rem;
+
+    font-size: 1rem;
+
+    letter-spacing: 0.18em;
+
+    color: #f5deb3;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    transition: 0.6s ease;
+}
+
+.resultado-lealdade.ativo {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* ============================================================
+   08 · OS NEGROS BANNER
+   ============================================================ */
+
+.os-negros-sessao {
+    width: 100%;  
+    min-height: 80vh;
+
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+
+    overflow: hidden;
+    position: relative;
+
+    background: url('WALLPAPERS/WALLPAPER\ 3\ -\ LEALDADE.webp');
+    background-position: center;
+    background-size: cover;
+}
+
+.os-negros-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        linear-gradient(to bottom,
+            rgba(7, 6, 8, 0.70) 0%,
+            rgba(7, 6, 8, 0.15) 40%,
+            rgba(7, 6, 8, 0.20) 60%,
+            rgba(7, 6, 8, 0.95) 100%),
+        radial-gradient(ellipse at center top,
+            rgba(139, 42, 26, 0.15) 0%,
+            transparent 60%);
+}
+
+.os-negros-conteudo {
+    width: 100%;
+    max-width: 900px; 
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    padding: 50px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.os-negros-citação {
+      font-size: 25px;
+    font-family: var(--font-secondary);
+    color: #e2e8f0;
+    font-weight: 500;
+    letter-spacing: 0.38em;
+    line-height: 1.4;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+    opacity: 0.9;
+
+}
+
+.os-negros-conteudo h2 {
+    font-size: 100px;
+    color: var(--color-gold, #c9a84c); 
+    letter-spacing: 0.18em;
+    text-shadow:
+        var(--shadow-text-gold, 0 0 10px rgba(201, 168, 76, 0.5)),
+        0 0 80px rgba(201, 168, 76, 0.25);
+    line-height: 1.2;
+}
+
+/* ==========================================================
+   RHAENYRA SECTION
+========================================================== */
+
+.rhaenyra-sessao {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    padding: 8rem 4rem;
+}
+
+.syrax-fundo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+}
+
+.syrax-fundo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    filter:
+        brightness(0.25) saturate(0.7) blur(0px);
+
+    transform: scale(1.05);
+}
+
+.syrax-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        radial-gradient(circle at center,
+            rgba(201, 168, 76, 0.08),
+            transparent 5%),
+        linear-gradient(to bottom,
+            rgba(4, 4, 6, 0.92),
+            rgba(4, 4, 6, 0.55),
+            rgba(4, 4, 6, 0.92));
+}
+
+.rhaenyra-card {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+    max-width: 1400px;
+
+    height: 720px;
+
+    border-radius: 42px;
+
+    overflow: visible;
+
+
+    border: 1px solid rgba(201, 168, 76, 0.28);
+
+
+    background:
+        linear-gradient(135deg,
+            rgba(14, 14, 16, 0.92),
+            rgba(8, 8, 10, 0.82));
+
+    backdrop-filter: blur(18px);
+
+
+    box-shadow:
+        0 0 40px rgba(201, 168, 76, 0.08),
+        0 0 80px rgba(201, 168, 76, 0.04),
+        inset 0 0 20px rgba(201, 168, 76, 0.04);
+
+    transition:
+        transform 0.6s ease,
+        box-shadow 0.6s ease,
+        border-color 0.6s ease;
+}
+
+.rhaenyra-card::before {
+    content: '';
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: inherit;
+
+    padding: 1px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(255, 215, 90, 0.7),
+            rgba(201, 168, 76, 0.15),
+            rgba(255, 215, 90, 0.7));
+
+    pointer-events: none;
+
+    opacity: 0.45;
+
+    transition: 0.6s ease;
+}
+
+.rhaenyra-card:hover {
+
+    transform:
+        translateY(-6px) scale(1.005);
+
+    border-color:
+        rgba(255, 215, 90, 0.75);
+
+    box-shadow:
+        0 0 30px rgba(255, 215, 90, 0.18),
+        0 0 60px rgba(255, 215, 90, 0.16),
+        0 0 120px rgba(255, 215, 90, 0.12),
+        0 0 180px rgba(255, 215, 90, 0.08),
+
+        inset 0 0 30px rgba(255, 215, 90, 0.06);
+}
+
+.rhaenyra-card:hover::before {
+    opacity: 1;
+
+    filter:
+        drop-shadow(0 0 10px rgba(255, 215, 90, 0.6)) drop-shadow(0 0 25px rgba(255, 215, 90, 0.4));
+}
+
+.syrax-card-fundo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    border-radius: 42px;
+
+    overflow: hidden;
+}
+
+.syrax-card-fundo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    filter:
+        brightness(0.22) saturate(0.8);
+
+    transform: scale(1.08);
+}
+
+.syrax-card-glass {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    border-radius: 42px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.05),
+            rgba(255, 255, 255, 0.02));
+
+    backdrop-filter: blur(2px);
+}
+
+.rhaenyra-conteudo {
+    position: relative;
+
+    z-index: 4;
+
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 15px;
+
+    padding: 8vw;
+}
+
+.rhaenyra-conteudo h1 {
+    font-size: 38px;
+
+    margin-bottom: 50px;
+
+    color: var(--color-gold);
+
+    line-height: 1;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 20px rgba(201, 168, 76, 0.25),
+        0 0 40px rgba(201, 168, 76, 0.12);
+}
+
+.rhaenyra-citação {
+    font-size: 18px;
+
+    color: rgba(201, 168, 76, 0.82);
+
+    letter-spacing: 0.08em;
+
+    line-height: 1.8;
+}
+
+.rhaenyra-conteudo h2 {
+    margin-top: 33px;
+
+    letter-spacing: 0.12em;
+
+    color: var(--color-gold-bright);
+
+    text-transform: uppercase;
+
+    font-family: var(--font-display);
+}
+
+.rhaenyra-conteudo p {
+    font-size: 18px;
+
+    line-height: 2;
+
+    letter-spacing: 0.08em;
+
+    color: rgba(230, 220, 205, 0.82);
+
+    max-width: 480px;
+}
+
+.titulo-syrax {
+
+    text-transform: uppercase;
+
+    color: rgba(201, 168, 76, 0.65);
+}
+
+.rhaenyra-citação-final {
+
+    padding-top: 1rem;
+
+    border-top: 1px solid rgba(201, 168, 76, 0.12);
+
+    font-style: italic;
+
+    color: rgba(201, 168, 76, 0.58);
+
+    line-height: 1.8;
+}
+
+.rhaenyra-imagem {
+    position: absolute;
+
+    z-index: 6;
+
+    right: -1px;
+    bottom: 0px;
+
+    height: 850px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    border-bottom-right-radius: 42px;
+    border-top-right-radius: 42px;
+
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%), 
+                        linear-gradient(to right, transparent 0%, black 15%);
+    mask-image: linear-gradient(to top, transparent 0%, black 15%), 
+                linear-gradient(to right, transparent 0%, black 15%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+}
+
+.rhaenyra-imagem img {
+    height: 100%;
+    width: auto;
+
+    object-fit: contain;
+    object-position: bottom center;
+
+    filter:
+        drop-shadow(0 0 60px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 25px rgba(201, 168, 76, 0.12));
+
+    transition:
+        transform 0.7s ease,
+        filter 0.7s ease,
+        brightness 0.7s ease;
+
+    transform-origin: bottom center;
+}
+
+.rhaenyra-card:hover .rhaenyra-imagem img {
+    transform:
+        scale(1.03) translateX(-8px);
+
+    filter:
+        brightness(1.06) contrast(1.05) drop-shadow(0 0 90px rgba(0, 0, 0, 1)) drop-shadow(0 0 40px rgba(201, 168, 76, 0.30));
+}
+
+.logo-targaryen {
+    position: absolute;
+
+    left: 40px;
+    bottom: 40px;
+
+    z-index: 8;
+}
+
+.logo-targaryen img {
+    width: 78px;
+
+    opacity: 0.75;
+
+    filter:
+        drop-shadow(0 0 12px rgba(201, 168, 76, 0.35));
+
+    transition: 0.4s ease;
+}
+
+.rhaenyra-card:hover .logo-targaryen img {
+    transform: scale(1.08);
+
+    opacity: 1;
+
+    filter:
+        drop-shadow(0 0 18px rgba(201, 168, 76, 0.55));
+}
+
+/* ==========================================================
+   DAEMON SECTION
+========================================================== */
+
+.daemon-sessao {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    padding: 8vw;
+}
+
+.caraxes-fundo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+}
+
+.caraxes-fundo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    filter:
+        brightness(0.18) saturate(0.9) blur(2px) hue-rotate(-8deg);
+
+    transform: scale(1.05);
+}
+
+.caraxes-fundo-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        radial-gradient(circle at center,
+            rgba(255, 40, 0, 0.12),
+            transparent 60%),
+
+        linear-gradient(to bottom,
+            rgba(5, 3, 3, 0.95),
+            rgba(25, 5, 5, 0.55),
+            rgba(5, 3, 3, 0.95));
+}
+
+.daemon-card {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+    max-width: 1400px;
+
+    height: 720px;
+
+    border-radius: 42px;
+
+    overflow: visible;
+
+    border: 1px solid rgba(255, 70, 40, 0.25);
+
+    background:
+        linear-gradient(135deg,
+            rgba(18, 8, 8, 0.92),
+            rgba(10, 4, 4, 0.88));
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 0 40px rgba(255, 50, 20, 0.08),
+        0 0 80px rgba(255, 50, 20, 0.04),
+        inset 0 0 20px rgba(255, 50, 20, 0.05);
+
+    transition:
+        transform 0.6s ease,
+        box-shadow 0.6s ease,
+        border-color 0.6s ease;
+}
+
+.daemon-card::before {
+    content: '';
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: inherit;
+
+    padding: 1px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(255, 120, 80, 0.8),
+            rgba(255, 40, 0, 0.12),
+            rgba(255, 120, 80, 0.8));
+
+    pointer-events: none;
+
+    opacity: 0.5;
+
+    transition: 0.6s ease;
+}
+
+.daemon-card:hover {
+
+    transform:
+        translateY(-6px) scale(1.005);
+
+    border-color:
+        rgba(255, 100, 70, 0.85);
+
+    box-shadow:
+        0 0 30px rgba(255, 80, 40, 0.22),
+        0 0 60px rgba(255, 80, 40, 0.18),
+        0 0 120px rgba(255, 80, 40, 0.12),
+        0 0 180px rgba(255, 80, 40, 0.08),
+
+        inset 0 0 30px rgba(255, 80, 40, 0.08);
+}
+
+.daemon-card:hover::before {
+    opacity: 1;
+
+    filter:
+        drop-shadow(0 0 10px rgba(255, 90, 50, 0.7)) drop-shadow(0 0 25px rgba(255, 90, 50, 0.45));
+}
+
+.caraxes-card-fundo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    border-radius: 42px;
+
+    overflow: hidden;
+}
+
+.caraxes-card-fundo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transform: scale(1.08);
+
+    filter:
+        saturate(1);
+}
+
+.caraxes-card-glass {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    border-radius: 42px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.03),
+            rgba(255, 255, 255, 0.01));
+
+    backdrop-filter: blur(2px);
+}
+
+.daemon-imagem {
+    position: absolute;
+
+    z-index: 6;
+
+    left: 0;
+    bottom: 0;
+
+    height: 830px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    border-bottom-left-radius: 42px;
+    border-top-left-radius: 42px;
+
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%), 
+                        linear-gradient(to right, transparent 0%, black 15%);
+    mask-image: linear-gradient(to top, transparent 0%, black 15%), 
+                linear-gradient(to right, transparent 0%, black 15%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+}
+
+.daemon-imagem img {
+    height: 100%;
+    width: auto;
+
+    object-fit: contain;
+    object-position: bottom center;
+
+    border-bottom-left-radius: 42px;
+    border-top-left-radius: 42px;
+
+    filter:
+        drop-shadow(0 0 60px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 25px rgba(201, 168, 76, 0.12));
+
+    transition:
+        transform 0.7s ease,
+        filter 0.7s ease,
+        brightness 0.7s ease;
+
+    transform-origin: bottom center;
+
+}
+
+.daemon-card:hover .daemon-imagem img {
+     transform:
+        scale(1.03) translateX(-8px);
+
+    filter: brightness(0.95)  drop-shadow(0 0 70px rgb(58, 0, 0)) drop-shadow(0 0 40px rgba(201, 168, 76, 0.20));
+}
+
+.daemon-conteudo {
+    position: relative;
+
+    z-index: 4;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 15px;
+
+    text-align: left;
+    padding-left: 750px;
+}
+
+.daemon-conteudo h1 {
+    font-size: 38px;
+    margin-bottom: 60px;
+
+    color: #c00d0d;
+
+    line-height: 1;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 20px rgba(88, 11, 11, 0.25),
+        0 0 40px rgba(255, 70, 40, 0.15);
+}
+
+.daemon-citação {
+    margin-bottom: 15px;
+
+    font-size: 18px;
+
+    color: rgba(255, 120, 90, 0.82);
+
+    letter-spacing: 0.08em;
+
+    line-height: 1.8;
+}
+
+.daemon-conteudo h2 {
+    margin-top: 33px;
+
+    letter-spacing: 0.12em;
+
+    color: #c00d0d;
+
+    text-transform: uppercase;
+}
+
+.daemon-conteudo p {
+    font-size: 18px;
+
+    line-height: 2;
+
+    letter-spacing: 0.08em;
+
+    color: rgba(240, 220, 210, 0.82);
+
+    max-width: 480px;
+}
+
+.caraxes-titulo {
+
+    text-transform: uppercase;
+
+    color: rgba(255, 110, 80, 0.68);
+}
+
+.daemon-citação-final {
+    padding-top: 1rem;
+
+    border-top: 1px solid rgba(255, 90, 50, 0.18);
+
+    font-style: italic;
+
+    color: rgba(255, 120, 90, 0.55);
+
+    line-height: 1.8;
+}
+
+.daemon-card .logo-targaryen {
+    position: absolute;
+
+    left: 1270px;
+    bottom: 40px;
+
+    z-index: 8;
+}
+
+.daemon-card .logo-targaryen img {
+    width: 78px;
+
+    opacity: 0.75;
+
+    filter:
+        drop-shadow(0 0 12px rgba(255, 80, 40, 0.35));
+
+    transition: 0.4s ease;
+}
+
+.daemon-card:hover .logo-targaryen img {
+    transform: scale(1.08);
+
+    opacity: 1;
+
+    filter:
+        drop-shadow(0 0 18px rgba(255, 90, 50, 0.65));
+}
+
+/* ==========================================================
+   RHAENYS SECTION
+========================================================== */
+
+.rhaenys-sessao {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    padding: 8rem 4rem;
+}
+
+.meleys-fundo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+}
+
+.meleys-fundo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    filter:
+        brightness(0.20) saturate(0.9) blur(2px) hue-rotate(-15deg);
+
+    transform: scale(1.05);
+}
+
+.meleys-fundo-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        radial-gradient(circle at center,
+            rgba(180, 30, 30, 0.12),
+            transparent 60%),
+
+        linear-gradient(to bottom,
+            rgba(5, 3, 3, 0.95),
+            rgba(18, 5, 5, 0.55),
+            rgba(5, 3, 3, 0.95));
+}
+
+.rhaenys-card {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+    max-width: 1400px;
+
+    height: 720px;
+
+    border-radius: 42px;
+
+    overflow: visible;
+
+    border: 1px solid rgba(220, 70, 50, 0.20);
+
+    background:
+        linear-gradient(135deg,
+            rgba(16, 10, 10, 0.92),
+            rgba(8, 4, 4, 0.88));
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 0 40px rgba(220, 50, 40, 0.08),
+        0 0 80px rgba(220, 50, 40, 0.04),
+        inset 0 0 20px rgba(220, 50, 40, 0.04);
+
+    transition:
+        transform 0.7s ease,
+        box-shadow 0.7s ease,
+        border-color 0.7s ease;
+}
+
+.rhaenys-card::before {
+    content: '';
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: inherit;
+
+    padding: 1px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(255, 140, 120, 0.75),
+            rgba(255, 50, 20, 0.12),
+            rgba(255, 140, 120, 0.75));
+
+    opacity: 0.45;
+
+    pointer-events: none;
+
+    transition: 0.6s ease;
+}
+
+.rhaenys-card:hover {
+
+    transform:
+        translateY(-6px) scale(1.003);
+
+    border-color:
+        rgba(255, 120, 100, 0.65);
+
+    box-shadow:
+        0 0 30px rgba(255, 70, 50, 0.16),
+        0 0 60px rgba(255, 70, 50, 0.12),
+        0 0 120px rgba(255, 70, 50, 0.08),
+
+        inset 0 0 30px rgba(255, 70, 50, 0.05);
+}
+
+.rhaenys-card:hover::before {
+    opacity: 1;
+
+    filter:
+        drop-shadow(0 0 10px rgba(255, 100, 80, 0.45)) drop-shadow(0 0 25px rgba(255, 100, 80, 0.20));
+}
+
+.meleys-card-fundo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    border-radius: 42px;
+
+    overflow: hidden;
+}
+
+.meleys-card-fundo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    filter:
+        brightness(0.24) saturate(0.9);
+
+    transform: scale(1.08);
+}
+
+.meleys-card-glass {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    border-radius: 42px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.04),
+            rgba(255, 255, 255, 0.01));
+
+    backdrop-filter: blur(2px);
+}
+
+.rhaenys-imagem {
+    position: absolute;
+
+    z-index: 6;
+
+    right: 0;
+    bottom: 0;
+
+    height: 800px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    pointer-events: none;
+
+    overflow: visible;
+
+    border-bottom-right-radius: 42px;
+    border-top-right-radius: 42px;
+
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%), 
+                        linear-gradient(to right, transparent 0%, black 15%);
+    mask-image: linear-gradient(to top, transparent 0%, black 15%), 
+                linear-gradient(to right, transparent 0%, black 15%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+}
+
+.rhaenys-imagem img {
+    height: 100%;
+    width: auto;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 0 60px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 20px rgba(180, 40, 30, 0.16));
+
+    transition:
+        transform 0.7s ease,
+        filter 0.7s ease,
+        brightness 0.7s ease;
+
+    transform-origin: bottom center;
+
+    will-change: transform;
+}
+
+.rhaenys-card:hover .rhaenys-imagem img {
+
+    transform:
+        scale(1.02) 
+        translateX(-8px);
+
+    filter:
+        brightness(1.04) contrast(1.03) drop-shadow(0 0 80px rgba(0, 0, 0, 1)) drop-shadow(0 0 35px rgba(255, 120, 90, 0.22));
+}
+
+.rhaenys-conteudo {
+    position: relative;
+
+    z-index: 4;
+
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 15px;
+
+    padding-left: 8vw;
+}
+
+.rhaenys-conteudo h1 {
+    font-size: 38px;
+    margin-bottom: 50px;
+
+    color: #ffb8aa;
+
+    line-height: 1;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 20px rgba(255, 120, 100, 0.16),
+        0 0 40px rgba(255, 120, 100, 0.08);
+}
+
+.rhaenys-citação {
+    font-size: 18px;
+
+    color: rgba(255, 180, 160, 0.82);
+
+    letter-spacing: 0.08em;
+
+    line-height: 1.8;
+}
+
+.rhaenys-conteudo p {
+    font-size: 18px;
+
+    line-height: 2;
+
+    letter-spacing: 0.08em;
+
+    color: rgba(240, 225, 220, 0.82);
+
+    max-width: 480px;
+}
+
+.rhaenys-conteudo h2 {
+
+    margin-top: 33px;
+
+    letter-spacing: 0.12em;
+
+    color: #ffb8aa;
+
+    text-transform: uppercase;
+}
+
+.meleys-titulo {
+
+    text-transform: uppercase;
+
+    color: rgba(255, 160, 140, 0.60);
+}
+
+.rhaenys-citação-final {
+    padding-top: 1rem;
+
+    border-top: 1px solid rgba(255, 120, 100, 0.14);
+
+    font-style: italic;
+
+    color: rgba(255, 180, 160, 0.52);
+
+    line-height: 1.8;
+}
+
+.rhaenys-card .logo-targaryen {
+    position: absolute;
+
+    left: 40px;
+    bottom: 40px;
+
+    z-index: 8;
+}
+
+.rhaenys-card .logo-targaryen img {
+    width: 78px;
+
+    opacity: 0.75;
+
+    filter:
+        drop-shadow(0 0 12px rgba(255, 100, 80, 0.28));
+
+    transition: 0.4s ease;
+}
+
+.rhaenys-card:hover .logo-targaryen img {
+
+    transform: scale(1.08);
+
+    opacity: 1;
+
+    filter:
+        drop-shadow(0 0 18px rgba(255, 120, 100, 0.45));
+}
+
+/* ==========================================================
+   JACAERYS SECTION
+========================================================== */
+
+.jacaerys-sessao {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    padding: 8rem 4rem;
+}
+
+.vermax-fundo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+}
+
+.vermax-fundo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    filter:
+        brightness(0.18) saturate(0.85) blur(2px) hue-rotate(-12deg);
+
+    transform: scale(1.05);
+}
+
+.vermax-fundo-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        radial-gradient(circle at center,
+            rgba(120, 180, 90, 0.10),
+            transparent 60%),
+
+        linear-gradient(to bottom,
+            rgba(5, 8, 5, 0.95),
+            rgba(10, 20, 10, 0.55),
+            rgba(5, 8, 5, 0.95));
+}
+
+.jacaerys-card {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+    max-width: 1400px;
+
+    height: 720px;
+
+    border-radius: 42px;
+
+    overflow: visible;
+
+    border: 1px solid rgba(120, 180, 90, 0.25);
+
+    background:
+        linear-gradient(135deg,
+            rgba(10, 14, 10, 0.92),
+            rgba(6, 10, 6, 0.88));
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 0 40px rgba(120, 180, 90, 0.08),
+        0 0 80px rgba(120, 180, 90, 0.04),
+        inset 0 0 20px rgba(120, 180, 90, 0.05);
+
+    transition:
+        transform 0.6s ease,
+        box-shadow 0.6s ease,
+        border-color 0.6s ease;
+}
+
+.jacaerys-card::before {
+    content: '';
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: inherit;
+
+    padding: 1px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(170, 255, 120, 0.8),
+            rgba(120, 180, 90, 0.12),
+            rgba(170, 255, 120, 0.8));
+
+    pointer-events: none;
+
+    opacity: 0.5;
+
+    transition: 0.6s ease;
+}
+
+.jacaerys-card:hover {
+
+    border-color:
+        rgba(170, 255, 120, 0.65);
+
+    box-shadow:
+        0 0 25px rgba(140, 220, 100, 0.14),
+        0 0 60px rgba(140, 220, 100, 0.10),
+        0 0 120px rgba(140, 220, 100, 0.06),
+
+        inset 0 0 25px rgba(140, 220, 100, 0.04);
+}
+
+.jacaerys-card:hover::before {
+    opacity: 0.8;
+
+    filter:
+        drop-shadow(0 0 10px rgba(170, 255, 120, 0.35)) drop-shadow(0 0 20px rgba(170, 255, 120, 0.18));
+}
+
+.vermax-card-fundo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    border-radius: 42px;
+
+    overflow: hidden;
+}
+
+.vermax-card-fundo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transform: scale(1.08);
+
+    filter:
+        brightness(0.22) saturate(0.85);
+}
+
+.vermax-card-glass {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    border-radius: 42px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.03),
+            rgba(255, 255, 255, 0.01));
+
+    backdrop-filter: blur(2px);
+}
+
+.jacaerys-imagem {
+    position: absolute;
+
+    z-index: 6;
+
+    left: 50px;
+    bottom: 0;
+
+    height: 820px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    pointer-events: none;
+
+    overflow: visible;
+
+    border-bottom-left-radius: 42px;
+    border-top-left-radius: 42px;
+
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%), 
+                        linear-gradient(to right, transparent 0%, black 15%);
+    mask-image: linear-gradient(to top, transparent 0%, black 15%), 
+                linear-gradient(to right, transparent 0%, black 15%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+}
+
+.jacaerys-imagem img {
+    height: 100%;
+    width: auto;
+
+    object-fit: contain;
+    object-position: bottom center;
+
+    filter:
+        drop-shadow(0 0 60px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 25px rgba(120, 180, 90, 0.18));
+
+    transition:
+        transform 0.7s ease,
+        filter 0.7s ease,
+        brightness 0.7s ease;
+
+    transform-origin: bottom center;
+
+    will-change: transform;
+}
+
+.jacaerys-card:hover .jacaerys-imagem img {
+
+    transform:
+        scale(1.02) 
+        translateX(-8px);
+
+    filter:
+        brightness(1.05) contrast(1.04) drop-shadow(0 0 90px rgba(0, 0, 0, 1)) drop-shadow(0 0 40px rgba(140, 220, 100, 0.28));
+}
+
+.jacaerys-conteudo {
+    position: relative;
+
+    z-index: 4;
+
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding-left: 750px;
+
+    text-align: left;
+}
+
+.jacaerys-conteudo h1 {
+    font-size: 38px;
+
+    margin-bottom: 50px;
+
+    color: #9fd37b;
+
+    line-height: 1;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 20px rgba(120, 180, 90, 0.25),
+        0 0 40px rgba(120, 180, 90, 0.15);
+}
+
+.jacaerys-citação {
+    width: 100%;
+    padding-bottom: 8px;
+
+    font-size: 18px;
+
+    color: rgba(170, 255, 120, 0.78);
+
+    letter-spacing: 0.08em;
+
+    line-height: 1.8;
+}
+
+.jacaerys-conteudo h2 {
+    margin-top: 33px;
+
+    padding-bottom: 1rem;
+
+    letter-spacing: 0.12em;
+
+    color: #9fd37b;
+
+    text-transform: uppercase;
+}
+
+.jacaerys-conteudo p {
+    font-size: 18px;
+
+    line-height: 2;
+
+    letter-spacing: 0.08em;
+
+    color: rgba(230, 240, 220, 0.82);
+
+    max-width: 480px;
+}
+
+.vermax-titulo {
+    padding-bottom: 1rem;
+
+    text-transform: uppercase;
+
+    color: rgba(170, 255, 120, 0.55);
+}
+
+.jacaerys-citação-final {
+
+    padding-top: 1rem;
+
+    border-top: 1px solid rgba(170, 255, 120, 0.12);
+
+    font-style: italic;
+
+    color: rgba(170, 255, 120, 0.52);
+
+    line-height: 1.8;
+}
+
+.jacaerys-card .logo-targaryen {
+    position: absolute;
+
+    left: 1270px;
+    bottom: 40px;
+
+    z-index: 8;
+}
+
+.jacaerys-card .logo-targaryen img {
+    width: 78px;
+
+    opacity: 0.75;
+
+    filter:
+        drop-shadow(0 0 12px rgba(120, 180, 90, 0.35));
+
+    transition: 0.4s ease;
+}
+
+.jacaerys-card:hover .logo-targaryen img {
+    transform: scale(1.08);
+
+    opacity: 1;
+
+    filter:
+        drop-shadow(0 0 18px rgba(170, 255, 120, 0.55));
+}
+
+/* ==========================================================
+   BAELA SECTION
+========================================================== */
+
+.baela-sessao {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    padding: 8vw;
+}
+
+.moondancer-fundo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+}
+
+.moondancer-fundo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    filter:
+        brightness(0.18) saturate(1) blur(2px) hue-rotate(-18deg);
+
+    transform: scale(1.05);
+}
+
+.moondancer-fundo-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        radial-gradient(circle at center,
+            rgba(255, 120, 40, 0.12),
+            transparent 60%),
+
+        linear-gradient(to bottom,
+            rgba(10, 5, 2, 0.95),
+            rgba(30, 10, 5, 0.55),
+            rgba(10, 5, 2, 0.95));
+}
+
+.baela-card {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+    max-width: 1400px;
+
+    height: 720px;
+
+    border-radius: 42px;
+
+    overflow: visible;
+
+    border: 1px solid rgba(255, 120, 40, 0.25);
+
+    background:
+        linear-gradient(135deg,
+            rgba(18, 8, 4, 0.92),
+            rgba(10, 4, 2, 0.88));
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 0 40px rgba(255, 120, 40, 0.08),
+        0 0 80px rgba(255, 120, 40, 0.04),
+        inset 0 0 20px rgba(255, 120, 40, 0.05);
+
+    transition:
+        box-shadow 0.6s ease,
+        border-color 0.6s ease;
+}
+
+.baela-card::before {
+    content: '';
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: inherit;
+
+    padding: 1px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(255, 180, 80, 0.8),
+            rgba(255, 120, 40, 0.12),
+            rgba(255, 180, 80, 0.8));
+
+    pointer-events: none;
+
+    opacity: 0.45;
+
+    transition: 0.6s ease;
+}
+
+.baela-card:hover {
+
+    border-color:
+        rgba(255, 180, 80, 0.72);
+
+    box-shadow:
+        0 0 25px rgba(255, 140, 60, 0.18),
+        0 0 60px rgba(255, 140, 60, 0.12),
+        0 0 120px rgba(255, 140, 60, 0.08),
+
+        inset 0 0 25px rgba(255, 140, 60, 0.05);
+}
+
+.baela-card:hover::before {
+    opacity: 0.9;
+
+    filter:
+        drop-shadow(0 0 10px rgba(255, 180, 80, 0.35)) drop-shadow(0 0 20px rgba(255, 180, 80, 0.20));
+}
+
+.moondancer-card-fundo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    border-radius: 42px;
+
+    overflow: hidden;
+}
+
+.moondancer-card-fundo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transform: scale(1.08);
+
+    filter:
+        brightness(0.22) saturate(1);
+}
+
+.moondancer-card-glass {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    border-radius: 42px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.03),
+            rgba(255, 255, 255, 0.01));
+
+    backdrop-filter: blur(2px);
+}
+
+.baela-imagem {
+    position: absolute;
+
+    z-index: 6;
+
+    right: 0;
+    bottom: 0;
+
+    height: 850px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    pointer-events: none;
+
+    overflow: visible;
+
+    border-bottom-right-radius: 42px;
+    border-top-right-radius: 42px;
+
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%), 
+                        linear-gradient(to right, transparent 0%, black 15%);
+    mask-image: linear-gradient(to top, transparent 0%, black 15%), 
+                linear-gradient(to right, transparent 0%, black 15%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+}
+
+.baela-imagem img {
+    height: 100%;
+    width: auto;
+
+    object-fit: contain;
+    object-position: bottom center;
+
+    filter:
+        drop-shadow(0 0 60px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 25px rgba(255, 140, 60, 0.18));
+
+    transition:
+        transform 0.7s ease,
+        filter 0.7s ease,
+        brightness 0.7s ease;
+
+    transform-origin: bottom center;
+
+    will-change: transform;
+}
+
+.baela-card:hover .baela-imagem img {
+
+    transform:
+        scale(1.02) 
+        translateX(-8px);
+
+    filter:
+        brightness(1.06) contrast(1.04) drop-shadow(0 0 90px rgba(0, 0, 0, 1)) drop-shadow(0 0 40px rgba(255, 160, 80, 0.28));
+}
+
+.baela-conteudo {
+    position: relative;
+
+    z-index: 4;
+
+    height: 100%;
+    width: 100%;
+    max-width: 800px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 15px;
+
+    padding: 8vw;
+}
+
+.baela-conteudo h1 {
+    font-size: 38px;
+
+    margin-bottom: 20px;
+
+    color: #ffb46a;
+
+    line-height: 1;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 20px rgba(255, 160, 80, 0.25),
+        0 0 40px rgba(255, 160, 80, 0.15);
+}
+
+.baela-citação {
+    font-size: 18px;
+
+    color: rgba(255, 180, 120, 0.82);
+
+    letter-spacing: 0.10em;
+
+    line-height: 2;
+}
+
+.baela-conteudo h2 {
+    margin-top: 15px;
+
+    letter-spacing: 0.12em;
+
+    color: #ffb46a;
+
+    text-transform: uppercase;
+}
+
+.baela-conteudo p {
+    text-transform: uppercase;
+
+    font-size: 18px;
+
+    line-height: 2;
+
+    letter-spacing: 0.08em;
+
+    color: rgba(240, 225, 210, 0.82);
+
+    max-width: 500px;
+}
+
+.moondancer-titulo {
+    
+    text-transform: uppercase;
+
+    color: rgba(255, 180, 120, 0.60);
+}
+
+.baela-citação-final {
+    padding-top: 15px;
+
+    border-top: 1px solid rgba(255, 180, 120, 0.14);
+
+    font-style: italic;
+
+    color: rgba(255, 180, 120, 0.58);
+
+    line-height: 1.8;
+}
+
+.baela-card .logo-targaryen {
+    position: absolute;
+
+    left: 40px;
+    bottom: 40px;
+
+    z-index: 8;
+}
+
+.baela-card .logo-targaryen img {
+    width: 78px;
+
+    opacity: 0.75;
+
+    filter:
+        drop-shadow(0 0 12px rgba(255, 140, 60, 0.35));
+
+    transition: 0.4s ease;
+}
+
+.baela-card:hover .logo-targaryen img {
+    transform: scale(1.08);
+
+    opacity: 1;
+
+    filter:
+        drop-shadow(0 0 18px rgba(255, 180, 80, 0.55));
+}
+
+/* ============================================================
+   10 · OS VERDES BANNER
+   ============================================================ */
+
+.os-verdes-sessao {
+    width: 100%;  
+    min-height: 80vh;
+
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+
+    overflow: hidden;
+    position: relative;
+
+    background: url('WALLPAPERS/WALLPAPER 4 - LEALDADE.png');
+    background-position: 15% 85%;
+    background-size: cover;
+
+}
+
+.os-verdes-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    
+    background:
+        linear-gradient(to bottom,
+            rgba(4, 6, 5, 0.85) 0%,
+            rgba(4, 6, 5, 0.30) 40%,
+            rgba(4, 6, 5, 0.35) 60%,
+            rgba(4, 6, 5, 0.98) 100%),
+        radial-gradient(ellipse at center top,
+            rgba(27, 61, 38, 0.25) 0%,
+            transparent 75%);
+}
+
+.os-verdes-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--active-tint);
+    mix-blend-mode: multiply; 
+    opacity: 0;
+    transition: var(--transition-cinematic);
+    z-index: 2;
+}
+
+.os-verdes-overlay.has-tint::before {
+    opacity: 1;
+}
+
+.os-verdes-conteudo {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 3;
+}
+
+.os-verdes-conteudo h1 {
+    font-size: 25px;
+    font-family: var(--font-secondary);
+    color: #e2e8f0;
+    font-weight: 500;
+    letter-spacing: 0.38em;
+    line-height: 1.4;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+    opacity: 0.9;
+}
+
+.os-verdes-titulo{
+    padding-top: 0;
+}
+
+.os-verdes-conteudo h2 {
+    font-family: var(--font-title);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 700;
+    color: #8bc47a;
+    letter-spacing: 0.18em;
+    text-shadow:
+        0 0 20px rgba(45, 90, 39, 0.80),
+        0 0 60px rgba(45, 90, 39, 0.35),
+        0 2px 6px rgba(0, 0, 0, 0.90);
+    line-height: 1;
+}
+
+/* =========================================================
+   ALICENT
+========================================================= */
+
+.alicent-sessao {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    padding: 8vw;
+}
+
+.alicent-fundo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+}
+
+.alicent-fundo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    filter:
+        brightness(0.16) saturate(0.9) blur(2px) hue-rotate(8deg);
+
+    transform: scale(1.05);
+}
+
+.alicent-fundo-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        radial-gradient(circle at center,
+            rgba(80, 255, 120, 0.08),
+            transparent 60%),
+
+        linear-gradient(to bottom,
+            rgba(5, 15, 8, 0.96),
+            rgba(10, 25, 12, 0.58),
+            rgba(5, 15, 8, 0.96));
+}
+
+.alicent-card {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+    max-width: 1400px;
+
+    height: 720px;
+
+    border-radius: 42px;
+
+    overflow: visible;
+
+    border: 1px solid rgba(120, 255, 160, 0.14);
+
+    background:
+        linear-gradient(135deg,
+            rgba(8, 18, 10, 0.92),
+            rgba(4, 10, 6, 0.88));
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 0 40px rgba(80, 255, 120, 0.06),
+        0 0 80px rgba(80, 255, 120, 0.03),
+        inset 0 0 20px rgba(80, 255, 120, 0.04);
+
+    transition:
+        box-shadow 0.6s ease,
+        border-color 0.6s ease;
+}
+
+.alicent-card::before {
+    content: '';
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: inherit;
+
+    padding: 1px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(180, 255, 200, 0.6),
+            rgba(80, 255, 120, 0.08),
+            rgba(180, 255, 200, 0.6));
+
+    opacity: 0.45;
+
+    pointer-events: none;
+
+    transition: 0.6s ease;
+}
+
+.alicent-card:hover {
+    border-color:
+        rgba(180, 255, 200, 0.45);
+
+    box-shadow:
+        0 0 25px rgba(80, 255, 120, 0.12),
+        0 0 60px rgba(80, 255, 120, 0.08),
+        0 0 120px rgba(80, 255, 120, 0.04),
+
+        inset 0 0 25px rgba(80, 255, 120, 0.03);
+}
+
+.alicent-card:hover::before {
+    opacity: 0.9;
+
+    filter:
+        drop-shadow(0 0 10px rgba(180, 255, 200, 0.2)) drop-shadow(0 0 20px rgba(180, 255, 200, 0.1));
+}
+
+.alicent-card-fundo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    border-radius: 42px;
+
+    overflow: hidden;
+}
+
+.alicent-card-fundo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transform: scale(1.08);
+
+    filter:
+        brightness(0.20) saturate(0.95);
+}
+
+.alicent-card-fundo-glass {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    border-radius: 42px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.025),
+            rgba(255, 255, 255, 0.008));
+
+    backdrop-filter: blur(2px);
+}
+
+.alicent-imagem {
+    position: absolute;
+
+    z-index: 6;
+
+    height: 910px;
+    left: -80px;
+    bottom: 0px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    pointer-events: none;
+
+    overflow: visible;
+
+    border-bottom-left-radius: 42px;
+    border-top-left-radius: 42px;
+
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%), 
+                        linear-gradient(to right, transparent 0%, black 15%);
+    mask-image: linear-gradient(to top, transparent 0%, black 15%), 
+                linear-gradient(to right, transparent 0%, black 15%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+}
+
+.alicent-imagem img {
+    height: 100%;
+    width: auto;
+
+    object-fit: contain;
+    object-position: bottom center;
+
+    filter:
+        drop-shadow(0 0 60px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 25px rgba(80, 255, 120, 0.12));
+
+    transition:
+        transform 0.7s ease,
+        filter 0.7s ease;
+
+    transform-origin: bottom center;
+
+    will-change: transform;
+}
+
+.alicent-card:hover .alicent-imagem img {
+    transform:
+        scale(1.03) translateX(-8px);
+
+    filter:
+        brightness(1.04) contrast(1.02) drop-shadow(0 0 90px rgba(0, 0, 0, 1)) drop-shadow(0 0 40px rgba(120, 255, 160, 0.18));
+}
+
+.alicent-conteudo {
+    position: relative;
+
+    z-index: 4;
+
+    height: 100%;
+    width: 100%;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+
+    gap: 15px;
+
+    padding-left: 750px;
+}
+
+.alicent-conteudo h1 {
+    font-size: 38px;
+
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+    color: #b6ffcb;
+
+    line-height: 1;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 20px rgba(120, 255, 160, 0.18),
+        0 0 40px rgba(120, 255, 160, 0.08);
+}
+
+.alicent-citação {
+    font-size: 18px;
+
+    color: rgba(180, 255, 200, 0.75);
+
+    letter-spacing: 0.10em;
+
+    line-height: 2;
+}
+
+.alicent-conteudo h2 {
+    margin-top: 15px;
+
+    letter-spacing: 0.12em;
+
+    color: #b6ffcb;
+
+    text-transform: uppercase;
+}
+
+.alicent-conteudo p {
+    text-transform: uppercase;
+
+    font-size: 18px;
+
+    line-height: 2;
+
+    letter-spacing: 0.08em;
+
+    color: rgba(230, 240, 230, 0.78);
+
+    max-width: 500px;
+}
+
+.alicent-citação-final {
+    padding-top: 1rem;
+
+    border-top: 1px solid rgba(180, 255, 200, 0.12);
+
+    font-style: italic;
+
+    color: rgba(180, 255, 200, 0.48);
+}
+
+.alicent-card .logo-targaryen-verde {
+    position: absolute;
+
+    left: 1270px;
+    bottom: 40px;
+
+    z-index: 8;
+}
+
+.alicent-card .logo-targaryen-verde img {
+    width: 100px;
+
+    opacity: 0.75;
+
+    filter:
+        drop-shadow(0 0 12px rgba(120, 255, 160, 0.25));
+
+    transition: 0.4s ease;
+}
+
+.alicent-card:hover .logo-targaryen-verde img {
+    transform: scale(1.08);
+
+    opacity: 1;
+
+    filter:
+        drop-shadow(0 0 18px rgba(180, 255, 200, 0.35));
+}
+
+
+/* ========================================= */
+/* AEGON II */
+/* ========================================= */
+
+.aegon-sessao {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    padding: 8vw;
+}
+
+.sunfyre-fundo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+}
+
+.sunfyre-fundo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    filter:
+        brightness(0.18)
+        saturate(1)
+        blur(2px);
+
+    transform: scale(1.05);
+}
+
+.sunfyre-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,190,70,0.12),
+            transparent 60%
+        ),
+
+        linear-gradient(
+            to bottom,
+            rgba(10,5,2,0.95),
+            rgba(30,18,5,0.55),
+            rgba(10,5,2,0.95)
+        );
+}
+
+.aegon-card {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+    max-width: 1400px;
+
+    height: 720px;
+
+    border-radius: 42px;
+
+    overflow: visible;
+
+    border: 1px solid rgba(255,190,70,0.25);
+
+    background: linear-gradient(
+        135deg,
+        rgba(6, 14, 8, 0.78),
+        rgba(3, 8, 5, 0.84)
+    );
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 0 40px rgba(80,255,120,0.06),
+        0 0 80px rgba(80,255,120,0.03),
+        inset 0 0 20px rgba(80,255,120,0.04);
+
+    /* Otimizado para usar a curva global fluida */
+    transition: box-shadow 0.5s var(--ease-cinematic),
+                border-color 0.5s var(--ease-cinematic);
+}
+
+.aegon-card::before {
+    content: '';
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: inherit;
+
+    padding: 1px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,220,120,0.8),
+            rgba(255,190,70,0.12),
+            rgba(255,220,120,0.8)
+        );
+
+    opacity: 0.45;
+
+    pointer-events: none;
+
+    transition: 0.6s ease;
+}
+
+.aegon-card:hover {
+    border-color: rgba(255,220,120,0.75);
+
+    box-shadow:
+        0 0 25px rgba(255,190,70,0.18),
+        0 0 60px rgba(255,190,70,0.12),
+        0 0 120px rgba(255,190,70,0.08),
+
+        inset 0 0 25px rgba(255,190,70,0.05);
+}
+
+.aegon-card:hover::before {
+    opacity: 0.9;
+
+    filter:
+        drop-shadow(0 0 10px rgba(255,220,120,0.35))
+        drop-shadow(0 0 20px rgba(255,220,120,0.20));
+}
+
+.sunfyre-card-fundo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    border-radius: 42px;
+
+    overflow: hidden;
+}
+
+.sunfyre-card-fundo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transform: scale(1.08);
+
+    filter:
+        brightness(0.22)
+        saturate(1);
+}
+
+.sunfyre-card-glass {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    border-radius: 42px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.03),
+            rgba(255,255,255,0.01)
+        );
+
+    backdrop-filter: blur(2px);
+}
+
+.aegon-imagem {
+    position: absolute;
+
+    z-index: 6;
+
+    right: -162px;
+    bottom: 0;
+
+    height: 900px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    border-bottom-right-radius: 42px;
+    border-top-right-radius: 42px;
+
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%), 
+                        linear-gradient(to right, transparent 0%, black 15%);
+    mask-image: linear-gradient(to top, transparent 0%, black 15%), 
+                linear-gradient(to right, transparent 0%, black 15%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+}
+
+.aegon-imagem img {
+    height: 100%;
+    width: auto;
+
+    object-fit: contain;
+    object-position: bottom center;
+
+    filter:
+        drop-shadow(0 0 60px rgba(0,0,0,0.95))
+        drop-shadow(0 0 25px rgba(255,210,100,0.18));
+
+    transition:
+        transform 0.7s ease,
+        filter 0.7s ease;
+
+    transform-origin: bottom center;
+}
+
+.aegon-card:hover .aegon-imagem img {
+    transform:
+        scale(1.03)
+        translateX(-8px);
+
+    filter:
+        brightness(1.06)
+        contrast(1.04)
+        drop-shadow(0 0 90px rgba(0,0,0,1))
+        drop-shadow(0 0 40px rgba(255,220,120,0.30));
+}
+
+.aegon-conteudo {
+    position: relative;
+
+    z-index: 4;
+
+    height: 100%;
+    width: 100%;
+    max-width: 850px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 15px;
+
+    padding: 8vw;
+}
+
+.aegon-conteudo h1 {
+    font-size: 38px;
+
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+    color: #ffd36e;
+
+    line-height: 1;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 20px rgba(255,210,100,0.25),
+        0 0 40px rgba(255,210,100,0.15);
+}
+
+.aegon-citação {
+    font-size: 18px;
+
+    color: rgba(255,220,140,0.82);
+
+    letter-spacing: 0.10em;
+
+    line-height: 2;
+}
+
+.aegon-conteudo h2 {
+    margin-top: 15px;
+
+    letter-spacing: 0.12em;
+
+    color: #ffd36e;
+
+    text-transform: uppercase;
+}
+
+.aegon-conteudo p {
+    text-transform: uppercase;
+
+    font-size: 18px;
+
+    line-height: 2;
+
+    letter-spacing: 0.08em;
+
+    color: rgba(240,225,210,0.82);
+
+    max-width: 500px;
+}
+
+.sunfyre-titulo {
+    color: rgba(255,220,140,0.65);
+}
+
+.aegon-citação-final {
+    padding-top: 1rem;
+
+    border-top: 1px solid rgba(255,220,140,0.14);
+
+    font-style: italic;
+
+    color: rgba(255,220,140,0.58);
+
+    line-height: 1.8;
+}
+
+/* LOGO */
+
+.aegon-card .logo-targaryen-verde {
+    position: absolute;
+
+    left: 25px;
+    bottom: 40px;
+
+    z-index: 8;
+}
+
+.aegon-card .logo-targaryen-verde img {
+    width: 100px;
+
+    opacity: 0.75;
+
+    filter:
+        drop-shadow(0 0 12px rgba(255,210,100,0.35));
+
+    transition: 0.4s ease;
+}
+
+.aegon-card:hover .logo-targaryen-verde img {
+    transform: scale(1.08);
+
+    opacity: 1;
+
+    filter:
+        drop-shadow(0 0 18px rgba(255,220,120,0.55));
+}
+
+/* =========================================================
+   AEMOND
+========================================================= */
+
+.aemond-sessao {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    padding: 8vw;
+}
+
+.vhagar-fundo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+}
+
+.vhagar-fundo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    filter:
+        brightness(0.16)
+        saturate(0.9)
+        blur(2px)
+        hue-rotate(8deg);
+
+    transform: scale(1.05);
+}
+
+.vhagar-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(80,255,120,0.08),
+            transparent 60%
+        ),
+
+        linear-gradient(
+            to bottom,
+            rgba(5,15,8,0.96),
+            rgba(10,25,12,0.58),
+            rgba(5,15,8,0.96)
+        );
+}
+
+.aemond-card {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+    max-width: 1400px;
+
+    height: 720px;
+
+    border-radius: 42px;
+
+    overflow: visible;
+
+    border: 1px solid rgba(120,255,160,0.14);
+
+background: linear-gradient(
+        135deg,
+        rgba(6, 14, 8, 0.78),
+        rgba(3, 8, 5, 0.84)
+    );
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 0 40px rgba(80,255,120,0.06),
+        0 0 80px rgba(80,255,120,0.03),
+        inset 0 0 20px rgba(80,255,120,0.04);
+
+    /* Otimizado para usar a curva global fluida */
+    transition: box-shadow 0.5s var(--ease-cinematic),
+                border-color 0.5s var(--ease-cinematic);
+}
+
+.aemond-card::before {
+    content: '';
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: inherit;
+
+    padding: 1px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(180,255,200,0.6),
+            rgba(80,255,120,0.08),
+            rgba(180,255,200,0.6)
+        );
+
+    opacity: 0.45;
+
+    pointer-events: none;
+
+    transition: 0.6s ease;
+}
+
+.aemond-card:hover {
+    border-color:
+        rgba(180,255,200,0.45);
+
+    box-shadow:
+        0 0 25px rgba(80,255,120,0.12),
+        0 0 60px rgba(80,255,120,0.08),
+        0 0 120px rgba(80,255,120,0.04),
+
+        inset 0 0 25px rgba(80,255,120,0.03);
+}
+
+.aemond-card:hover::before {
+    opacity: 0.9;
+
+    filter:
+        drop-shadow(0 0 10px rgba(180,255,200,0.2))
+        drop-shadow(0 0 20px rgba(180,255,200,0.1));
+}
+
+.vhagar-card-fundo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    border-radius: 42px;
+
+    overflow: hidden;
+}
+
+.vhagar-card-fundo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.05);
+
+    /* CORREÇÃO: Subiu brilho de 0.20 para 0.42 e adicionou contraste para destacar as texturas */
+    filter: brightness(0.42) saturate(1.15) contrast(1.1);
+    transition: filter 0.5s var(--ease-cinematic), 
+                transform 0.5s var(--ease-cinematic);
+}
+
+.vhagar-card-glass {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    border-radius: 42px;
+
+background: radial-gradient(
+        circle at 30% 50%,
+        rgba(45, 140, 70, 0.25) 0%,
+        rgba(10, 35, 15, 0.08) 50%,
+        transparent 75%
+    );
+    pointer-events: none;
+}
+
+.aemond-imagem {
+    position: absolute;
+
+    z-index: 6;
+
+    height: 820px;
+
+    left: -120px;
+    bottom: 0;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    pointer-events: none;
+
+    overflow: visible;
+
+    border-bottom-right-radius: 42px;
+    border-top-right-radius: 42px;
+
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%), 
+                        linear-gradient(to right, transparent 0%, black 15%);
+    mask-image: linear-gradient(to top, transparent 0%, black 15%), 
+                linear-gradient(to right, transparent 0%, black 15%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+}
+
+.aemond-imagem img {
+    height: 100%;
+    width: auto;
+
+    object-fit: contain;
+    object-position: bottom center;
+
+    filter:
+        drop-shadow(0 0 60px rgba(0,0,0,0.95))
+        drop-shadow(0 0 25px rgba(80,255,120,0.12));
+
+    transition:
+        transform 0.7s ease,
+        filter 0.7s ease;
+
+    transform-origin: bottom center;
+
+    will-change: transform;
+}
+
+.aemond-card:hover .aemond-imagem img {
+    transform:
+        scale(1.03)
+        translateX(-8px);
+
+    filter:
+        brightness(1.04)
+        contrast(1.02)
+        drop-shadow(0 0 90px rgba(0,0,0,1))
+        drop-shadow(0 0 40px rgba(120,255,160,0.18));
+}
+
+.aemond-nevoa {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    overflow: hidden;
+
+    border-radius: 42px;
+}
+
+.aemond-nevoa img {
+    position: absolute;
+
+    bottom: 0;
+    right: -150px;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    opacity: 0.45;
+
+    transform: translateX(10px);
+
+    display: block;
+}
+
+.aemond-conteudo {
+    position: relative;
+
+    z-index: 4;
+
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 15px;
+
+    padding-left: 750px;
+}
+
+.aemond-conteudo h1 {
+    font-size: 38px;
+
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+    color: #b6ffcb;
+
+    line-height: 1;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 20px rgba(120,255,160,0.18),
+        0 0 40px rgba(120,255,160,0.08);
+}
+
+.aemond-citação {
+    font-size: 18px;
+
+    color: rgba(180,255,200,0.75);
+
+    letter-spacing: 0.10em;
+
+    line-height: 2;
+}
+
+.aemond-conteudo h2 {
+    margin-top: 15px;
+
+    letter-spacing: 0.12em;
+
+    color: #b6ffcb;
+
+    text-transform: uppercase;
+}
+
+.aemond-conteudo p {
+    text-transform: uppercase;
+
+    font-size: 18px;
+
+    line-height: 2;
+
+    letter-spacing: 0.08em;
+
+    color: rgba(230,240,230,0.78);
+
+    max-width: 500px;
+}
+
+.vhagar-titulo {
+    color: rgba(180,255,200,0.58);
+}
+
+.aemond-citação-final {
+    padding-top: 1rem;
+
+    border-top: 1px solid rgba(180,255,200,0.12);
+
+    font-style: italic;
+
+    color: rgba(180,255,200,0.48);
+
+    line-height: 1.8;
+}
+
+.aemond-card .logo-targaryen-verde {
+    position: absolute;
+
+    left: 1270px;
+    bottom: 40px;
+
+    z-index: 8;
+}
+
+.aemond-card .logo-targaryen-verde img {
+    width: 100px;
+
+    opacity: 0.75;
+
+    filter:
+        drop-shadow(0 0 12px rgba(120,255,160,0.25));
+
+    transition: 0.4s ease;
+}
+
+.aemond-card:hover .logo-targaryen-verde img {
+    transform: scale(1.08);
+
+    opacity: 1;
+
+    filter:
+        drop-shadow(0 0 18px rgba(180,255,200,0.35));
+}
+
+/* ========================================= */
+/* helaena */
+/* ========================================= */
+
+.helaena-sessao {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    padding: 8vw;
+}
+
+.dreamfyre-fundo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+}
+
+.dreamfyre-fundo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    filter:
+        brightness(0.18)
+        saturate(1)
+        blur(2px);
+
+    transform: scale(1.05);
+}
+
+.dreamfyre-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,190,70,0.12),
+            transparent 60%
+        ),
+
+        linear-gradient(
+            to bottom,
+            rgba(10,5,2,0.95),
+            rgba(30,18,5,0.55),
+            rgba(10,5,2,0.95)
+        );
+}
+
+.helaena-card {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+    max-width: 1400px;
+
+    height: 720px;
+
+    border-radius: 42px;
+
+    overflow: visible;
+
+    border: 1px solid rgba(255,190,70,0.25);
+
+background: linear-gradient(
+        135deg,
+        rgba(12, 8, 3, 0.75),
+        rgba(7, 4, 1, 0.85)
+    );
+    backdrop-filter: blur(18px);
+    box-shadow:
+        0 0 40px rgba(255,190,70,0.08),
+        0 0 80px rgba(255,190,70,0.04),
+        inset 0 0 20px rgba(255,190,70,0.05);
+
+    /* Sincronização de tempo usando curvas cinematográficas premium */
+    transition: box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                border-color 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.helaena-card::before {
+    content: '';
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: inherit;
+
+    padding: 1px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255,220,120,0.8),
+        rgba(255,190,70,0.12),
+        rgba(255,220,120,0.8)
+    );
+    opacity: 0.45;
+    pointer-events: none;
+    transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                filter 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.helaena-card:hover {
+    border-color: rgba(255,220,120,0.75);
+
+    box-shadow:
+        0 0 25px rgba(255,190,70,0.18),
+        0 0 60px rgba(255,190,70,0.12),
+        0 0 120px rgba(255,190,70,0.08),
+
+        inset 0 0 25px rgba(255,190,70,0.05);
+
+        
+}
+
+.helaena-card:hover::before {
+    opacity: 0.9;
+
+    filter:
+        drop-shadow(0 0 10px rgba(255,220,120,0.35))
+        drop-shadow(0 0 20px rgba(255,220,120,0.20));
+}
+
+.dreamfyre-card-fundo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    border-radius: 42px;
+
+    overflow: hidden;
+}
+
+.dreamfyre-card-fundo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transform: scale(1.08);
+
+    filter: brightness(0.45) saturate(1.1) contrast(1.05);
+    transition: filter 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.dreamfyre-card-glass {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    border-radius: 42px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.03),
+            rgba(255,255,255,0.01)
+        );
+
+    backdrop-filter: blur(2px);
+}
+
+.helaena-imagem {
+    position: absolute;
+
+    z-index: 6;
+
+    right: -28px;
+    bottom: 0;
+
+    height: 900px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    border-radius: 42px;
+    
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%), 
+                        linear-gradient(to right, transparent 0%, black 15%);
+    mask-image: linear-gradient(to top, transparent 0%, black 15%), 
+                linear-gradient(to right, transparent 0%, black 15%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+}
+
+.helaena-imagem img {
+height: 100%;
+    width: auto;
+    object-fit: contain;
+    object-position: bottom center;
+    filter:
+        drop-shadow(0 0 60px rgba(0,0,0,0.95))
+        drop-shadow(0 0 25px rgba(255,210,100,0.18));
+    
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                filter 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: bottom center;
+}
+
+.helaena-card:hover .helaena-imagem img {
+    transform:
+        scale(1.03)
+        translateX(-8px);
+}
+
+.helaena-conteudo {
+    position: relative;
+
+    z-index: 4;
+
+    height: 100%;
+    width: 100%;
+    max-width: 850px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 15px;
+
+    padding: 8vw;
+}
+
+.helaena-conteudo h1 {
+    font-size: 38px;
+
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+    color: #ffd36e;
+
+    line-height: 1;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 20px rgba(255,210,100,0.25),
+        0 0 40px rgba(255,210,100,0.15);
+}
+
+.helaena-citação {
+    font-size: 18px;
+
+    color: rgba(255,220,140,0.82);
+
+    letter-spacing: 0.10em;
+
+    line-height: 2;
+}
+
+.helaena-conteudo h2 {
+    margin-top: 15px;
+
+    letter-spacing: 0.12em;
+
+    color: #ffd36e;
+
+    text-transform: uppercase;
+}
+
+.helaena-conteudo p {
+    text-transform: uppercase;
+
+    font-size: 18px;
+
+    line-height: 2;
+
+    letter-spacing: 0.08em;
+
+    color: rgba(240,225,210,0.82);
+
+    max-width: 500px;
+}
+
+.dreamfyre-titulo {
+    color: rgba(255,220,140,0.65);
+}
+
+.helaena-citação-final {
+    padding-top: 1rem;
+
+    border-top: 1px solid rgba(255,220,140,0.14);
+
+    font-style: italic;
+
+    color: rgba(255,220,140,0.58);
+
+    line-height: 1.8;
+}
+
+.helaena-card .logo-targaryen-verde {
+    position: absolute;
+
+    left: 25px;
+    bottom: 40px;
+
+    z-index: 8;
+}
+
+.helaena-card .logo-targaryen-verde img {
+    width: 100px;
+
+    opacity: 0.75;
+
+    filter:
+        drop-shadow(0 0 12px rgba(255,210,100,0.35));
+
+    transition: 0.4s ease;
+}
+
+.helaena-card:hover .logo-targaryen-verde img {
+    transform: scale(1.08);
+
+    opacity: 1;
+
+    filter:
+        drop-shadow(0 0 18px rgba(255,220,120,0.55));
+}
+
+/* ========================================= */
+/* criston */
+/* ========================================= */
+
+.criston-sessao {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    padding: 8vw;
+}
+
+.criston-fundo {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.criston-fundo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    filter:
+        brightness(0.16)
+        saturate(0.9)
+        blur(2px)
+        hue-rotate(8deg);
+
+    transform: scale(1.05);
+}
+
+.criston-fundo-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(80,255,120,0.08),
+            transparent 60%
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(5,15,8,0.96),
+            rgba(10,25,12,0.58),
+            rgba(5,15,8,0.96)
+        );
+}
+
+.criston-card {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+    max-width: 1400px;
+
+    height: 720px;
+
+    border-radius: 42px;
+
+    overflow: visible;
+
+    border: 1px solid rgba(120,255,160,0.14);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(8,18,10,0.92),
+            rgba(4,10,6,0.88)
+        );
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 0 40px rgba(80,255,120,0.06),
+        0 0 80px rgba(80,255,120,0.03),
+        inset 0 0 20px rgba(80,255,120,0.04);
+
+    transition:
+        box-shadow 0.6s ease,
+        border-color 0.6s ease;
+}
+
+.criston-card::before {
+    content: '';
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: inherit;
+
+    padding: 1px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(180,255,200,0.6),
+            rgba(80,255,120,0.08),
+            rgba(180,255,200,0.6)
+        );
+
+    opacity: 0.45;
+
+    pointer-events: none;
+
+    transition: 0.6s ease;
+}
+
+.criston-card:hover {
+    border-color: rgba(180,255,200,0.45);
+
+    box-shadow:
+        0 0 25px rgba(80,255,120,0.12),
+        0 0 60px rgba(80,255,120,0.08),
+        0 0 120px rgba(80,255,120,0.04),
+        inset 0 0 25px rgba(80,255,120,0.03);
+}
+
+.criston-card:hover::before {
+    opacity: 0.9;
+
+    filter:
+        drop-shadow(0 0 10px rgba(180,255,200,0.2))
+        drop-shadow(0 0 20px rgba(180,255,200,0.1));
+}
+
+.criston-fundo-card-fundo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    border-radius: 42px;
+
+    overflow: hidden;
+}
+
+.criston-fundo-card-fundo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transform: scale(1.08);
+
+    filter:
+        brightness(0.20)
+        saturate(0.95);
+}
+
+.criston-fundo-card-glass {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    border-radius: 42px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.025),
+            rgba(255,255,255,0.008)
+        );
+
+    backdrop-filter: blur(2px);
+}
+
+.criston-imagem {
+    position: absolute;
+
+    z-index: 6;
+
+    left: 0;
+    bottom: -3px;
+    
+    height: 820px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    border-bottom-left-radius: 42px;
+    border-top-left-radius: 42px;
+
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%), 
+                        linear-gradient(to right, transparent 0%, black 15%);
+    mask-image: linear-gradient(to top, transparent 0%, black 15%), 
+                linear-gradient(to right, transparent 0%, black 15%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+}
+
+.criston-imagem img {
+    height: 100%;
+    width: auto;
+
+    object-fit: contain;
+    object-position: bottom center;
+
+    filter:
+        drop-shadow(0 0 60px rgba(0,0,0,0.95))
+        drop-shadow(0 0 25px rgba(80,255,120,0.12));
+
+    transition:
+        transform 0.7s ease,
+        filter 0.7s ease;
+
+    transform-origin: bottom center;
+}
+
+.criston-card:hover .criston-imagem img {
+    transform:
+        scale(1.03)
+        translateX(-8px);
+
+    filter:
+        brightness(1.04)
+        contrast(1.02)
+        drop-shadow(0 0 90px rgba(0,0,0,1))
+        drop-shadow(0 0 40px rgba(120,255,160,0.18));
+}
+
+.criston-conteudo {
+    position: relative;
+
+    z-index: 4;
+
+    height: 100%;
+    width: 100%;
+    max-width: 1200px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 15px;
+
+    padding-left: 750px;
+}
+
+.criston-conteudo h1 {
+    font-size: 38px;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    color: #b6ffcb;
+
+    line-height: 1;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 20px rgba(120,255,160,0.18),
+        0 0 40px rgba(120,255,160,0.08);
+}
+
+.criston-citação {
+    font-size: 18px;
+
+    color: rgba(180,255,200,0.75);
+
+    letter-spacing: 0.10em;
+
+    line-height: 2;
+}
+
+.criston-conteudo h2 {
+    margin-top: 15px;
+
+    letter-spacing: 0.12em;
+
+    color: #b6ffcb;
+
+    text-transform: uppercase;
+}
+
+.criston-conteudo p {
+    text-transform: uppercase;
+
+    font-size: 18px;
+
+    line-height: 2;
+
+    letter-spacing: 0.08em;
+
+    color: rgba(230,240,230,0.78);
+
+    max-width: 500px;
+}
+
+.criston-titulo {
+    color: rgba(180,255,200,0.58);
+}
+
+.criston-citação-final {
+    padding-top: 1rem;
+
+    border-top: 1px solid rgba(180,255,200,0.12);
+
+    font-style: italic;
+
+    color: rgba(180,255,200,0.48);
+
+    line-height: 1.8;
+}
+
+.criston-card .logo-targaryen-verde {
+    position: absolute;
+
+    left: 1270px;
+    bottom: 40px;
+
+    z-index: 8;
+}
+
+.criston-card .logo-targaryen-verde img {
+    width: 100px;
+
+    opacity: 0.75;
+
+    filter:
+        drop-shadow(0 0 12px rgba(120,255,160,0.25));
+
+    transition: 0.4s ease;
+}
+
+.criston-card:hover .logo-targaryen-verde img {
+    transform: scale(1.08);
+
+    opacity: 1;
+
+    filter:
+        drop-shadow(0 0 18px rgba(180,255,200,0.35));
+}
+
+/* ============================================================
+   12 · FAISCA
+   ============================================================ */
+
+.faisca {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    overflow: hidden;
+    pointer-events: none;
+    border-radius: 39px;
+}
+
+.spark-item {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    mix-blend-mode: screen;
+    filter: brightness(1.1) saturate(1.2) drop-shadow(0 0 8px rgba(255, 120, 0, 0.7));
+    
+    animation: subirFaisca 14s linear infinite;
+    transform-origin: center bottom;
+}
+
+.spark-item:nth-child(1) { animation-delay: 0s; }
+.spark-item:nth-child(2) { animation-delay: -4.66s; }
+.spark-item:nth-child(3) { animation-delay: -9.33s; }
+
+@keyframes subirFaisca {
+    0% {
+        transform: translateY(0%);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% {
+        transform: translateY(-100%); 
+        opacity: 0;
+    }
+}
+
+/* ============================================================
+   NÉVOA
+   ============================================================ */
+.nevoa {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    overflow: hidden;
+    pointer-events: none;
+    border-radius: 39px;
+}
+
+.nevoa-camada{
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    mix-blend-mode: screen;
+    filter: brightness(0.72) saturate(0.84) opacity(0.72) drop-shadow(0 0 14px rgba(16, 185, 129, 0.5));    animation: subirNevoa 14s linear infinite;
+    transform-origin: center bottom;
+}
+
+.nevoa-camada:nth-child(1) { animation-delay: 0s; }
+.nevoa-camada:nth-child(2) { animation-delay: -4.66s; }
+.nevoa-camada:nth-child(3) { animation-delay: -9.33s; }
+
+@keyframes subirNevoa {
+    0% {
+        transform: translateY(0%) scale(1);
+        opacity: 0;
+    }
+    15% { 
+        opacity: 1; 
+    }
+    85% { 
+        opacity: 1; 
+    }
+    100% {
+        transform: translateY(-80%) scale(1.1); 
+        opacity: 0;
+    }
+}
+
+/* ============================================================
+   12 · FOOTER
+   ============================================================ */
+
+footer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background: url('WALLPAPERS/footer.png');
+    background-size: cover;
+    background-position: center;
+
+}
+
+.footer-conteudo{
+    width: 100%;
+    padding: 7vw;
+    display: flex;
+}
+
+.footer-logo img{
+    width: 500px;
+}
+
+.redes-sociais{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.redes-sociais h3{
+    color: #d4af37;
+
+    font-size: 1.2rem;
+
+    font-weight: 600;
+
+    letter-spacing: 0.35em;
+
+    text-transform: uppercase;
+
+    margin-bottom: 25px;
+
+    position: relative;
+
+    text-shadow:
+        0 0 10px rgba(212,175,55,0.25),
+        0 0 20px rgba(212,175,55,0.12);
+}
+
+.redes-sociais h3::after{
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -10px;
+
+    width: 120px;
+    height: 2px;
+
+    background: linear-gradient(
+        to right,
+        #d4af37,
+        transparent
+    );
+}
+
+.redes-sociais ul{
+    display: flex;
+    gap: 20px;
+}
+
+.redes-sociais li{
+    display: flex;
+    gap: 20px;
+}
+
+.redes-sociais a img{
+    width: 52px;
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+
+    filter: brightness(0.9);
+}
+
+.redes-sociais a img:hover{
+    transform: scale(1.1);
+
+    filter:
+        brightness(1.2)
+        drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
+}
+
+.redes-sociais ul li a:nth-child(1) img {
+    width: 60px;
+}
+
+.redes-sociais ul li a:nth-child(5) img {
+    width: 60px;
+}
+
+.redes-sociais ul li a:nth-child(6) img {
+    width: 45px;
+}
+
+.footer-texto-infinito{
+    display: flex;
+    width: max-content;
+}
+
+.footer-texto-infinito h3 {
+    font-size: 12vw;
+    font-family: trajan pro, serif;
+    animation: footer-texto-infinito 8s linear infinite;
+    padding-left: 8vw;
+
+    text-transform: uppercase;
+
+    background: linear-gradient(
+        to bottom,
+        #fff8d6,
+        #f7d76a,
+        #d4af37,
+        #8b6914
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    filter:
+        drop-shadow(0 0 10px rgba(212,175,55,0.25))
+        drop-shadow(0 0 25px rgba(212,175,55,0.15));
+
+    opacity: 0.95;
+}
+
+@keyframes footer-texto-infinito {
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.footer-span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-bottom: 20px;
+}
+
+.footer-span p {
+        background: linear-gradient(
+        to bottom,
+        #fff8d6,
+        #f7d76a,
+        #d4af37,
+        #8b6914
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    filter:
+        drop-shadow(0 0 10px rgba(212,175,55,0.25))
+        drop-shadow(0 0 25px rgba(212,175,55,0.15));
+
+    opacity: 0.95;
+}
+
+/* ============================================================
+   RESPONSIVIDADE
+   ============================================================ */
+@media (max-width: 1500px) {
+    .header {
+        top: 50px;
+        left: 60px;
+        right: 60px;
+    }   
+
+/*MAIN*/
+
+    .main-fundo img {
+        object-fit: cover;
+        object-position: 50% center;
+    }
+
+    .main-personagens img:first-child {
+        left: -12%;
+        height: 88vh;
+    }
+
+    .main-personagens img:last-child {
+        right: -11%;
+        height: 84vh;
+    }
+
+    .main-centro img {
+        max-width: 25vw;
+    }
+
+    .abrir-trailer {
+        font-size: 19px;
+        margin-left: 20px;
+    }
+
+/*RHAENYRA*/
+
+    .rhaenyra-card, .daemon-card,.rhaenys-card, .jacaerys-card, .baela-card, .alicent-card, .aegon-card, .aemond-card, .helaena-card, .criston-card{
+        max-width: 1200px;
+        max-height: 600px;
+    }
+
+    .rhaenyra-imagem img{
+        height: 700px;
+    }
+
+    .rhaenyra-conteudo{
+        margin-left: 50px;
+        max-width: 900px;
+    }
+
+    .rhaenyra-conteudo h1{
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+    .rhaenyra-conteudo h2{
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .rhaenyra-citação-final{
+        
+        padding: 10px 0;
+        margin: 0;
+    }
+
+/*DAEMON*/
+
+    .daemon-imagem img {
+        padding: 0;
+        margin: 0;
+        max-height: 700px;
+    }
+
+    .daemon-conteudo{
+        max-width: 1200px;
+        padding-left: 610px;
+        gap: 0;
+    }
+
+    .daemon-conteudo h1{
+        margin-bottom: 18px;
+    }
+
+    .caraxes-titulo{
+        padding: 7px 0;
+    }
+    .daemon-sessao .logo-targaryen{
+        left: 1080px;
+    }
+
+/*RHAENYS*/
+
+    .rhaenys-imagem img{
+        max-height: 450px;
+    }
+
+    .rhaenys-conteudo{
+        margin-left: 50px;
+    }
+
+    .rhaenys-conteudo h1{
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+    .rhaenys-conteudo h2{
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .rhaenys-citação-final{
+        padding: 10px 0;
+        margin: 0;
+    }
+
+/*JACAERYS*/
+
+    .jacaerys-imagem img{
+        max-height: 700px;
+    }
+
+    .jacaerys-conteudo{
+        max-width: 1400px;
+        padding-left: 570px;
+        gap: 0;
+    }
+
+     .jacaerys-conteudo h1{
+        margin-bottom: 18px;
+    }
+
+    .jacaerys-sessao .logo-targaryen{
+        left: 1080px;
+    }
+
+/*BAELA*/
+
+    .baela-imagem img{
+        max-height: 710px;
+    }
+
+    .baela-conteudo{
+        margin-left: 50px;
+    }
+
+    .baela-conteudo h1{
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+/*ALICENT*/
+    .alicent-imagem img{
+        max-height: 760px;
+        padding-left: 10px;
+    }
+
+    .alicent-conteudo{
+        max-width: 1400px;
+        padding-left: 570px;
+        gap: 0;
+    }
+
+    .alicent-conteudo h1{
+        margin-bottom: 18px;
+    }
+
+    .os-verdes-titulo{
+        padding: 7px 0;
+    }
+    .alicent-citação{
+        padding: 7px 0;
+    }
+    .alicent-sessao .logo-targaryen-verde{
+        left: 1080px;
+    }
+
+/*AEGON*/
+    .aegon-imagem img{
+        max-height: 720px;
+    }
+
+    .aegon-conteudo{
+        margin-left: 50px;
+    }
+
+    .aegon-conteudo h1{
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+/*AEMOND*/
+    .aemond-imagem img{
+        max-height: 670px;
+        padding-left: 10px;
+        bottom: 1px;
+    }
+
+    .aemond-conteudo{
+        max-width: 1400px;
+        padding-left: 570px;
+        gap: 0;
+    }
+
+    .aemond-conteudo h1{
+        margin-bottom: 18px;
+    }
+
+    .vhagar-titulo{
+        padding: 7px 0;
+    }
+    .aemond-citação{
+        padding: 7px 0;
+    }
+    .aemond-sessao .logo-targaryen-verde{
+        left: 1080px;
+    }
+
+/*HELAENA*/ 
+    .helaena-imagem img{
+        max-height: 780px;
+        padding-right: 20px;
+    }
+
+    .helaena-conteudo{
+        margin-left: 50px;
+    }
+
+    .helaena-conteudo h1{
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+/*CRISTON*/ 
+    .criston-imagem img{
+        max-height: 710px;
+        padding-left: 10px;
+    }
+
+    .criston-conteudo{
+        max-width: 1400px;
+        padding-left: 570px;
+        gap: 0;
+    }
+
+    .criston-conteudo h1{
+        margin-bottom: 18px;
+    }
+
+    .os-verdes-titulo{
+        padding: 7px 0;
+    }
+    .criston-citação{
+        padding: 7px 0;
+    }
+    .criston-sessao .logo-targaryen-verde{
+        left: 1080px;
+    }
+}
+
+@media (max-width: 1100px){
+    
+    .main-fundo img {
+        object-fit: cover;
+        object-position: 50%;
+    }
+
+    .main-personagens img:first-child {
+        left: -28%;
+        height: 83vh;
+    }
+
+    .main-personagens img:last-child {
+        right: -27%;
+        height: 79vh;
+    }
+
+    .main-centro img {
+        max-width: 25vw;
+    }
+
+    .abrir-trailer {
+        font-size: 15px;
+        margin-left: 20px;
+    }
+
+/* RHAENYRA*/
+
+    .rhaenyra-card, 
+    .daemon-card, 
+    .rhaenys-card, 
+    .jacaerys-card, 
+    .baela-card, 
+    .alicent-card, 
+    .aegon-card, 
+    .aemond-card, 
+    .helaena-card, 
+    .criston-card{
+        max-width: 900px;
+        max-height: 550px;
+    }
+
+    .rhaenyra-imagem img{
+        height: 650px;
+    }
+
+    .rhaenyra-conteudo{
+        max-width: 500px;
+        padding: 5vw;
+        padding-bottom: 130px;
+    }
+
+    .rhaenyra-conteudo p{
+       font-size: 13px;
+    }
+
+    .rhaenyra-conteudo h1{
+        font-size: 25px;
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+    .rhaenyra-conteudo h2{
+        font-size: 20px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .rhaenyra-citação-final{
+        padding: 10px 0;
+        margin: 0;
+    }
+
+    .logo-targaryen img{
+        width: 60px;
+    }
+
+/*DAEMON*/
+    .daemon-imagem img {
+        padding: 0;
+        margin: 0;
+        max-height: 620px;
+    }
+
+    .daemon-conteudo{
+        max-width: 900px;
+        padding: 3vw;
+        padding-left: 520px;
+        padding-bottom: 40px;
+        gap: 0;
+    }
+
+    .daemon-conteudo p {
+        font-size: 13px;
+    }
+
+    .daemon-conteudo h1{
+        font-size: 25px;
+        margin-bottom: 18px;
+    }
+
+    .daemon-conteudo h2{
+        font-size: 20px;
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+    .caraxes-titulo{
+        padding: 7px 0;
+    }
+    
+    .daemon-sessao .logo-targaryen {
+        left: 810px;
+    }
+    .daemon-sessao .logo-targaryen img{
+        width: 60px;
+    }
+
+/*RHAENYS*/
+    .rhaenys-imagem img{
+        height: 640px;
+    }
+
+    .rhaenys-conteudo{
+        max-width: 480px;
+        padding: 6vw;
+        padding-bottom: 130px;
+    }
+
+    .rhaenys-conteudo p{
+       font-size: 13px;
+    }
+
+    .rhaenys-conteudo h1{
+        font-size: 25px;
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+    .rhaenys-conteudo h2{
+        font-size: 20px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .rhaenys-citação-final{
+        padding: 10px 0;
+        margin: 0;
+    }
+
+    .rhaenys-sessao .logo-targaryen img{
+        width: 60px;
+    }
+
+/*JACAERYS*/
+    .jacaerys-imagem img {
+        padding: 0;
+        margin: 0;
+        max-height: 620px;
+    }
+
+    .jacaerys-conteudo{
+        max-width: 848px;
+        padding: 3vw;
+        padding-left: 480px;
+        padding-bottom: 40px;
+        gap: 0;
+    }
+
+    .jacaerys-conteudo p {
+        font-size: 13px;
+    }
+
+    .jacaerys-conteudo h1{
+        font-size: 25px;
+        margin-bottom: 18px;
+    }
+
+    .jacaerys-conteudo h2{
+        font-size: 20px;
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+    
+    .jacaerys-sessao .logo-targaryen {
+        left: 810px;
+    }
+    .jacaerys-sessao .logo-targaryen img{
+        width: 60px;
+    }
+
+/*BAELA*/
+    .baela-imagem img {
+        height: 660px;
+    }
+
+    .baela-conteudo {
+        max-width: 460px;
+        padding: 6vw;
+        padding-bottom: 130px;
+    }
+
+    .baela-conteudo p {
+        font-size: 13px;
+    }
+
+    .baela-conteudo h1 {
+        font-size: 25px;
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+    .baela-conteudo h2 {
+        font-size: 20px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .baela-citação-final {
+        padding: 10px 0;
+        margin: 0;
+    }
+
+    .baela-sessao .logo-targaryen img {
+        width: 60px;
+    }
+
+/*ALICENT*/
+    .alicent-imagem img {
+        padding: 0 2vw;
+        margin: 0;
+        max-height: 690px;
+    }
+
+    .alicent-conteudo {
+        max-width: 870px;
+        padding: 4vw;
+        padding-left: 460px;
+        padding-bottom: 80px;
+        gap: 0;
+    }
+
+    .alicent-conteudo p {
+        font-size: 13px;
+    }
+
+    .alicent-conteudo h1 {
+        font-size: 25px;
+        margin-bottom: 18px;
+    }
+
+    .alicent-conteudo h2 {
+        font-size: 20px;
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+    .alicent-sessao .logo-targaryen-verde {
+        left: 780px;
+    }
+
+    .alicent-sessao .logo-targaryen-verde img {
+        width: 89px;
+    }
+
+/*AEGON*/
+
+    .aegon-imagem img {
+        height: 660px;
+    }
+
+    .aegon-conteudo {
+        max-width: 480px;
+        padding: 6vw;
+        padding-bottom: 130px;
+    }
+
+    .aegon-conteudo p {
+        font-size: 13px;
+    }
+
+    .aegon-conteudo h1 {
+        font-size: 25px;
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+    .aegon-conteudo h2 {
+        font-size: 20px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .aegon-citação-final {
+        padding: 10px 0;
+        margin: 0;
+    }
+    .aegon-sessao .logo-targaryen-verde img {
+        width: 89px;
+    }
+
+/*AEMOND*/
+    .aemond-imagem img {
+        padding: 0;
+        margin: 0;
+        max-height: 600px;
+    }
+
+    .aemond-conteudo {
+        max-width: 870px;
+        padding: 4vw;
+        padding-left: 460px;
+        padding-bottom: 80px;
+        gap: 0;
+    }
+
+    .aemond-conteudo p {
+        font-size: 13px;
+    }
+
+    .aemond-conteudo h1 {
+        font-size: 25px;
+        margin-bottom: 18px;
+    }
+
+    .aemond-conteudo h2 {
+        font-size: 20px;
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+    .aemond-sessao .logo-targaryen-verde {
+        left: 780px;
+    }
+
+    .aemond-sessao .logo-targaryen-verde img {
+        width: 89px;
+    }
+
+/*HELAENA*/
+
+    .helaena-imagem img {
+        height: 710px;
+    }
+
+    .helaena-conteudo {
+        max-width: 480px;
+        padding: 5vw;
+        padding-bottom: 130px;
+    }
+
+    .helaena-conteudo p {
+        font-size: 13px;
+    }
+
+    .helaena-conteudo h1 {
+        font-size: 25px;
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+    .helaena-conteudo h2 {
+        font-size: 20px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .helaena-citação-final {
+        padding: 10px 0;
+        margin: 0;
+    }
+    
+    .helaena-sessao .logo-targaryen-verde img {
+        width: 89px;
+    }
+
+/*CRISTON*/
+    .criston-imagem img {
+        padding: 0;
+        margin: 0;
+        max-height: 640px;
+    }
+
+    .criston-conteudo {
+        max-width: 850px;
+        padding: 3vw;
+        padding-left: 520px;
+        padding-bottom: 80px;
+        gap: 0;
+    }
+
+    .criston-conteudo p {
+        font-size: 13px;    
+    }
+
+    .criston-conteudo h1 {
+        font-size: 25px;
+        margin-bottom: 18px;
+    }
+
+    .criston-conteudo h2 {
+        font-size: 20px;
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+    .criston-sessao .logo-targaryen-verde {
+        left: 780px;
+    }
+
+    .criston-sessao .logo-targaryen-verde img {
+        width: 89px;
+    }
+
+    .footer-logo img{
+        width: 250px;
+    }
+
+    .redes-sociais h3{
+        font-size: 15px;
+    }
+
+    .redes-sociais li{
+        gap:2px;
+    }
+
+    .redes-sociais ul li a:nth-child(1) img {
+        width: 60px;
+    }
+
+    .redes-sociais ul li a:nth-child(5) img {
+        width: 60px;
+    }
+
+    .redes-sociais ul li a:nth-child(6) img {
+        width: 42px;
+        padding-top: 5px;
+    }
+}
+
+@media (max-width: 800px){
+
+    .header{
+        left: 20px;
+    }
+
+    .header-logo img{
+        width: 40px;
+    }
+    
+    .main-fundo img {
+        object-position: 50%;
+    }
+
+    .main-personagens img:first-child {
+        left: -38%;
+        height: 75vh;
+    }
+
+    .main-personagens img:last-child {
+        right: -38%;
+        height: 72vh;
+    }
+
+    .main-centro img {
+        max-width: 25vw;
+        padding: 0;
+    }
+
+    .abrir-trailer {
+        font-size: 11px;
+        margin: 0 0 100px 20px;
+        padding: 0;
+        
+    }
+
+
+    .lealdade-conteudo{
+        font-size: 30px;
+    }
+
+/* RHAENYRA*/
+
+    .rhaenyra-card, 
+    .daemon-card, 
+    .rhaenys-card, 
+    .jacaerys-card, 
+    .baela-card, 
+    .alicent-card, 
+    .aegon-card, 
+    .aemond-card, 
+    .helaena-card, 
+    .criston-card{
+        max-width: 600px;
+        max-height: 400px;
+    }
+
+    .rhaenyra-imagem img{
+        height: 470px;
+    }
+
+    .rhaenyra-conteudo{
+        max-width: 300px;
+        padding: 0;
+        padding-bottom: 60px;
+    }
+
+    .rhaenyra-conteudo p{
+       font-size: 10px;
+       padding: 0;
+    }
+
+    .rhaenyra-conteudo h1{
+        font-size: 18px;
+        margin-top: 50px;
+        margin-bottom: 0;
+    }
+
+    .rhaenyra-conteudo h2{
+        font-size: 15px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .rhaenyra-citação-final{
+        padding: 5px 0;
+        margin: 0;
+    }
+    .logo-targaryen {
+        bottom: 15px;
+    }
+    .logo-targaryen img{
+        width: 40px;
+    }
+
+/*DAEMON*/
+    .daemon-imagem img {
+        margin: 0;
+        max-height: 440px;        
+        object-fit: cover;
+        translate: -30px 0;
+        scale: 1;
+    }
+
+    .daemon-imagem img:hover {
+        transform: scale(1.03);
+    }
+
+    .daemon-conteudo{
+        padding: 2vw;
+        padding-left: 320px;
+        padding-bottom: 20px;
+        gap: 0;
+    }
+
+    .daemon-conteudo p {
+        font-size: 10px;
+    }
+
+    .daemon-conteudo h1{
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+
+    .daemon-conteudo h2{
+        font-size: 15px;
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+    .caraxes-titulo{
+        padding: 7px 0;
+    }
+    
+    .daemon-sessao .logo-targaryen {
+        left: 530px;
+        bottom: 20px;
+
+    }
+    .daemon-sessao .logo-targaryen img{
+        width: 40px;
+    }
+
+/*RHAENYS*/
+    .rhaenys-imagem img {
+        height: 470px;
+    }
+
+    .rhaenys-conteudo {
+        max-width: 280px;
+        padding: 0;
+        padding-bottom: 70px;
+    }
+
+    .rhaenys-conteudo p {
+        font-size: 10px;
+    }
+
+    .rhaenys-conteudo h1 {
+        font-size: 18px;
+        margin-top: 50px;
+        margin-bottom: 5px;
+    }
+
+    .rhaenys-conteudo h2 {
+        font-size: 15px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .rhaenys-citação-final {
+        padding: 5px 0;
+        margin: 0;
+    }
+
+    .rhaenys-sessao .logo-targaryen {
+        bottom: 15px;
+    }
+
+    .rhaenys-sessao .logo-targaryen img {
+        width: 40px;
+    }
+
+/*JACAERYS*/
+   .jacaerys-imagem img {
+        margin: 0;
+        max-height: 440px;   
+        
+        border-radius: 0; 
+        object-fit: cover;
+
+        transform: translateX(-14px);
+        transform-origin: bottom center; 
+        scale: 1;
+    }
+
+    .jacaerys-imagem img:hover {
+        transform: scale(1.03);
+    }
+
+    .jacaerys-conteudo {
+        padding: 2vw;
+        padding-left: 320px;
+        padding-bottom: 20px;
+        gap: 0;
+    }
+
+    .jacaerys-conteudo p {
+        font-size: 10px;
+    }
+
+    .jacaerys-conteudo h1 {
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+
+    .jacaerys-conteudo h2 {
+        font-size: 15px;
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+    .vermax-titulo {
+        padding: 1px 0;
+    }
+
+    .jacaerys-sessao .logo-targaryen {
+        left: 530px;
+        bottom: 20px;
+    }
+
+    .jacaerys-sessao .logo-targaryen img {
+        width: 40px;
+    }
+
+/*BAELA*/
+   .baela-imagem img {
+        height: 470px;
+    }
+
+    .baela-conteudo {
+        max-width: 280px;
+        padding: 1vw;
+        padding-bottom: 90px;
+    }
+
+    .baela-conteudo p {
+        font-size: 10px;
+    }
+
+    .baela-conteudo h1 {
+        font-size: 18px;
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+    .baela-conteudo h2 {
+        font-size: 15px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .baela-citação-final {
+        padding: 5px 0;
+        margin: 0;
+    }
+
+    .baela-sessao .logo-targaryen {
+        bottom: 15px;
+    }
+
+    .baela-sessao .logo-targaryen img {
+        width: 40px;
+    }
+
+/*ALICENT*/
+   .alicent-imagem img {
+       max-height: 520px;        
+       margin: 0;
+    }
+
+    .alicent-conteudo {
+        padding: 4vw;
+        padding-left: 320px;
+        padding-bottom: 60px;
+        gap: 0;
+    }
+
+    .alicent-conteudo p {
+        font-size: 10px;
+    }
+
+    .alicent-conteudo h1 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .alicent-conteudo h2 {
+        font-size: 15px;
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+    .os-verdes-titulo {
+        padding: 5px 0;
+    }
+
+    .alicent-sessao .logo-targaryen-verde {
+        left: 530px;
+        bottom: 20px;
+    }
+
+    .alicent-sessao .logo-targaryen-verde img {
+        width: 55px;
+    }
+
+/* AEGON */
+    .aegon-imagem img {
+        height: 470px;
+    }
+
+    .aegon-conteudo {
+        max-width: 300px;
+        padding: 1vw;
+        padding-bottom: 60px;
+    }
+
+    .aegon-conteudo p {
+        font-size: 10px;
+    }
+
+    .aegon-conteudo h1 {
+        font-size: 18px;
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+    .aegon-conteudo h2 {
+        font-size: 15px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .aegon-citação-final {
+        padding: 10px 0;
+        margin: 0;
+    }
+
+    .aegon-sessao .logo-targaryen-verde {
+        bottom: 15px;
+    }
+
+    .aegon-sessao .logo-targaryen-verde img {
+        width: 40px;
+    }
+
+/*AEMOND*/
+   .aemond-imagem img {
+        margin: 0;
+        max-height: 440px;        
+        object-fit: cover;
+        translate: -30px 0;
+        scale: 1;
+    }
+
+    .aemond-imagem img:hover {
+        transform: scale(1.03);
+    }
+
+    .aemond-conteudo {
+        padding: 2vw;
+        padding-left: 320px;
+        padding-bottom: 20px;
+        gap: 0;
+    }
+
+    .aemond-conteudo p {
+        font-size: 9px;
+    }
+
+    .aemond-conteudo h1 {
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+
+    .aemond-conteudo h2 {
+        font-size: 15px;
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+    .vhagar-titulo {
+        padding: 7px 0;
+    }
+
+    .aemond-sessao .logo-targaryen-verde {
+        left: 530px;
+        bottom: 20px;
+    }
+
+    .aemond-sessao .logo-targaryen-verde img {
+        width: 40px;
+    }
+/*HELAENA*/
+
+   .helaena-imagem img {
+        height: 470px;
+    }
+
+    .helaena-conteudo {
+        max-width: 300px;
+        padding: 1vw;
+        padding-bottom: 60px;
+    }
+
+    .helaena-conteudo p {
+        font-size: 10px;
+    }
+
+    .helaena-conteudo h1 {
+        font-size: 18px;
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+    .helaena-conteudo h2 {
+        font-size: 15px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .helaena-citação-final {
+        padding: 10px 0;
+        margin: 0;
+    }
+
+    .helaena-sessao .logo-targaryen-verde {
+        bottom: 15px;
+    }
+
+    .helaena-sessao .logo-targaryen-verde img {
+        width: 40px;
+    }
+
+/*CRISTON*/
+    .criston-imagem img {
+        margin: 0;
+        max-height: 440px;        
+        object-fit: cover;
+        translate: -30px 0;
+        scale: 1;
+    }
+
+    .criston-imagem img:hover {
+        transform: scale(1.03);
+    }
+
+    .criston-conteudo {
+        padding: 2vw;
+        padding-left: 320px;
+        padding-bottom: 20px;
+        gap: 0;
+    }
+
+    .criston-conteudo p {
+        font-size: 9px;
+    }
+
+    .criston-conteudo h1 {
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+
+    .criston-conteudo h2 {
+        font-size: 15px;
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+    .criston-sessao .os-verdes-titulo {
+        padding: 7px 0;
+    }
+
+    .criston-sessao .logo-targaryen-verde {
+        left: 530px;
+        bottom: 20px;
+    }
+
+    .criston-sessao .logo-targaryen-verde img {
+        width: 40px;
+    }
+
+    /*FOOTER*/
+     
+    .footer-logo img{
+        width: 250px;
+    }
+
+    .redes-sociais h3{
+        font-size: 15px;
+    }
+
+    .redes-sociais li{
+        gap:2px;
+    }
+
+    .redes-sociais ul li a:nth-child(1) img {
+        width: 60px;
+    }
+
+    .redes-sociais ul li a:nth-child(5) img {
+        width: 60px;
+    }
+
+    .redes-sociais ul li a:nth-child(6) img {
+        width: 42px;
+        padding-top: 5px;
+    }
+}
+/* ============================================================
+   SCROLL-DRIVEN SECTION REVEALS
+   ============================================================ */
+
+@supports (animation-timeline: scroll()) {
+
+    .rhaenyra-card,
+    .daemon-card,
+    .rhaenys-card,
+    .jacaerys-card,
+    .baela-card,
+    .alicent-card,
+    .aegon-card,
+    .aemond-card,
+    .helana-card,
+    .criston-card {
+        animation: cardReveal linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 30%;
+    }
+
+    @keyframes cardReveal {
+        from {
+            opacity: 0;
+            transform: translateY(40px) scale(0.97);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+}
+
+/* Fallback for browsers without scroll-driven animations */
+@supports not (animation-timeline: scroll()) {
+
+    .rhaenyra-card,
+    .daemon-card,
+    .rhaenys-card,
+    .jacaerys-card,
+    .baela-card,
+    .alicent-card,
+    .aegon-card,
+    .aemond-card,
+    .helana-card,
+    .criston-card {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ============================================================
+   15 · CUSTOM SCROLLBAR (Webkit)
+   ============================================================ */
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-void);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--color-gold-dim), var(--color-ember-dim));
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, var(--color-gold), var(--color-ember));
+}
+
+/* ============================================================
+   16 · ACCESSIBILITY
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .main-fundo img {
+        transform: none !important;
+    }
+}
+
+/* Focus styles for keyboard navigation */
+:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+}

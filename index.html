@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Casa do Dragão</title>
+    <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+
+<!-- CABEÇALHO -->
+<header class="header">
+    <a href="index.html" class="header-logo" aria-label="Voltar para a página inicial">
+        <img src="PRIMEIRA TELA/ICONE - TARGARYEN DOURADO.png" alt="Logo Targaryen">
+    </a>
+    
+    <button class="header-menu-btn" id="menu-open-btn" aria-label="Abrir menu de facções" aria-expanded="false">
+        <img src="PRIMEIRA TELA/ICONE - LISTA.png" alt="Ícone de Menu">
+    </button>
+
+    <div id="menu-overlay" class="menu-overlay">
+        <button class="botao-fechar-menu" id="menu-close-btn" aria-label="Fechar menu">&times;</button>
+
+        <div class="conteudo-menu">
+            <div class="previa-personagem">
+                <img id="imagem-previa-personagem" src="MENU/TRONO.webp" alt="Preview do Personagem">
+            </div>
+
+            <div class="lista-personagens-container">
+                
+                <nav class="nav-menu">
+                    <button class="botao-aba ativo" data-faction="negros">Os Negros</button>
+                    <button class="botao-aba" data-faction="verdes">Os Verdes</button>
+                </nav>
+
+                <ul id="lista-personagens" class="lista-personagens">
+                    </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- MAIN -->
+<main class="main">
+
+    <div class="main-fundo">
+        <img src="PRIMEIRA TELA/MAIN FUNDO 1.webp" alt="">
+    </div>
+
+    <section class="main-conteudo">
+
+        <div class="main-personagens">
+            <img src="PRIMEIRA TELA/MAIN - Alicent.png" alt="Alicent Hightower">
+            
+            <img src="PRIMEIRA TELA/MAIN - Rhaenyra.png" alt="Rhaenyra Targaryen">
+        </div>
+
+        <div class="main-centro">
+            <img src="PRIMEIRA TELA/HBO ORIGINAL - A CASA DO DRAGÃO.png" alt="Logo A Casa do Dragão">
+    
+            <button class="abrir-trailer">
+                ASSISTA O TRAILER
+            </button>   
+
+        </div>
+
+    </section>
+    <!-- TRAILER --> 
+
+    <div class="trailer">
+        
+        <div class="trailer-conteudo">
+
+            <video
+            class="video-trailer"
+            controls
+            playsinline>
+
+            <source src="PRIMEIRA TELA/A Casa do Dragão - Temporada 3 - Teaser Trailer Dublado - HBO Max.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+            <button class="fechar-trailer" aria-label="Fechar trailer">
+                ✕
+            </button>
+            
+            <button class="proximo-trailer" aria-label="Próximo trailer">
+                ❯ 
+            <span>PRÓXIMO TRAILER</span>
+            
+            </button>
+
+     </div>
+
+</main>
+
+<!-- ========================================= -->
+<!-- ESCOLHER LEALDADE -->
+<!-- ========================================= -->
+
+<section class="lealdade-sessao">
+
+    <!-- OVERLAY -->
+    <div class="lealdade-fundo-overlay"></div>
+
+    <!-- CONTEÚDO -->
+    <div class="lealdade-conteudo">
+
+        <h1>QUAL É A SUA LEALDADE?</h1>
+
+        <p>
+            OS TARGARYENS ESTÃO PRONTOS PARA A BATALHA, E ESTÃO
+            PRECISANDO DE TODA AJUDA POSSÍVEL. TODO MUNDO PRECISA
+            ESCOLHER UM LADO. ENTÃO, DE QUE LADO VOCÊ VAI FICAR?
+        </p>
+
+        <h2>É SEU DEVER ESCOLHER</h2>
+
+        <!-- BOTÕES -->
+        <div class="lealdade-botao">
+
+            <!-- VERDES -->
+            <div class="lado verde-lado">
+
+                <span class="frase-hover">
+                    A COROA EXIGE SACRIFÍCIOS
+                </span>
+
+                <button class="verde-btn">
+                    CONSELHO VERDE
+                </button>
+
+            </div>
+
+            <!-- NEGROS -->
+            <div class="lado preto-lado">
+
+                <span class="frase-hover">
+                    O FOGO REINARÁ
+                </span>
+
+                <button class="preto-btn">
+                    CONSELHO PRETO
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- TEXTO RESULTADO -->
+        <div class="resultado-lealdade"></div>
+
+    </div>
+
+</section>
+
+<!-- OS NEGROS -->
+<section class="os-negros-sessao">
+
+    <div class="os-negros-overlay"></div>
+
+    <div class="os-negros-conteudo">
+
+        <p class="os-negros-citação">
+            “O SANGUE DO DRAGÃO JAMAIS SE CURVARÁ.”
+        </p>
+
+        <h2>OS NEGROS</h2>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- RHAENYRA -->
+<!-- ========================= -->
+
+<section class="rhaenyra-sessao">
+
+    <!-- FUNDO TOTAL DA SECTION -->
+    <div class="syrax-fundo">
+        <img src="DRAGOES/SYRAX/SYRAX.png" alt="Syrax fundo">
+    </div>
+
+    <!-- OVERLAY ESCURO -->
+    <div class="syrax-overlay"></div>
+
+    <!-- CARD -->
+    <div class="rhaenyra-card">
+
+        <!-- FUNDO PERSONALIZADO DO CARD -->
+        <div class="syrax-card-fundo">
+            <img src="DRAGOES/SYRAX/SYRAX.png" alt="Syrax">
+        </div>
+
+        <!-- GLASS -->
+        <div class="syrax-card-glass"></div>
+
+        <!-- PERSONAGEM -->
+        <div class="rhaenyra-imagem">
+            <img src="PERSONAGENS/RHAENYRA/RHAENYRA 1.png" alt="Rhaenyra Targaryen">
+        </div>
+
+       <!-- FAISCA -->
+            <div class="faisca">
+                <img src="FAISCA.png" alt="Faisca" class="spark-item">
+                <img src="FAISCA.png" alt="Faisca" class="spark-item">
+                <img src="FAISCA.png" alt="Faisca" class="spark-item">
+            </div>
+
+        <!-- CONTEÚDO -->
+        <div class="rhaenyra-conteudo">
+
+            <h1>RHAENYRA TARGARYEN</h1>
+
+            <p class="rhaenyra-citação">
+                “O FOGO REINARÁ.”
+            </p>
+
+            <p>
+                HERDEIRA LEGÍTIMA DO TRONO DE FERRO,
+                EM MEIO À GUERRA E TRAIÇÕES, LUTA PARA
+                DEFENDER O LEGADO DA CASA TARGARYEN.
+            </p>
+
+            <h2>SYRAX</h2>
+
+            <p class="titulo-syrax">
+                DRAGÃO DA RAINHA
+            </p>
+
+            <p class="rhaenyra-citação-final">
+                “QUANDO OS DRAGÕES DANÇAM,
+                OS REINOS QUEIMAM.”
+            </p>
+
+        </div>
+
+        <!-- LOGO -->
+        <div class="logo-targaryen">
+            <img src="PRIMEIRA TELA/ICONE - TARGARYEN DOURADO.png" alt="Logo Targaryen Dourado">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- DAEMON -->
+<!-- ========================= -->
+
+<section class="daemon-sessao">
+
+    <!-- FUNDO TOTAL DA SECTION -->
+    <div class="caraxes-fundo">
+        <img src="DRAGOES/CARAXES/CARAXES.png" alt="Caraxes">
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="caraxes-fundo-overlay"></div>
+
+    <!-- CARD -->
+    <div class="daemon-card">
+
+        <!-- FUNDO PERSONALIZADO -->
+        <div class="caraxes-card-fundo">
+            <img src="DRAGOES/CARAXES/CARAXES.png" alt="Caraxes fundo">
+        </div>
+
+        <!-- GLASS -->
+        <div class="caraxes-card-glass"></div>
+
+        <!-- PERSONAGEM -->
+        <div class="daemon-imagem">
+            <img src="PERSONAGENS/DAEMON/DAEMON.png" alt="Daemon Targaryen">
+        </div>
+
+        <!-- FAISCA -->
+            <div class="faisca">
+                <img src="FAISCA.png" alt="Faisca" class="spark-item">
+                <img src="FAISCA.png" alt="Faisca" class="spark-item">
+                <img src="FAISCA.png" alt="Faisca" class="spark-item">
+            </div>
+
+        <!-- CONTEÚDO -->
+        <div class="daemon-conteudo">
+
+            <h1>DAEMON TARGARYEN</h1>
+
+            <p class="daemon-citação">
+                “SONHOS NÃO FAZEM REIS.
+                DRAGÕES FAZEM.”
+            </p>
+
+            <p>
+                PRÍNCIPE DA CASA TARGARYEN E UM DOS
+                GUERREIROS MAIS TEMIDOS DE WESTEROS.
+                IMPULSIVO, ESTRATÉGICO E IMPREVISÍVEL.
+            </p>
+
+            <h2>CARAXES</h2>
+
+            <p class="caraxes-titulo">
+                O VERME DE SANGUE
+            </p>
+
+            <p class="daemon-citação-final">
+                “QUANDO DRAGÕES DESPERTAM,
+                REINOS CAEM.”
+            </p>
+
+        </div>
+
+        <!-- LOGO -->
+        <div class="logo-targaryen">
+            <img src="PRIMEIRA TELA/ICONE - TARGARYEN DOURADO.png" alt="Logo Targaryen Dourado">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- RHAENYS -->
+<!-- ========================= -->
+
+<section class="rhaenys-sessao">
+
+    <!-- FUNDO TOTAL DA SECTION -->
+    <div class="meleys-fundo">
+        <img src="DRAGOES/MELEYS/MELEYS.png" alt="Meleys">
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="meleys-fundo-overlay"></div>
+
+    <!-- CARD -->
+    <div class="rhaenys-card">
+
+        <!-- FUNDO PERSONALIZADO -->
+        <div class="meleys-card-fundo">
+            <img src="DRAGOES/MELEYS/MELEYS.png" alt="Meleys fundo">
+        </div>
+
+        <!-- GLASS -->
+        <div class="meleys-card-glass"></div>
+
+        <!-- PERSONAGEM -->
+        <div class="rhaenys-imagem">
+            <img src="PERSONAGENS/RHAENYS/RHAENYS.png" alt="Rhaenys Targaryen">
+        </div>
+
+      <!-- FAISCA -->
+            <div class="faisca">
+                <img src="FAISCA.png" alt="Faisca" class="spark-item">
+                <img src="FAISCA.png" alt="Faisca" class="spark-item">
+                <img src="FAISCA.png" alt="Faisca" class="spark-item">
+            </div>
+
+        <!-- CONTEÚDO -->
+        <div class="rhaenys-conteudo">
+
+            <h1>RHAENYS TARGARYEN</h1>
+
+            <p class="rhaenys-citação">
+                “UMA RAINHA QUE NUNCA SE CURVOU.”  
+            </p>
+
+            <p>
+                CONHECIDA COMO A RAINHA QUE NUNCA FOI,
+                RHAENYS TARGARYEN CARREGA SABEDORIA,
+                FORÇA E DIGNIDADE EM MEIO ÀS DISPUTAS 
+                PELO TRONO DE FERRO.  
+            </p>
+
+            <h2>MELEYS</h2>
+
+            <p class="meleys-titulo">
+                A RAINHA VERMELHA
+            </p>
+
+            <p class="rhaenys-citação-final">
+                “ALGUNS NASCEM PARA GOVERNAR. OUTROS PARA SEREM LEMBRADOS.”
+            </p>
+
+        </div>
+
+        <!-- LOGO -->
+        <div class="logo-targaryen">
+            <img src="PRIMEIRA TELA/ICONE - TARGARYEN DOURADO.png" alt="Logo Targaryen Dourado">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- JACAERYS -->
+<!-- ========================= -->
+
+<section class="jacaerys-sessao">
+
+    <!-- FUNDO TOTAL DA SECTION -->
+    <div class="vermax-fundo">
+        <img src="DRAGOES/VERMAX/VERMAX 1.png" alt="Vermax">
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="vermax-fundo-overlay"></div>
+
+    <!-- CARD -->
+    <div class="jacaerys-card">
+
+        <!-- FUNDO PERSONALIZADO -->
+        <div class="vermax-card-fundo">
+            <img src="DRAGOES/VERMAX/VERMAX 1.png" alt="Vermax fundo">
+        </div>
+
+        <!-- GLASS -->
+        <div class="vermax-card-glass"></div>
+
+        <!-- PERSONAGEM -->
+        <div class="jacaerys-imagem">
+            <img src="PERSONAGENS/JACAERYS/JACAERYS 2.png" alt="Jacaerys Velaryon">
+        </div>
+
+       <!-- FAISCA -->
+            <div class="faisca">
+                <img src="FAISCA.png" alt="Faisca" class="spark-item">
+                <img src="FAISCA.png" alt="Faisca" class="spark-item">
+                <img src="FAISCA.png" alt="Faisca" class="spark-item">
+            </div>
+
+        <!-- CONTEÚDO -->
+        <div class="jacaerys-conteudo">
+
+            <h1>JACAERYS VELARYON</h1>
+
+            <p class="jacaerys-citação">
+                “O DEVER MOLDA OS HERDEIROS.”   
+            </p>
+
+            <p>
+                PRIMOGÊNITO DE RHAENYRA TARGARYEN, JACAERYS VELARYON SUPORTA O PESO DA SUCESSÃO SOB AS CINZAS DA GUERRA. 
+
+            <h2>VERMAX</h2>
+
+            <p class="vermax-titulo">
+                DRAGÃO DO HERDEIRO 
+            </p>
+
+            <p class="jacaerys-citação-final">
+                “O FUTURO DO REINO REPOUSA SOBRE ASAS DE FOGO.”
+            </p>
+
+        </div>
+
+        <!-- LOGO -->
+        <div class="logo-targaryen">
+            <img src="PRIMEIRA TELA/ICONE - TARGARYEN DOURADO.png" alt="Logo Targaryen Dourado">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- BAELA -->
+<!-- ========================= -->
+
+<section class="baela-sessao">
+
+    <!-- FUNDO TOTAL DA SECTION -->
+    <div class="moondancer-fundo">
+        <img src="DRAGOES/MOONDANCER/MOONDANCER 4.png" alt="MoonDancer">
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="moondancer-fundo-overlay"></div>
+
+    <!-- CARD -->
+    <div class="baela-card">
+
+        <!-- FUNDO PERSONALIZADO -->
+        <div class="moondancer-card-fundo">
+            <img src="DRAGOES/MOONDANCER/MOONDANCER 4.png" alt="MoonDancer fundo">
+        </div>
+
+        <!-- GLASS -->
+        <div class="moondancer-card-glass"></div>
+
+        <!-- PERSONAGEM -->
+        <div class="baela-imagem">
+            <img src="PERSONAGENS/BAELA/BAELA 1.png" alt="Baela Targaryen">
+        </div>
+
+      <!-- FAISCA -->
+            <div class="faisca">
+                <img src="FAISCA.png" alt="Faisca" class="spark-item">
+                <img src="FAISCA.png" alt="Faisca" class="spark-item">
+                <img src="FAISCA.png" alt="Faisca" class="spark-item">
+            </div>
+
+        <!-- CONTEÚDO -->
+        <div class="baela-conteudo">
+
+            <h1>BAELA TARGARYEN</h1>
+
+            <p class="baela-citação">
+                “O FOGO NUNCA PERTENCE AOS FRACOS.”   
+            </p>
+
+            <p> 
+                Filha de Daemon Targaryen e Laena Velaryon, Baela é destemida,
+                impulsiva e feroz em batalha.Criada entre dragões e guerra, 
+                carrega o orgulho da Casa Targaryen em cada confronto. 
+            </p>
+
+            <h2>MOONDANCER</h2>
+
+            <p class="moondancer-titulo">
+                O DRAGÃO DA TEMPESTADE
+            </p>
+
+            <p class="baela-citação-final">
+                “O SANGUE DO DRAGÃO JAMAIS SE RENDE”
+            </p>
+
+        </div>
+
+        <!-- LOGO -->
+        <div class="logo-targaryen">
+            <img src="PRIMEIRA TELA/ICONE - TARGARYEN DOURADO.png" alt="Logo Targaryen Dourado">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- OS VERDES -->
+<!-- ========================= -->
+
+<section class="os-verdes-sessao">
+
+    <div class="os-verdes-overlay"></div>
+
+    <div class="os-verdes-conteudo">
+
+        <h1>
+            A COROA SERÁ CONQUISTADA CUSTE O QUE CUSTAR.
+        </h1>
+
+        <div class="os-verdes-titulo"></div>
+
+        <h2>
+            OS VERDES
+        </h2>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- ALICENT -->
+<!-- ========================= -->
+
+<section class="alicent-sessao">
+
+    <!-- FUNDO TOTAL DA SECTION -->
+    <div class="alicent-fundo">
+        <img src="PERSONAGENS/ALICENT/STANDART DOS VERDES.png" alt="Bandeira">
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="alicent-fundo-overlay"></div>
+
+    <!-- CARD -->
+    <div class="alicent-card">
+
+        <!-- FUNDO PERSONALIZADO -->
+        <div class="alicent-card-fundo">
+            <img src="PERSONAGENS/ALICENT/STANDART DOS VERDES.png" alt="Bandeira">
+        </div>
+
+        <!-- GLASS -->
+        <div class="alicent-card-fundo-glass"></div>
+
+        <!-- PERSONAGEM -->
+        <div class="alicent-imagem">
+            <img src="PERSONAGENS/ALICENT/ALICENT.png" alt="Alicent Hightower">
+        </div>
+
+        <!-- NEVOA -->
+        <div class="nevoa">
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada">
+            
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada">
+            
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada">
+        </div>
+      
+        <!-- CONTEÚDO -->
+        <div class="alicent-conteudo">
+
+            <h1>ALICENT HIGHTOWER</h1>
+
+            <p class="alicent-citação">
+                “ATÉ MESMO A FÉ PODE ALIMENTAR GUERRAS.”  
+            </p>
+
+            <p>
+                RAINHA DOS SETE REINOS E FIGURA CENTRAL NA DISPUTA PELO TRONO DE FERRO, 
+                ALICENT HIGHTOWER EQUILIBRA DEVER,
+                AMBIÇÃO E FÉ EM MEIO AO COLAPSO DA DINASTIA TARGARYEN.  
+            </p>
+
+            <h2>OS VERDES</h2> 
+
+            <p class="os-verdes-titulo">
+                FÉ, PODER E SANGUE 
+            </p>
+
+            <p class="alicent-citação-final">
+                “MESMO OS REINOS MAIS FORTES PODEM RUIR PELO ORGULHO.”
+            </p>
+
+        </div>
+
+        <!-- LOGO -->
+        <div class="logo-targaryen-verde ">
+            <img src="PRIMEIRA TELA/ICONE - logo dos verdes.png" alt="Logo Targaryen Verde">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- AEGON II -->
+<!-- ========================= -->
+
+<section class="aegon-sessao">
+
+    <!-- FUNDO TOTAL DA SECTION -->
+    <div class="sunfyre-fundo">
+        <img src="DRAGOES/SUNFYRE/SUNFYRE 1.png" alt="Sunfyre">
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="sunfyre-overlay"></div>
+
+    <!-- CARD -->
+    <div class="aegon-card">
+
+        <!-- FUNDO PERSONALIZADO -->
+        <div class="sunfyre-card-fundo">
+            <img src="DRAGOES/SUNFYRE/SUNFYRE 1.png" alt="Sunfyre">
+        </div>
+
+        <!-- GLASS -->
+        <div class="sunfyre-card-glass"></div>
+
+        <!-- PERSONAGEM -->
+        <div class="aegon-imagem">
+            <img src="PERSONAGENS/AEGON II/Aegon ll Targaryen.png" alt="Aegon II Targaryen">
+        </div>
+
+        <!-- NEVOA -->
+        <div class="nevoa">
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-1">
+            
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-2">
+            
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-3">
+        </div>
+
+        <!-- CONTEÚDO -->
+        <div class="aegon-conteudo">
+
+            <h1>AEGON II TARGARYEN</h1>
+
+            <p class="aegon-citação">
+                “O TRONO COBRA UM PREÇO.”  
+            </p>
+
+            <p>
+                FILHO DE ALICENT HIGHTOWER E VISERYS I, AEGON II É 
+                COLOCADO NO CENTRO DA GUERRA PELA SUCESSÃO DO TRONO DE FERRO. 
+                IMPULSIVO E MARCADO PELO PESO DA COROA,
+                TORNA-SE O PRINCIPAL SÍMBOLO DOS VERDES.  
+            </p>
+
+            <h2>SUNFYRE</h2> 
+
+            <p class="sunfyre-titulo">
+                O DRAGÃO DOURADO
+            </p>
+
+            <p class="aegon-citação-final">
+                “TODA COROA CARREGA SANGUE.”
+            </p>
+
+        </div>
+
+        <!-- LOGO -->
+        <div class="logo-targaryen-verde ">
+            <img src="PRIMEIRA TELA/ICONE - logo dos verdes.png" alt="Logo Targaryen Verde">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- AEMOND -->
+<!-- ========================= -->
+
+<section class="aemond-sessao">
+
+    <!-- FUNDO TOTAL DA SECTION -->
+    <div class="vhagar-fundo">
+        <img src="DRAGOES/VHAGAR/VHAGAR.png" alt="Vhagar">
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="vhagar-overlay"></div>
+
+    <!-- CARD -->
+    <div class="aemond-card">
+
+        <!-- FUNDO PERSONALIZADO -->
+        <div class="vhagar-card-fundo">
+            <img src="DRAGOES/VHAGAR/VHAGAR.jpg" alt="Vhagar">
+        </div>
+
+        <!-- GLASS -->
+        <div class="vhagar-card-glass"></div>
+
+        <!-- PERSONAGEM -->
+        <div class="aemond-imagem">
+            <img src="PERSONAGENS/AEMOND/AEMOND.png" alt="Aemond Targaryen">
+        </div>
+
+        <!-- NEVOA -->
+        <div class="nevoa">
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-1">
+            
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-2">
+            
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-3">
+        </div>
+
+        <!-- CONTEÚDO -->
+        <div class="aemond-conteudo">
+
+            <h1>AEMOND TARGARYEN</h1>
+
+            <p class="aemond-citação">
+                “HÁ PODER NO MEDO.”   
+            </p>
+
+            <p>
+                PRÍNCIPE DA CASA TARGARYEN E GUERREIRO TEMIDO POR
+                ALIADOS E INIMIGOS, AEMOND É MARCADO PELA DISCIPLINA,
+                AMBIÇÃO E SEDE DE PODER. MONTADOR DE VHAGAR, TORNOU-SE UMA
+                DAS FIGURAS MAIS PERIGOSAS DA DANÇA DOS DRAGÕES.  
+            </p>
+
+            <h2>VHAGAR</h2> 
+
+            <p class="vhagar-titulo">
+                A RAINHA DA GUERRA 
+            </p>
+
+            <p class="aemond-citação-final">
+                “ALGUNS HOMENS NASCEM PARA GOVERNAR. OUTROS PARA DESTRUIR.”
+            </p>
+
+        </div>
+
+        <!-- LOGO -->
+        <div class="logo-targaryen-verde ">
+            <img src="PRIMEIRA TELA/ICONE - logo dos verdes.png" alt="Logo Targaryen Verde">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- HELAENA -->
+<!-- ========================= -->
+
+<section class="helaena-sessao">
+
+    <!-- FUNDO TOTAL DA SECTION -->
+    <div class="dreamfyre-fundo">
+        <img src="DRAGOES/DREAMFYRE/DREAMFYRE.png" alt="Dreamfyre">
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="dreamfyre-overlay"></div>
+
+    <!-- CARD -->
+    <div class="helaena-card">
+
+        <!-- FUNDO PERSONALIZADO -->
+        <div class="dreamfyre-card-fundo">
+            <img src="DRAGOES/DREAMFYRE/DREAMFYRE.png" alt="Dreamfyre">
+        </div>
+
+        <!-- GLASS -->
+        <div class="dreamfyre-card-glass"></div>
+
+        <!-- PERSONAGEM -->
+        <div class="helaena-imagem">
+            <img src="PERSONAGENS/HELAENA/HELAENA 2.png" alt="Helaena Targaryen">
+        </div>
+
+        <!-- NEVOA -->
+        <div class="nevoa">
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-1">
+            
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-2">
+            
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-3">
+        </div>
+
+        <!-- CONTEÚDO -->
+        <div class="helaena-conteudo">
+
+            <h1>HELAENA TARGARYEN</h1>
+
+            <p class="helaena-citação">
+                “HÁ PRESSÁGIOS ATÉ NO SILÊNCIO.”    
+            </p>
+
+            <p>
+                RAINHA DOS SETE REINOS E FILHA DE ALICENT HIGHTOWER,
+                HELAENA TARGARYEN É MARCADA POR SUA SENSIBILIDADE, 
+                INOCÊNCIA E MISTERIOSAS VISÕES SOBRE O FUTURO.
+            </p>
+
+            <h2>DREAMFYRE</h2> 
+
+            <p class="dreamfyre-titulo">
+                A DRAGOA DOS SONHOS  
+            </p>
+
+            <p class="helaena-citação-final">
+                “NEM TODO DOM É UMA BÊNÇÃO.”
+            </p>
+
+        </div>
+
+        <!-- LOGO -->
+        <div class="logo-targaryen-verde">
+            <img src="PRIMEIRA TELA/ICONE - logo dos verdes.png" alt="Logo Targaryen Verde">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- CRISTON COLE -->
+<!-- ========================= -->
+
+<section class="criston-sessao">
+
+    <!-- FUNDO TOTAL DA SECTION -->
+    <div class="criston-fundo">
+        <img src="PERSONAGENS/ALICENT/STANDART DOS VERDES.png" alt="Bandeira">
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="criston-fundo-overlay"></div>
+
+    <!-- CARD -->
+    <div class="criston-card">
+
+        <!-- FUNDO PERSONALIZADO -->
+        <div class="criston-fundo-card-fundo">
+            <img src="PERSONAGENS/ALICENT/STANDART DOS VERDES.png" alt="Bandeira">
+        </div>
+
+        <!-- GLASS -->
+        <div class="criston-fundo-card-glass"></div>
+
+        <!-- PERSONAGEM -->
+        <div class="criston-imagem">
+            <img src="PERSONAGENS/CRISTON COLE/CRISTON COLE.png" alt="Criston Cole">
+        </div>
+
+        <!-- NEVOA -->
+        <div class="nevoa">
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-1">
+            
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-2">
+            
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-3">
+        </div>
+
+        <!-- CONTEÚDO -->
+        <div class="criston-conteudo">
+
+            <h1>CRISTON COLE</h1>
+
+            <p class="criston-citação">
+                “A GUERRA TRANSFORMA HOMENS EM LENDAS.”  
+            </p>
+
+            <p>
+                TEMIDO POR SUA HABILIDADE EM COMBATE,
+                 CRISTON COLE TORNOU-SE UM DOS PILARES
+                 MILITARES DOS VERDES DURANTE A GUERRA CIVIL.  
+            </p>
+
+            <h2>THE KINGMAKER</h2>       
+
+            <p class="os-verdes-titulo">
+                O FAZEDOR DE REIS   
+            </p>
+
+            <p class="criston-citação-final">
+                “NEM TODA BATALHA É VENCIDA POR REIS.”
+            </p>
+
+        </div>
+
+        <!-- LOGO -->
+        <div class="logo-targaryen-verde ">
+            <img src="PRIMEIRA TELA/ICONE - logo dos verdes.png" alt="Logo Targaryen Verde">
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <div class="footer-conteudo">
+        <div class="footer-logo">
+            <img src="PRIMEIRA TELA/HBO ORIGINAL - A CASA DO DRAGÃO.png" alt="Logo A Casa do Dragão">
+        </div>
+
+        <div class="redes-sociais">
+            <h3>SIGA A CASA DO DRAGÃO</h3>
+                <ul> 
+                    <li>
+                        <a href="https://www.hbomax.com/br/pt/shows/casa-do-dragao/c68e69d7-9317-428a-a615-cdf8fe5a2e06">
+                            <img src="ICONES/HBO.webp" alt="">
+                        </a>
+                        <a href="https://www.facebook.com/p/House-of-the-Dragon-100067234122352/">
+                            <img src="ICONES/FACEBOOK.webp" alt="Facebook">
+                        </a>
+                        <a href="https://x.com/HOTDBr">
+                            <img src="ICONES/TWITTER.webp" alt="Twitter">
+                        </a>
+                        <a href="https://www.instagram.com/houseofthedragonhbo/">
+                            <img src="ICONES/INSTAGRAM.webp" alt="Instagram">
+                        </a>
+                        <a href="https://www.reddit.com/r/HouseOfTheDragon/">
+                            <img src="ICONES/REDDIT.webp" alt="Reddit">
+                        </a>
+                        <a href="https://discord.com/invite/house-of-the-dragon-549328999013416970">
+                            <img src="ICONES/DISCORD.webp" alt="Discord">
+                        </a>
+                    </li>
+                </ul>    
+        </div>
+    </div>
+
+    <div class="footer-texto-infinito">
+        <h3>FOGO E SANGUE</h3>
+        <h3>FOGO E SANGUE</h3>
+        <h3>FOGO E SANGUE</h3>
+
+    </div>
+
+    <div class="footer-span">
+         <p> 
+            © 2026 — Leonardo Schmerega · House of the Dragon Fan Page 
+         </p>
+    </div>
+
+</footer>
+
+<script src="./javascript.js"></script>
+
+</body>
+
+</html>
