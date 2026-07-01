@@ -1734,7 +1734,9 @@ ol {
     left: 0;
     bottom: 0;
 
+    width: 80%;
     height: 830px;
+    padding-right: 480px;
 
     display: flex;
     align-items: flex-end;
@@ -2433,7 +2435,9 @@ ol {
     left: 50px;
     bottom: 0;
 
+    width: 80%;
     height: 820px;
+    padding-right: 600px;
 
     display: flex;
     align-items: flex-end;
@@ -3031,7 +3035,7 @@ ol {
 }
 
 .os-verdes-titulo{
-    padding-top: 0;
+    padding-top: 50px;
 }
 
 .os-verdes-conteudo h2 {
@@ -5196,7 +5200,7 @@ footer{
 /*RHAENYS*/
 
     .rhaenys-imagem img{
-        max-height: 450px;
+        max-height: 660px;
     }
 
     .rhaenys-conteudo{
@@ -5222,6 +5226,7 @@ footer{
 
     .jacaerys-imagem img{
         max-height: 700px;
+        padding-left: 50px;
     }
 
     .jacaerys-conteudo{
@@ -5363,7 +5368,10 @@ footer{
 }
 
 @media (max-width: 1100px){
-    
+    .header-logo{
+        transform: translateX(-38px);
+    }
+
     .main-fundo img {
         object-fit: cover;
         object-position: 50%;
@@ -5444,6 +5452,7 @@ footer{
         padding: 0;
         margin: 0;
         max-height: 620px;
+        padding-left: 200px;
     }
 
     .daemon-conteudo{
@@ -5482,7 +5491,7 @@ footer{
 
 /*RHAENYS*/
     .rhaenys-imagem img{
-        height: 640px;
+        height: 610px;
     }
 
     .rhaenys-conteudo{
@@ -5518,9 +5527,8 @@ footer{
 
 /*JACAERYS*/
     .jacaerys-imagem img {
-        padding: 0;
-        margin: 0;
         max-height: 620px;
+        padding-left: 250px;
     }
 
     .jacaerys-conteudo{
@@ -5805,11 +5813,13 @@ footer{
 @media (max-width: 800px){
 
     .header{
-        left: 20px;
+        translate: 5px 0;
+        padding: 0;
+        margin: 0;
     }
 
     .header-logo img{
-        width: 40px;
+        width: 50px;
     }
     
     .main-fundo img {
@@ -5860,6 +5870,7 @@ footer{
     }
 
     .rhaenyra-imagem img{
+        translate: 25px 0;
         height: 470px;
     }
 
@@ -5899,15 +5910,8 @@ footer{
 
 /*DAEMON*/
     .daemon-imagem img {
-        margin: 0;
-        max-height: 440px;        
-        object-fit: cover;
-        translate: -30px 0;
-        scale: 1;
-    }
-
-    .daemon-imagem img:hover {
-        transform: scale(1.03);
+        max-height: 450px;        
+        translate: 40px 0;
     }
 
     .daemon-conteudo{
@@ -5947,7 +5951,7 @@ footer{
 
 /*RHAENYS*/
     .rhaenys-imagem img {
-        height: 470px;
+        height: 440px;
     }
 
     .rhaenys-conteudo {
@@ -5987,19 +5991,8 @@ footer{
 
 /*JACAERYS*/
    .jacaerys-imagem img {
-        margin: 0;
         max-height: 440px;   
-        
-        border-radius: 0; 
-        object-fit: cover;
-
-        transform: translateX(-14px);
-        transform-origin: bottom center; 
-        scale: 1;
-    }
-
-    .jacaerys-imagem img:hover {
-        transform: scale(1.03);
+        padding-right: 50px;
     }
 
     .jacaerys-conteudo {
@@ -6109,6 +6102,10 @@ footer{
         padding: 5px 0;
     }
 
+    .alicent-citação-final{
+        padding-bottom: 25px;
+    }
+
     .alicent-sessao .logo-targaryen-verde {
         left: 530px;
         bottom: 20px;
@@ -6121,11 +6118,12 @@ footer{
 /* AEGON */
     .aegon-imagem img {
         height: 470px;
+        padding-right: 50px;
     }
 
     .aegon-conteudo {
         max-width: 300px;
-        padding: 1vw;
+        padding: 3vw;
         padding-bottom: 60px;
     }
 
@@ -6146,8 +6144,7 @@ footer{
     }
 
     .aegon-citação-final {
-        padding: 10px 0;
-        margin: 0;
+        padding-bottom: 25px;
     }
 
     .aegon-sessao .logo-targaryen-verde {
@@ -6155,42 +6152,32 @@ footer{
     }
 
     .aegon-sessao .logo-targaryen-verde img {
-        width: 40px;
+        width: 55px;
     }
 
 /*AEMOND*/
    .aemond-imagem img {
-        margin: 0;
-        max-height: 440px;        
-        object-fit: cover;
-        translate: -30px 0;
-        scale: 1;
-    }
-
-    .aemond-imagem img:hover {
-        transform: scale(1.03);
+        max-height: 440px;    
+        padding-left: 15px;    
     }
 
     .aemond-conteudo {
+        max-width: 570px;
         padding: 2vw;
-        padding-left: 320px;
-        padding-bottom: 20px;
-        gap: 0;
+        padding-left: 300px;
     }
 
     .aemond-conteudo p {
-        font-size: 9px;
+        padding-top: 10px;
+        font-size: 10px;
     }
 
     .aemond-conteudo h1 {
         font-size: 17px;
-        margin-bottom: 15px;
     }
 
     .aemond-conteudo h2 {
         font-size: 15px;
-        margin-top: 10px;
-        margin-bottom: 0px;
     }
 
     .vhagar-titulo {
@@ -6203,16 +6190,16 @@ footer{
     }
 
     .aemond-sessao .logo-targaryen-verde img {
-        width: 40px;
+        width: 55px;
     }
 /*HELAENA*/
 
    .helaena-imagem img {
-        height: 470px;
+        height: 520px;
     }
 
     .helaena-conteudo {
-        max-width: 300px;
+        max-width: 280px;
         padding: 1vw;
         padding-bottom: 60px;
     }
@@ -6229,13 +6216,10 @@ footer{
 
     .helaena-conteudo h2 {
         font-size: 15px;
-        margin-top: 0px;
-        margin-bottom: 0px;
     }
 
     .helaena-citação-final {
-        padding: 10px 0;
-        margin: 0;
+        margin-bottom: 15px;
     }
 
     .helaena-sessao .logo-targaryen-verde {
@@ -6243,31 +6227,23 @@ footer{
     }
 
     .helaena-sessao .logo-targaryen-verde img {
-        width: 40px;
+        width: 55px;
     }
 
 /*CRISTON*/
     .criston-imagem img {
-        margin: 0;
-        max-height: 440px;        
-        object-fit: cover;
-        translate: -30px 0;
-        scale: 1;
-    }
-
-    .criston-imagem img:hover {
-        transform: scale(1.03);
+        max-height: 460px;        
     }
 
     .criston-conteudo {
-        padding: 2vw;
-        padding-left: 320px;
+        padding: 3vw;
+        padding-left: 350px;
         padding-bottom: 20px;
         gap: 0;
     }
 
     .criston-conteudo p {
-        font-size: 9px;
+        font-size: 10px;
     }
 
     .criston-conteudo h1 {
@@ -6285,13 +6261,17 @@ footer{
         padding: 7px 0;
     }
 
+    .criston-citação-final{
+        padding-bottom: 25px;
+    }
+
     .criston-sessao .logo-targaryen-verde {
         left: 530px;
         bottom: 20px;
     }
 
     .criston-sessao .logo-targaryen-verde img {
-        width: 40px;
+        width: 55px;
     }
 
     /*FOOTER*/
@@ -6301,25 +6281,1084 @@ footer{
     }
 
     .redes-sociais h3{
-        font-size: 15px;
+        font-size: 12px;
     }
 
-    .redes-sociais li{
-        gap:2px;
+    .redes-sociais a img{
+        width: 42px; /* Defina aqui a largura desejada (ex: 24px, 32px, 40px) */
+        height: auto; /* Mantém a proporção original do ícone sem distorcer */
+        display: block;
     }
 
     .redes-sociais ul li a:nth-child(1) img {
-        width: 60px;
+        width: 48px;
     }
 
     .redes-sociais ul li a:nth-child(5) img {
-        width: 60px;
+        width: 48px;
     }
 
     .redes-sociais ul li a:nth-child(6) img {
-        width: 42px;
+        width: 33px;
         padding-top: 5px;
     }
+
+    .footer-span{
+        font-size: 12px;
+    }
+  
+}
+
+@media (max-width: 480px){
+
+    .header{
+        translate: -16px 0;
+        padding: 0;
+        margin: 0;
+    }
+
+    .header-logo img{
+        width: 50px;
+    }
+    
+    .main-personagens img:first-child {
+        left: -45%;
+        height: 53vh;
+    }
+
+    .main-personagens img:last-child {
+        right: -45%;
+        height: 50vh;
+    }
+
+    .main-centro img {
+        max-width: 250px;
+        padding: 0;
+        translate: -20px -200px;
+    }
+
+    .abrir-trailer {
+        font-size: 11px;
+        margin: 0 0 100px 20px;
+        padding: 0;
+        translate: -25px -220px;
+    }
+
+    .lealdade-conteudo{
+        font-size: 25px;
+    }
+
+/*Os negros*/
+
+    .os-negros-citação{
+        font-size: 20px;
+    }
+
+    .os-negros-conteudo h2{
+        font-size: 60px;
+        translate: 0 50px;
+    }
+
+/* RHAENYRA*/
+
+    .syrax-card-fundo img {
+        transform: scale(1.0); 
+        object-position: 60% center; 
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+
+    .syrax-fundo img {
+        transform: scale(1.0);
+        object-position: right center;
+    }
+
+    .rhaenyra-card{
+        width: 100%;
+        max-width: 350px;
+        height: 700px; 
+        max-height: 900px; 
+        
+        display: flex;
+        flex-direction: column; 
+        
+        overflow: hidden;
+
+        padding: 0 !important;
+        margin: 20px auto !important;
+        position: relative;
+    }
+
+    .rhaenyra-conteudo {
+        order: 1;
+        width: 100%;
+        height: auto;
+        padding: 25px 0px 0px 20px !important;
+        margin: 20px 0px 0 20px !important;
+        box-sizing: border-box;
+        z-index: 5;
+    }
+
+    .rhaenyra-conteudo h1 {
+        font-size: 18px;
+        margin-top: 0;
+    }
+
+    .rhaenyra-conteudo h2 {
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .rhaenyra-conteudo p {
+        font-size: 13px;
+        line-height: 1.4;
+        padding: 0;
+    }
+
+    .rhaenyra-imagem {
+        order: 2;
+
+        width: 100%;
+        height: 350px !important;
+
+        padding: 0;
+        margin: 0;
+
+        overflow: hidden;
+
+        z-index: 4;
+    }
+
+    .rhaenyra-imagem img {
+        width: auto;
+        height: 100%;
+
+        object-fit: cover;
+        object-position: top center;
+
+        transform: translateX(25px);
+
+        border-radius: 0;
+    }
+        
+    .rhaenyra-card:hover .rhaenyra-imagem img {
+       transform: scale(1.03) translateX(25px);
+    }
+
+    .logo-targaryen {
+        order: 3;
+
+        bottom: 15px;
+        left: 20px;
+        margin: 0;
+
+        z-index: 6;
+    }
+
+    .logo-targaryen img {
+        width: 55px;
+        height: auto;
+    }
+
+/*DAEMON*/
+    .caraxes-card-fundo img {
+        transform: scale(1.0); 
+        object-position: 70% center; 
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+
+    .caraxes-fundo img {
+        transform: scale(1.0);
+        object-position: right center;
+    }
+
+    .daemon-card{
+        width: 100%;
+        max-width: 332px;
+        height: 700px; 
+        max-height: 700px; 
+        
+        display: flex;
+        flex-direction: column; 
+        
+        overflow: hidden;
+
+        padding: 0 !important;
+        margin: 20px auto !important;
+        position: relative;
+    }
+
+    .daemon-conteudo {
+        order: 1;
+
+        width: 100%;
+        height: auto;
+
+        padding: 25px 40px 0px 40px !important;
+        margin: 20px 0 0 0 !important;
+
+        box-sizing: border-box;
+
+        z-index: 5;
+    }
+
+    .daemon-conteudo h1 {
+        font-size: 18px;
+        margin-top: 0;
+    }
+
+    .daemon-conteudo h2 {
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .daemon-conteudo p {
+        font-size: 13px;
+        line-height: 1.4;
+        padding: 0;
+    }
+
+    .caraxes-titulo{
+        margin-top: 10px;
+    }
+
+    .daemon-citação-final{
+        margin-top: 10px;
+    }
+
+    .daemon-imagem {
+        width: 100%;
+        height: 370px; 
+
+        position: absolute; 
+
+        bottom: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+
+        z-index: 3; 
+        
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start; 
+    }
+
+    .daemon-imagem img {
+        width: auto;
+        height: 100%;
+
+        object-fit: contain;
+
+        border-radius: 0;
+
+        transform: translateX(-250px);
+    }
+
+    .daemon-card:hover .daemon-imagem img {
+       transform: scale(1.03) translateX(-250px);
+    }
+    .daemon-card .logo-targaryen {
+        position: absolute !important;
+        right: 20px;   /* Fixa na borda direita */
+        bottom: 20px;  /* Fixa na borda inferior */
+        left: auto;    /* Cancela qualquer 'left' herdado do desktop */
+        z-index: 6;    /* Garante que fica por cima de tudo */
+    }
+
+    .daemon-card .logo-targaryen img {
+        width: 55px; 
+        height: auto;
+    }
+
+/*RHAENYS*/
+.rhaenys-card {
+    width: 100%;
+    max-width: 350px;
+    height: 700px; 
+    max-height: 900px; 
+    
+    display: flex;
+    flex-direction: column; 
+    
+    overflow: hidden;
+
+    padding: 0 !important;
+    margin: 20px auto !important;
+    position: relative;
+}
+
+.rhaenys-conteudo {
+    order: 1;
+    width: 100%;
+    height: auto;
+    padding: 25px 0px 0px 25px !important;
+    margin: 20px 0 0 25px !important;
+    box-sizing: border-box;
+    z-index: 5;
+}
+
+.rhaenys-conteudo h1 {
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+.rhaenys-conteudo h2 {
+    font-size: 15px;
+}
+
+.rhaenys-conteudo p {
+    font-size: 13px;
+    line-height: 1.4;
+    padding: 0;
+}
+
+.rhaenys-imagem {
+    order: 2;
+
+    width: 80%;
+    height: 300px !important;
+
+    transform: translateX(25px);
+
+    padding: 0;
+    margin: 0;
+
+    overflow: hidden;
+
+    z-index: 4;
+}
+
+.rhaenys-imagem img {
+    width: 80%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: top center;
+
+    border-radius: 0;
+}
+
+.rhaenys-sessao .logo-targaryen {
+    order: 3;
+
+    bottom: 15px;
+    left: 20px;
+    margin: 0;
+
+    z-index: 6;
+}
+
+.rhaenys-sessao .logo-targaryen img {
+    width: 55px;
+    height: auto;
+}
+
+/*JACAERYS*/
+   .jacaerys-card {
+    width: 100%;
+    max-width: 350px;
+    height: 700px; 
+    max-height: 900px; 
+    
+    display: flex;
+    flex-direction: column; 
+    
+    overflow: hidden;
+
+    padding: 0 !important;
+    margin: 20px auto !important;
+    position: relative;
+}
+
+.jacaerys-conteudo {
+    width: 100%;
+    height: auto;
+
+    padding: 25px 55px 0px 25px !important;
+    margin: 20px 0px 0px 20px !important;
+
+    box-sizing: border-box;
+
+    z-index: 5;
+}
+
+.jacaerys-conteudo h1 {
+    font-size: 18px;
+    margin-top: 0;
+}
+
+.jacaerys-conteudo h2 {
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.jacaerys-conteudo p {
+    font-size: 13px;
+    line-height: 1.4;
+    padding: 0;
+}
+
+.jacaerys-citação-final {
+    margin-top: 10px;
+}
+
+.jacaerys-imagem {
+    width: 100%;
+    height: 380px; 
+
+    position: absolute; 
+
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+
+    z-index: 3; 
+    
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start; 
+}
+
+.jacaerys-imagem img {
+    width: auto;
+    height: 100%;
+
+    object-fit: contain;
+
+    border-radius: 0;
+
+    transform: translateX(-220px);
+}
+
+.jacaerys-card:hover .jacaerys-imagem img {
+   transform: scale(1.03) translateX(-220px);
+}
+
+.jacaerys-card .logo-targaryen {
+    position: absolute !important;
+    right: 20px;   
+    bottom: 20px;  
+    left: auto;    
+    z-index: 6;    
+}
+
+.jacaerys-card .logo-targaryen img {
+    width: 55px; 
+    height: auto;
+}
+
+/*BAELA*/
+    .moondancer-card-fundo img {
+        transform: scale(1.0); 
+        object-position: 40% center; 
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+
+    .moondancer-fundo img {
+        transform: scale(1.0);
+        object-position: right center;
+    }
+
+   .baela-card {
+    width: 100%;
+    max-width: 350px;
+    height: 700px; 
+    max-height: 900px; 
+    
+    display: flex;
+    flex-direction: column; 
+    
+    overflow: hidden;
+
+    padding: 0 !important;
+    margin: 20px auto !important;
+    position: relative;
+}
+
+.baela-conteudo {
+    order: 1;
+    width: 100%;
+    height: auto;
+    padding: 25px 0px 0px 25px !important;
+    margin: 20px 0 0 25px !important;
+    box-sizing: border-box;
+    z-index: 5;
+}
+
+.baela-conteudo h1 {
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+.baela-conteudo h2 {
+    font-size: 15px;
+}
+
+.baela-conteudo p {
+    font-size: 13px;
+    line-height: 1.4;
+    padding: 0;
+}
+
+.baela-imagem {
+    order: 2;
+
+    width: 80%;
+    height: 320px !important;
+
+    transform: translateX(40px);
+
+    padding: 0;
+    margin: 0;
+
+    overflow: hidden;
+
+    z-index: 4;
+}
+
+.baela-imagem img {
+    width: 70%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: top center;
+
+    border-radius: 0;
+}
+
+.baela-sessao .logo-targaryen {
+    order: 3;
+
+    bottom: 15px;
+    left: 20px;
+    margin: 0;
+
+    z-index: 6;
+}
+
+.baela-sessao .logo-targaryen img {
+    width: 55px;
+    height: auto;
+}
+
+/*OS VERDES*/
+
+.os-verdes-conteudo h1{
+    padding-bottom: 50px;
+}
+
+/*ALICENT*/
+   .alicent-card {
+    width: 100%;
+    max-width: 350px;
+    height: 700px; 
+    max-height: 900px; 
+    
+    display: flex;
+    flex-direction: column; 
+    
+    overflow: hidden;
+
+    padding: 0 !important;
+    margin: 20px auto !important;
+    position: relative;
+}
+
+.alicent-conteudo {
+    width: 100%;
+    height: auto;
+
+    padding: 25px 55px 0px 25px !important;
+    margin: 20px 0px 0px 20px !important;
+
+    box-sizing: border-box;
+
+    z-index: 5;
+}
+
+.alicent-conteudo h1 {
+    font-size: 18px;
+    margin-top: 0;
+}
+
+.alicent-conteudo h2 {
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.alicent-conteudo p {
+    font-size: 13px;
+    line-height: 1.4;
+    padding: 0;
+}
+
+.alicent-citação-final {
+    margin-top: 10px;
+}
+
+.alicent-imagem {
+    width: 100%;
+    height: 380px; 
+
+    position: absolute; 
+
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+
+    z-index: 3; 
+    
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start; 
+}
+
+.alicent-imagem img {
+    width: auto;
+    height: 100%;
+
+    object-fit: contain;
+
+    border-radius: 0;
+
+    transform: translateX(-50px);
+}
+
+.alicent-card:hover .alicent-imagem img {
+   transform: scale(1.03) translateX(-50px);
+}
+
+.alicent-card .logo-targaryen-verde {
+    position: absolute !important;
+    right: 20px;   
+    bottom: 20px;  
+    left: auto;    
+    z-index: 6;    
+}
+
+.alicent-card .logo-targaryen-verde img {
+    width: 70px; 
+    height: auto;
+}
+
+/* AEGON */
+    .aegon-card {
+        width: 100%;
+        max-width: 350px;
+        height: 700px; 
+        max-height: 900px; 
+        
+        display: flex;
+        flex-direction: column; 
+        
+        overflow: hidden;
+
+        padding: 0 !important;
+        margin: 20px auto !important;
+        position: relative;
+    }
+
+    .aegon-conteudo {
+        order: 1;
+        width: 100%;
+        height: auto;
+        padding: 25px 0px 0px 25px !important;
+        margin: 20px 0 0 25px !important;
+        box-sizing: border-box;
+        z-index: 5;
+    }
+
+    .aegon-conteudo h1 {
+        font-size: 18px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .aegon-conteudo h2 {
+        font-size: 15px;
+    }
+
+    .aegon-conteudo p {
+        font-size: 13px;
+        line-height: 1.4;
+        padding: 0;
+    }
+
+    .aegon-imagem {
+        order: 2;
+
+        width: 100%;
+        height: 350px !important;
+
+        transform: translateX(-80px);
+
+        padding: 0;
+        margin: 0;
+
+        overflow: hidden;
+
+        z-index: 4;
+    }
+
+    .aegon-imagem img {
+        width: 90%;
+        height: 100%;
+
+        object-fit: cover;
+        object-position: top center;
+
+        border-radius: 0;
+    }
+
+    .aegon-sessao .logo-targaryen-verde {
+        order: 3;
+
+        bottom: 15px;
+        left: 20px;
+        margin: 0;
+
+        z-index: 6;
+    }
+
+    .aegon-sessao .logo-targaryen-verde img {
+        width: 70px;
+        height: auto;
+    }
+
+/*AEMOND*/
+    .aemond-card {
+        width: 100%;
+        max-width: 350px;
+        height: 700px; 
+        max-height: 900px; 
+        
+        display: flex;
+        flex-direction: column; 
+        
+        overflow: hidden;
+
+        padding: 0 !important;
+        margin: 20px auto !important;
+        position: relative;
+    }
+
+    .aemond-conteudo {
+        width: 100%;
+        height: auto;
+
+        padding: 25px 55px 0px 25px !important;
+        margin: 20px 0px 0px 20px !important;
+
+        box-sizing: border-box;
+
+        z-index: 5;
+    }
+
+    .aemond-conteudo h1 {
+        font-size: 18px;
+        margin-top: 0;
+    }
+
+    .aemond-conteudo h2 {
+        font-size: 15px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .aemond-conteudo p {
+        font-size: 13px;
+        line-height: 1.4;
+        padding: 0;
+    }
+
+    .aemond-citação-final {
+        margin-top: 10px;
+    }
+
+    .aemond-imagem {
+        width: 100%;
+        height: 340px; 
+
+        position: absolute; 
+
+        bottom: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+
+        z-index: 3; 
+        
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start; 
+    }
+
+    .aemond-imagem img {
+        width: 100%;
+        height: 90%;
+
+        object-fit: contain;
+
+        border-radius: 0;
+
+        transform: translateX(-80px);
+    }
+
+    .aemond-card:hover .aemond-imagem img {
+    transform: scale(1.03) translateX(-80px);
+    }
+
+    .aemond-card .logo-targaryen-verde {
+        position: absolute !important;
+        right: 20px;   
+        bottom: 20px;  
+        left: auto;    
+        z-index: 6;    
+    }
+
+    .aemond-card .logo-targaryen-verde img {
+        width: 70px; 
+        height: auto;
+    }
+/*HELAENA*/
+
+.helaena-card {
+    width: 100%;
+    max-width: 350px;
+    height: 700px; 
+    max-height: 900px; 
+    
+    display: flex;
+    flex-direction: column; 
+    
+    overflow: hidden;
+
+    padding: 0 !important;
+    margin: 20px auto !important;
+    position: relative;
+}
+
+.helaena-conteudo {
+    order: 1;
+    width: 100%;
+    height: auto;
+    padding: 25px 0px 0px 25px !important;
+    margin: 20px 0 0 25px !important;
+    box-sizing: border-box;
+    z-index: 5;
+}
+
+.helaena-conteudo h1 {
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+.helaena-conteudo h2 {
+    font-size: 15px;
+}
+
+.helaena-conteudo p {
+    font-size: 13px;
+    line-height: 1.4;
+    padding: 0;
+}
+
+.helaena-imagem {
+    order: 2;
+
+    width: 100%;
+    height: 380px !important;
+
+    transform: translateX(50px);
+
+    padding: 0;
+    margin: 0;
+
+    overflow: hidden;
+
+    z-index: 4;
+}
+
+.helaena-imagem img {
+    width: 80%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: top center;
+
+    border-radius: 0;
+}
+
+.helaena-sessao .logo-targaryen-verde {
+    order: 3;
+
+    bottom: 15px;
+    left: 20px;
+    margin: 0;
+
+    z-index: 6;
+}
+
+.helaena-sessao .logo-targaryen-verde img {
+    width: 70px;
+    height: auto;
+}
+
+/*CRISTON*/
+    .criston-card {
+        width: 100%;
+        max-width: 350px;
+        height: 700px; 
+        max-height: 900px; 
+        
+        display: flex;
+        flex-direction: column; 
+        
+        overflow: hidden;
+
+        padding: 0 !important;
+        margin: 20px auto !important;
+        position: relative;
+    }
+
+    .criston-conteudo {
+        width: 100%;
+        height: auto;
+
+        padding: 25px 55px 0px 25px !important;
+        margin: 20px 0px 0px 20px !important;
+
+        box-sizing: border-box;
+
+        z-index: 5;
+    }
+
+    .criston-conteudo h1 {
+        font-size: 18px;
+        margin-top: 0;
+    }
+
+    .criston-conteudo h2 {
+        font-size: 15px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .criston-conteudo p {
+        font-size: 13px;
+        line-height: 1.4;
+        padding: 0;
+    }
+
+    .criston-citação-final {
+        margin-top: 10px;
+    }
+
+    .criston-imagem {
+        width: 100%;
+        height: 380px; 
+
+        position: absolute; 
+
+        bottom: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+
+        z-index: 3; 
+        
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start; 
+    }
+
+    .criston-imagem img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: contain;
+
+        border-radius: 0;
+
+        transform: translateX(-30px);
+    }
+
+    .criston-card:hover .criston-imagem img {
+        transform: scale(1.03) translateX(-30px);
+    }
+
+    .criston-card .logo-targaryen-verde {
+        position: absolute !important;
+        right: 20px;   
+        bottom: 20px;  
+        left: auto;    
+        z-index: 6;    
+    }
+
+    .criston-card .logo-targaryen-verde img {
+        width: 70px; 
+        height: auto;
+    }
+
+    /*FOOTER*/
+    .footer-conteudo{
+        width: 100%;
+        height: 100%;
+    } 
+
+    .footer-logo img{
+        width: 100px;
+    }
+
+    .redes-sociais h3{
+        font-size: 7px;
+    }
+
+    .redes-sociais {
+        padding-bottom: 50px;
+    }
+
+    .redes-sociais ul{
+        transform: translateY(-8px);
+    }
+    
+    .redes-sociais a img{
+        width: 22px; /* Defina aqui a largura desejada (ex: 24px, 32px, 40px) */
+        height: auto; /* Mantém a proporção original do ícone sem distorcer */
+        display: block;
+    }
+
+    .redes-sociais ul li a:nth-child(1) img {
+        width: 32px;
+        transform: translateY(-5px);
+    }
+
+    .redes-sociais ul li a:nth-child(5) img {
+        width: 30px;
+        transform: translateY(-5px);
+    }
+
+    .redes-sociais ul li a:nth-child(6) img {
+        width: 16px;
+        transform: translateY(-2px);
+    }
+
+    .footer-texto-infinito h3{
+        font-size: 50px;
+    }
+    .footer-span{
+        font-size: 7px;
+    }
+  
 }
 /* ============================================================
    SCROLL-DRIVEN SECTION REVEALS
