@@ -4963,7 +4963,7 @@ footer{
 .redes-sociais h3{
     color: #d4af37;
 
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 
     font-weight: 600;
 
@@ -5000,16 +5000,11 @@ footer{
 
 .redes-sociais ul{
     display: flex;
-    gap: 20px;
-}
-
-.redes-sociais li{
-    display: flex;
-    gap: 20px;
+    gap: 13px;
 }
 
 .redes-sociais a img{
-    width: 52px;
+    width: 70px;
 
     transition:
         transform 0.3s ease,
@@ -5026,16 +5021,18 @@ footer{
         drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
 }
 
-.redes-sociais ul li a:nth-child(1) img {
-    width: 60px;
+.redes-sociais ul li:nth-child(1) a img {
+    width: 80px; 
 }
 
-.redes-sociais ul li a:nth-child(5) img {
-    width: 60px;
+.redes-sociais ul li:nth-child(5) a img {
+    width: 90px; 
+    transform: translateY(-10px);
 }
 
-.redes-sociais ul li a:nth-child(6) img {
-    width: 45px;
+.redes-sociais ul li:nth-child(6) a img {
+    width: 50px; 
+    transform: translateY(10px);
 }
 
 .footer-texto-infinito{
@@ -5110,9 +5107,27 @@ footer{
 @media (max-width: 1500px) {
     .header {
         top: 50px;
-        left: 60px;
+        left: 45px;
         right: 60px;
     }   
+
+    .menu-overlay{
+        width: 100%;
+        height: auto;
+    }
+
+    .previa-personagem img{
+        width: 40%;
+    }
+
+    .conteudo-menu{
+        width: 62%;
+        height: auto;
+    }
+
+    .lista-personagens-container li{
+        font-size: 35px;
+    }
 
 /*MAIN*/
 
@@ -5122,12 +5137,12 @@ footer{
     }
 
     .main-personagens img:first-child {
-        left: -12%;
+        left: -16%;
         height: 88vh;
     }
 
     .main-personagens img:last-child {
-        right: -11%;
+        right: -15%;
         height: 84vh;
     }
 
@@ -5140,251 +5155,206 @@ footer{
         margin-left: 20px;
     }
 
+/*GLOBAL*/
+    .rhaenyra-card, .daemon-card, .rhaenys-card, .jacaerys-card, .baela-card,
+    .alicent-card, .aegon-card, .aemond-card, .helaena-card, .criston-card {
+        width: 100%;
+        max-width: 1200px;
+        height: 600px !important; 
+        max-height: 600px !important;
+        overflow: visible !important;
+    }
+
+    .rhaenyra-imagem, .daemon-imagem, .rhaenys-imagem, .jacaerys-imagem, .baela-imagem,
+    .alicent-imagem, .aegon-imagem, .aemond-imagem, .helaena-imagem, .criston-imagem {
+        position: absolute !important;
+        height: 112% !important;
+
+        top: auto !important;
+        bottom: 0 !important;
+
+        z-index: 99 !important;
+    }
+
+    .rhaenyra-imagem img, .daemon-imagem img, .rhaenys-imagem img, .jacaerys-imagem img, .baela-imagem img,
+    .alicent-imagem img, .aegon-imagem img, .aemond-imagem img, .helaena-imagem img, .criston-imagem img {
+        height: 100% !important;
+        width: auto !important;
+        object-fit: contain !important;
+        object-position: bottom center !important;
+    }
+
+
+/*--PERSONAGENS DO LADO ESQUERDO*/
+
+    .daemon-conteudo,
+    .jacaerys-conteudo,
+    .alicent-conteudo,
+    .aemond-conteudo,
+    .criston-conteudo {
+        width: 50% !important;
+        max-width: 550px !important;
+        gap: 10px !important;
+        padding: 3.5rem !important;
+        margin-left: 550px;
+    }
+
+    .daemon-conteudo h1,
+    .jacaerys-conteudo h1,
+    .alicent-conteudo h1,
+    .aemond-conteudo h1,
+    .criston-conteudo h1 { 
+        font-size: 30px !important; 
+        margin-bottom: 15px !important; 
+    }
+
+    .daemon-conteudo h2,
+    .jacaerys-conteudo h2,
+    .alicent-conteudo h2,
+    .aemond-conteudo h2,
+    .criston-conteudo h2 { 
+        margin: 0 !important; 
+        padding: 0 !important;
+    }
+    .daemon-conteudo p,
+    .jacaerys-conteudo p,
+    .alicent-conteudo p,
+    .aemond-conteudo p,
+    .criston-conteudo p { 
+        font-size: 15px !important; 
+        line-height: 1.6 !important; 
+    }
+
+    .daemon-sessao .logo-targaryen,
+    .jacaerys-sessao .logo-targaryen {
+        position: absolute !important;
+        right: 40px !important;  
+        left: auto !important;   
+        bottom: 40px !important; 
+    }
+
+    .alicent-sessao .logo-targaryen-verde,
+    .aemond-sessao .logo-targaryen-verde,
+    .criston-sessao .logo-targaryen-verde{
+        position: absolute !important;
+        right: 40px !important;  
+        left: auto !important;   
+        bottom: 40px !important; 
+    }
+
+/*--PERSONAGENS DO LADO DIREITO*/
+    .rhaenyra-conteudo,
+    .rhaenys-conteudo,
+    .baela-conteudo,
+    .aegon-conteudo,
+    .helaena-conteudo {
+        width: 50% !important;
+        max-width: 800px !important;
+        height: auto !important;
+        max-height: 650px !important;
+        padding: 3.5rem !important;
+        margin-left: 150px !important;
+        margin-top: 50px !important;
+    }
+    .rhaenyra-conteudo h1,
+    .rhaenys-conteudo h1,
+    .baela-conteudo h1,
+    .aegon-conteudo h1,
+    .helaena-conteudo h1{ 
+        font-size: 30px !important; 
+        margin-bottom: 15px !important; 
+    }
+    .rhaenyra-conteudo h2,
+    .rhaenys-conteudo h2,
+    .baela-conteudo h2,
+    .aegon-conteudo h2,
+    .helaena-conteudo h2{ 
+        margin: 0 !important;
+    }
+    .rhaenyra-conteudo p,
+    .rhaenys-conteudo p,
+    .baela-conteudo p,
+    .aegon-conteudo p,
+    .helaena-conteudo p{ 
+        font-size: 15px !important; 
+        line-height: 1.6 !important; 
+    }
+
 /*RHAENYRA*/
-
-    .rhaenyra-card, .daemon-card,.rhaenys-card, .jacaerys-card, .baela-card, .alicent-card, .aegon-card, .aemond-card, .helaena-card, .criston-card{
-        max-width: 1200px;
-        max-height: 600px;
-    }
-
     .rhaenyra-imagem img{
-        height: 700px;
-    }
-
-    .rhaenyra-conteudo{
-        margin-left: 50px;
-        max-width: 900px;
-    }
-
-    .rhaenyra-conteudo h1{
-        margin-top: 50px;
-        margin-bottom: 10px;
-    }
-
-    .rhaenyra-conteudo h2{
-        margin-top: 0px;
-        margin-bottom: 0px;
-    }
-
-    .rhaenyra-citação-final{
-        
-        padding: 10px 0;
-        margin: 0;
-    }
-
-/*DAEMON*/
-
-    .daemon-imagem img {
-        padding: 0;
-        margin: 0;
-        max-height: 700px;
-    }
-
-    .daemon-conteudo{
-        max-width: 1200px;
-        padding-left: 610px;
-        gap: 0;
-    }
-
-    .daemon-conteudo h1{
-        margin-bottom: 18px;
-    }
-
-    .caraxes-titulo{
-        padding: 7px 0;
-    }
-    .daemon-sessao .logo-targaryen{
-        left: 1080px;
-    }
-
-/*RHAENYS*/
-
-    .rhaenys-imagem img{
-        max-height: 660px;
-    }
-
-    .rhaenys-conteudo{
-        margin-left: 50px;
-    }
-
-    .rhaenys-conteudo h1{
-        margin-top: 50px;
-        margin-bottom: 10px;
-    }
-
-    .rhaenys-conteudo h2{
-        margin-top: 0px;
-        margin-bottom: 0px;
-    }
-
-    .rhaenys-citação-final{
-        padding: 10px 0;
-        margin: 0;
-    }
-
-/*JACAERYS*/
-
-    .jacaerys-imagem img{
-        max-height: 700px;
-        padding-left: 50px;
-    }
-
-    .jacaerys-conteudo{
-        max-width: 1400px;
-        padding-left: 570px;
-        gap: 0;
-    }
-
-     .jacaerys-conteudo h1{
-        margin-bottom: 18px;
-    }
-
-    .jacaerys-sessao .logo-targaryen{
-        left: 1080px;
+        height: 700px !important;
     }
 
 /*BAELA*/
-
     .baela-imagem img{
-        max-height: 710px;
+        height: 700px !important;
     }
 
-    .baela-conteudo{
-        margin-left: 50px;
-    }
-
-    .baela-conteudo h1{
-        margin-top: 50px;
-        margin-bottom: 10px;
-    }
-
-/*ALICENT*/
-    .alicent-imagem img{
-        max-height: 760px;
-        padding-left: 10px;
-    }
-
-    .alicent-conteudo{
-        max-width: 1400px;
-        padding-left: 570px;
-        gap: 0;
-    }
-
-    .alicent-conteudo h1{
-        margin-bottom: 18px;
-    }
-
-    .os-verdes-titulo{
-        padding: 7px 0;
-    }
-    .alicent-citação{
-        padding: 7px 0;
-    }
-    .alicent-sessao .logo-targaryen-verde{
-        left: 1080px;
+/*HELAENA*/
+    .helaena-imagem img{
+        height: 770px !important;
     }
 
 /*AEGON*/
     .aegon-imagem img{
-        max-height: 720px;
+        height: 700px !important;
+    }
+/*ALICENT E CRISTON*/
+    .alicent-imagem img {
+        height: 750px !important;
     }
 
-    .aegon-conteudo{
-        margin-left: 50px;
+    .criston-imagem img {
+        height: 680px !important;
     }
 
-    .aegon-conteudo h1{
-        margin-top: 50px;
-        margin-bottom: 10px;
+    .os-verdes-titulo {
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
-/*AEMOND*/
-    .aemond-imagem img{
-        max-height: 670px;
-        padding-left: 10px;
-        bottom: 1px;
-    }
-
-    .aemond-conteudo{
-        max-width: 1400px;
-        padding-left: 570px;
-        gap: 0;
-    }
-
-    .aemond-conteudo h1{
-        margin-bottom: 18px;
-    }
-
-    .vhagar-titulo{
-        padding: 7px 0;
-    }
-    .aemond-citação{
-        padding: 7px 0;
-    }
-    .aemond-sessao .logo-targaryen-verde{
-        left: 1080px;
-    }
-
-/*HELAENA*/ 
-    .helaena-imagem img{
-        max-height: 780px;
-        padding-right: 20px;
-    }
-
-    .helaena-conteudo{
-        margin-left: 50px;
-    }
-
-    .helaena-conteudo h1{
-        margin-top: 50px;
-        margin-bottom: 10px;
-    }
-
-/*CRISTON*/ 
-    .criston-imagem img{
-        max-height: 710px;
-        padding-left: 10px;
-    }
-
-    .criston-conteudo{
-        max-width: 1400px;
-        padding-left: 570px;
-        gap: 0;
-    }
-
-    .criston-conteudo h1{
-        margin-bottom: 18px;
-    }
-
-    .os-verdes-titulo{
-        padding: 7px 0;
-    }
-    .criston-citação{
-        padding: 7px 0;
-    }
-    .criston-sessao .logo-targaryen-verde{
-        left: 1080px;
-    }
 }
 
-@media (max-width: 1100px){
-    .header-logo{
-        transform: translateX(-38px);
+@media (max-width: 1300px){
+    .header {
+        top: 50px;
+        left: 30px;
+        right: 60px;
+    }   
+
+    .menu-overlay{
+        width: 100%;
+        height: auto;
     }
+
+    .previa-personagem img{
+        width: 30%;
+    }
+
+    .conteudo-menu{
+        width: 62%;
+        height: auto;
+    }
+
+    .lista-personagens-container li{
+        font-size: 35px;
+    }
+
+/*MAIN*/
 
     .main-fundo img {
         object-fit: cover;
-        object-position: 50%;
+        object-position: 50% center;
     }
 
     .main-personagens img:first-child {
-        left: -28%;
-        height: 83vh;
+        left: -26%;
+        height: 88vh;
     }
 
     .main-personagens img:last-child {
-        right: -27%;
-        height: 79vh;
+        right: -25%;
+        height: 84vh;
     }
 
     .main-centro img {
@@ -5396,427 +5366,272 @@ footer{
         margin-left: 20px;
     }
 
-/* RHAENYRA*/
-
-    .rhaenyra-card, 
-    .daemon-card, 
-    .rhaenys-card, 
-    .jacaerys-card, 
-    .baela-card, 
-    .alicent-card, 
-    .aegon-card, 
-    .aemond-card, 
-    .helaena-card, 
-    .criston-card{
-        max-width: 900px;
-        max-height: 550px;
+/*GLOBAL*/
+    .rhaenyra-card, .daemon-card, .rhaenys-card, .jacaerys-card, .baela-card,
+    .alicent-card, .aegon-card, .aemond-card, .helaena-card, .criston-card {
+        width: 100%;
+        max-width: 1000px;
+        height: 600px !important; 
+        max-height: 600px !important;
+        overflow: visible !important;
     }
 
+    .rhaenyra-imagem, .daemon-imagem, .rhaenys-imagem, .jacaerys-imagem, .baela-imagem,
+    .alicent-imagem, .aegon-imagem, .aemond-imagem, .helaena-imagem, .criston-imagem {
+        position: absolute !important;
+        height: 112% !important;
+
+        top: auto !important;
+        bottom: 0 !important;
+
+        z-index: 99 !important;
+    }
+
+    .rhaenyra-imagem img, .daemon-imagem img, .rhaenys-imagem img, .jacaerys-imagem img, .baela-imagem img,
+    .alicent-imagem img, .aegon-imagem img, .aemond-imagem img, .helaena-imagem img, .criston-imagem img {
+        height: 100% !important;
+        width: auto !important;
+        object-fit: contain !important;
+        object-position: bottom center !important;
+    }
+
+
+/*--PERSONAGENS DO LADO ESQUERDO*/
+    .daemon-conteudo,
+    .jacaerys-conteudo,
+    .alicent-conteudo,
+    .aemond-conteudo,
+    .criston-conteudo {
+        width: 50% !important;
+        max-width: 550px !important;
+        padding: 1.5rem !important;
+        padding-bottom: 4.5rem !important;
+        margin-left: 480px !important;
+    }
+
+    .daemon-conteudo h1,
+    .jacaerys-conteudo h1,
+    .alicent-conteudo h1,
+    .aemond-conteudo h1,
+    .criston-conteudo h1 { 
+        font-size: 30px !important; 
+        margin-bottom: 15px !important; 
+    }
+
+    .daemon-conteudo h2,
+    .jacaerys-conteudo h2,
+    .alicent-conteudo h2,
+    .aemond-conteudo h2,
+    .criston-conteudo h2 { 
+        margin: 0 !important; 
+        padding: 0 !important;
+    }
+    .daemon-conteudo p,
+    .jacaerys-conteudo p,
+    .alicent-conteudo p,
+    .aemond-conteudo p,
+    .criston-conteudo p { 
+        font-size: 15px !important; 
+        line-height: 1.6 !important; 
+    }
+
+    .daemon-sessao .logo-targaryen,
+    .jacaerys-sessao .logo-targaryen {
+        position: absolute !important;
+        right: 40px !important;  
+        left: auto !important;   
+        bottom: 40px !important; 
+    }
+
+    .alicent-sessao .logo-targaryen-verde,
+    .aemond-sessao .logo-targaryen-verde,
+    .criston-sessao .logo-targaryen-verde{
+        position: absolute !important;
+        right: 40px !important;  
+        left: auto !important;   
+        bottom: 40px !important; 
+    }
+
+/*--PERSONAGENS DO LADO DIREITO*/
+    .rhaenyra-conteudo,
+    .rhaenys-conteudo,
+    .baela-conteudo,
+    .aegon-conteudo,
+    .helaena-conteudo {
+        width: 50% !important;
+        max-width: 800px !important;
+        height: auto !important;
+        max-height: 650px !important;
+        padding: 1.5rem !important;
+        margin-left: 100px !important;
+        margin-top: 65px !important;
+    }
+    .rhaenyra-conteudo h1,
+    .rhaenys-conteudo h1,
+    .baela-conteudo h1,
+    .aegon-conteudo h1,
+    .helaena-conteudo h1{ 
+        font-size: 30px !important; 
+        margin-bottom: 15px !important; 
+    }
+    .rhaenyra-conteudo h2,
+    .rhaenys-conteudo h2,
+    .baela-conteudo h2,
+    .aegon-conteudo h2,
+    .helaena-conteudo h2{ 
+        margin: 0 !important;
+    }
+    .rhaenyra-conteudo p,
+    .rhaenys-conteudo p,
+    .baela-conteudo p,
+    .aegon-conteudo p,
+    .helaena-conteudo p{ 
+        font-size: 15px !important; 
+        line-height: 1.6 !important; 
+    }
+
+/*RHAENYRA*/
     .rhaenyra-imagem img{
-        height: 650px;
-    }
-
-    .rhaenyra-conteudo{
-        max-width: 500px;
-        padding: 5vw;
-        padding-bottom: 130px;
-    }
-
-    .rhaenyra-conteudo p{
-       font-size: 13px;
-    }
-
-    .rhaenyra-conteudo h1{
-        font-size: 25px;
-        margin-top: 50px;
-        margin-bottom: 10px;
-    }
-
-    .rhaenyra-conteudo h2{
-        font-size: 20px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-    }
-
-    .rhaenyra-citação-final{
-        padding: 10px 0;
-        margin: 0;
-    }
-
-    .logo-targaryen img{
-        width: 60px;
+        height: 700px !important;
     }
 
 /*DAEMON*/
+    .daemon-imagem {
+        width: auto !important;
+        position: absolute !important;
+        height: 112% !important; 
+        bottom: 0 !important;
+        top: auto !important;
+        left: 0 !important;     
+        right: auto !important;
+        z-index: 5 !important;
+
+        -webkit-mask-image: none !important;
+        mask-image: none !important;
+    }
+
+    .daemon-imagem::after {
+        display: none !important; 
+    }
+
     .daemon-imagem img {
-        padding: 0;
-        margin: 0;
-        max-height: 620px;
-        padding-left: 200px;
-    }
-
-    .daemon-conteudo{
-        max-width: 900px;
-        padding: 3vw;
-        padding-left: 520px;
-        padding-bottom: 40px;
-        gap: 0;
-    }
-
-    .daemon-conteudo p {
-        font-size: 13px;
-    }
-
-    .daemon-conteudo h1{
-        font-size: 25px;
-        margin-bottom: 18px;
-    }
-
-    .daemon-conteudo h2{
-        font-size: 20px;
-        margin-top: 10px;
-        margin-bottom: 0px;
-    }
-
-    .caraxes-titulo{
-        padding: 7px 0;
-    }
-    
-    .daemon-sessao .logo-targaryen {
-        left: 810px;
-    }
-    .daemon-sessao .logo-targaryen img{
-        width: 60px;
-    }
-
-/*RHAENYS*/
-    .rhaenys-imagem img{
-        height: 610px;
-    }
-
-    .rhaenys-conteudo{
-        max-width: 480px;
-        padding: 6vw;
-        padding-bottom: 130px;
-    }
-
-    .rhaenys-conteudo p{
-       font-size: 13px;
-    }
-
-    .rhaenys-conteudo h1{
-        font-size: 25px;
-        margin-top: 50px;
-        margin-bottom: 10px;
-    }
-
-    .rhaenys-conteudo h2{
-        font-size: 20px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-    }
-
-    .rhaenys-citação-final{
-        padding: 10px 0;
-        margin: 0;
-    }
-
-    .rhaenys-sessao .logo-targaryen img{
-        width: 60px;
+        height: 100% !important;
+        width: auto !important;
+        margin-left: -40px !important;
+        object-fit: contain !important;
+        object-position: left bottom !important; 
     }
 
 /*JACAERYS*/
+     .jacaerys-imagem {
+        position: absolute !important;
+        height: 112% !important; 
+        bottom: 0 !important; 
+        top: auto !important;
+        margin-left: 100px !important;
+        z-index: 5 !important;
+
+        -webkit-mask-image: none !important;
+        mask-image: none !important;
+
+    }
     .jacaerys-imagem img {
-        max-height: 620px;
-        padding-left: 250px;
-    }
-
-    .jacaerys-conteudo{
-        max-width: 848px;
-        padding: 3vw;
-        padding-left: 480px;
-        padding-bottom: 40px;
-        gap: 0;
-    }
-
-    .jacaerys-conteudo p {
-        font-size: 13px;
-    }
-
-    .jacaerys-conteudo h1{
-        font-size: 25px;
-        margin-bottom: 18px;
-    }
-
-    .jacaerys-conteudo h2{
-        font-size: 20px;
-        margin-top: 10px;
-        margin-bottom: 0px;
-    }
-    
-    .jacaerys-sessao .logo-targaryen {
-        left: 810px;
-    }
-    .jacaerys-sessao .logo-targaryen img{
-        width: 60px;
+        height: 100% !important;
+        width: auto !important;
+        object-fit: contain !important;
     }
 
 /*BAELA*/
-    .baela-imagem img {
-        height: 660px;
-    }
-
-    .baela-conteudo {
-        max-width: 460px;
-        padding: 6vw;
-        padding-bottom: 130px;
-    }
-
-    .baela-conteudo p {
-        font-size: 13px;
-    }
-
-    .baela-conteudo h1 {
-        font-size: 25px;
-        margin-top: 50px;
-        margin-bottom: 10px;
-    }
-
-    .baela-conteudo h2 {
-        font-size: 20px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-    }
-
-    .baela-citação-final {
-        padding: 10px 0;
-        margin: 0;
-    }
-
-    .baela-sessao .logo-targaryen img {
-        width: 60px;
-    }
-
-/*ALICENT*/
-    .alicent-imagem img {
-        padding: 0 2vw;
-        margin: 0;
-        max-height: 690px;
-    }
-
-    .alicent-conteudo {
-        max-width: 870px;
-        padding: 4vw;
-        padding-left: 460px;
-        padding-bottom: 80px;
-        gap: 0;
-    }
-
-    .alicent-conteudo p {
-        font-size: 13px;
-    }
-
-    .alicent-conteudo h1 {
-        font-size: 25px;
-        margin-bottom: 18px;
-    }
-
-    .alicent-conteudo h2 {
-        font-size: 20px;
-        margin-top: 10px;
-        margin-bottom: 0px;
-    }
-
-    .alicent-sessao .logo-targaryen-verde {
-        left: 780px;
-    }
-
-    .alicent-sessao .logo-targaryen-verde img {
-        width: 89px;
-    }
-
-/*AEGON*/
-
-    .aegon-imagem img {
-        height: 660px;
-    }
-
-    .aegon-conteudo {
-        max-width: 480px;
-        padding: 6vw;
-        padding-bottom: 130px;
-    }
-
-    .aegon-conteudo p {
-        font-size: 13px;
-    }
-
-    .aegon-conteudo h1 {
-        font-size: 25px;
-        margin-top: 50px;
-        margin-bottom: 10px;
-    }
-
-    .aegon-conteudo h2 {
-        font-size: 20px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-    }
-
-    .aegon-citação-final {
-        padding: 10px 0;
-        margin: 0;
-    }
-    .aegon-sessao .logo-targaryen-verde img {
-        width: 89px;
-    }
-
-/*AEMOND*/
-    .aemond-imagem img {
-        padding: 0;
-        margin: 0;
-        max-height: 600px;
-    }
-
-    .aemond-conteudo {
-        max-width: 870px;
-        padding: 4vw;
-        padding-left: 460px;
-        padding-bottom: 80px;
-        gap: 0;
-    }
-
-    .aemond-conteudo p {
-        font-size: 13px;
-    }
-
-    .aemond-conteudo h1 {
-        font-size: 25px;
-        margin-bottom: 18px;
-    }
-
-    .aemond-conteudo h2 {
-        font-size: 20px;
-        margin-top: 10px;
-        margin-bottom: 0px;
-    }
-
-    .aemond-sessao .logo-targaryen-verde {
-        left: 780px;
-    }
-
-    .aemond-sessao .logo-targaryen-verde img {
-        width: 89px;
+    .baela-imagem img{
+        height: 700px !important;
     }
 
 /*HELAENA*/
-
-    .helaena-imagem img {
-        height: 710px;
+    .helaena-imagem img{
+        height: 770px !important;
     }
 
-    .helaena-conteudo {
-        max-width: 480px;
-        padding: 5vw;
-        padding-bottom: 130px;
+/*AEGON*/
+    .aegon-imagem img{
+        height: 700px !important;
     }
 
-    .helaena-conteudo p {
-        font-size: 13px;
+/*AEMOND*/
+    .aemond-imagem img{
+        height: 650px !important;
     }
 
-    .helaena-conteudo h1 {
-        font-size: 25px;
-        margin-top: 50px;
-        margin-bottom: 10px;
+/*ALICENT E CRISTON*/
+    .alicent-imagem img {
+        height: 750px !important;
     }
 
-    .helaena-conteudo h2 {
-        font-size: 20px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-    }
-
-    .helaena-citação-final {
-        padding: 10px 0;
-        margin: 0;
-    }
-    
-    .helaena-sessao .logo-targaryen-verde img {
-        width: 89px;
-    }
-
-/*CRISTON*/
     .criston-imagem img {
-        padding: 0;
-        margin: 0;
-        max-height: 640px;
+        height: 680px !important;
+        margin-left: -20px !important;
     }
 
-    .criston-conteudo {
-        max-width: 850px;
-        padding: 3vw;
-        padding-left: 520px;
-        padding-bottom: 80px;
-        gap: 0;
+    .os-verdes-titulo {
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
-    .criston-conteudo p {
-        font-size: 13px;    
+/*FOOTER*/
+    footer{
+        width: 100% !important;
+        height: 100vh !important;
+        max-height: 800vh !important;
     }
 
-    .criston-conteudo h1 {
-        font-size: 25px;
-        margin-bottom: 18px;
-    }
-
-    .criston-conteudo h2 {
-        font-size: 20px;
-        margin-top: 10px;
-        margin-bottom: 0px;
-    }
-
-    .criston-sessao .logo-targaryen-verde {
-        left: 780px;
-    }
-
-    .criston-sessao .logo-targaryen-verde img {
-        width: 89px;
+    .footer-conteudo{
+        padding-top: 10rem !important;
     }
 
     .footer-logo img{
-        width: 250px;
+        width: 300px !important;;
     }
 
     .redes-sociais h3{
-        font-size: 15px;
+        font-size: 18px !important;;
     }
 
     .redes-sociais li{
-        gap:2px;
+        gap: 0 !important;;
     }
 
-    .redes-sociais ul li a:nth-child(1) img {
-        width: 60px;
+    .redes-sociais a img {
+        width: 50px !important;;
     }
 
-    .redes-sociais ul li a:nth-child(5) img {
-        width: 60px;
+    .redes-sociais ul li:nth-child(1) a img {
+        width: 70px !important;; 
+        transform: translateY(-7px) !important;;        
+        padding: 0 !important;;
+        margin: 0 !important;;
     }
 
-    .redes-sociais ul li a:nth-child(6) img {
-        width: 42px;
-        padding-top: 5px;
+    .redes-sociais ul li:nth-child(5) a img {
+        width: 70px !important;; 
+        transform: translateY(-10px) !important;;
+    }
+
+    .redes-sociais ul li:nth-child(6) a img {
+        width: 40px !important;; 
+        transform: translateY(10px) !important;;
+    }
+
+    .footer-texto-infinito{
+        padding-top: 5rem !important;
     }
 }
 
-@media (max-width: 800px){
+@media (max-width: 1100px){
 
-    .header{
-        translate: 5px 0;
-        padding: 0;
-        margin: 0;
-    }
+    .header {
+        top: 50px;
+        left: 30px;
+        right: 60px;
+    }   
 
     .header-logo img{
         width: 50px;
@@ -5827,12 +5642,12 @@ footer{
     }
 
     .main-personagens img:first-child {
-        left: -38%;
+        left: -25%;
         height: 75vh;
     }
 
     .main-personagens img:last-child {
-        right: -38%;
+        right: -26%;
         height: 72vh;
     }
 
@@ -5845,9 +5660,7 @@ footer{
         font-size: 11px;
         margin: 0 0 100px 20px;
         padding: 0;
-        
     }
-
 
     .lealdade-conteudo{
         font-size: 30px;
@@ -7343,7 +7156,7 @@ footer{
     }
 
     .redes-sociais ul li a:nth-child(5) img {
-        width: 30px;
+        width: 30 px;
         transform: translateY(-5px);
     }
 
@@ -7458,3 +7271,4 @@ footer{
     outline-offset: 3px;
     border-radius: 2px;
 }
+ 
