@@ -7,7 +7,7 @@
 /* ============================================================
    01 · RESET
    ============================================================ */
-@import url('https://googleapis.com');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 *,
 *::before,
@@ -31,7 +31,7 @@ html {
     width: 100% !important;
     max-width: 100% !important;
     overflow-x: hidden !important;
-    
+    background-color: #0d0d0d;
 }
 
 body {
@@ -146,12 +146,6 @@ ol {
     --z-card: 3;
     --z-header: 100;
 }
-
-/* ============================================================
-   03 · GOOGLE FONTS IMPORT
-   ============================================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
 
 /* ============================================================
    04 · GLOBAL UTILITIES
@@ -515,6 +509,8 @@ ol {
     overflow: hidden;
 
     z-index: 0;
+
+    background-color: black;
 }
 
 .main-fundo img {
@@ -531,6 +527,8 @@ ol {
     transform-origin: center center;
 
     will-change: transform;
+
+    background-color: black;
 }
 
 .main::before {
@@ -1131,7 +1129,7 @@ ol {
 
 .os-negros-sessao {
     width: 100%;  
-    min-height: 80vh;
+    min-height: 100vh;
 
     display: flex;
     align-items: center; 
@@ -2094,7 +2092,7 @@ ol {
     right: 0;
     bottom: 0;
 
-    height: 800px;
+    height: 900px;
 
     display: flex;
     align-items: flex-end;
@@ -2116,7 +2114,7 @@ ol {
 }
 
 .rhaenys-imagem img {
-    height: 100%;
+    height: 90%;
     width: auto;
 
     object-fit: contain;
@@ -2971,7 +2969,7 @@ ol {
 
 .os-verdes-sessao {
     width: 100%;  
-    min-height: 80vh;
+    min-height: 100vh;
 
     display: flex;
     align-items: center; 
@@ -3945,7 +3943,7 @@ background: radial-gradient(
 
     z-index: 6;
 
-    height: 820px;
+    height: 900px;
 
     left: -120px;
     bottom: 0;
@@ -3970,7 +3968,7 @@ background: radial-gradient(
 }
 
 .aemond-imagem img {
-    height: 100%;
+    height: 90%;
     width: auto;
 
     object-fit: contain;
@@ -5311,8 +5309,16 @@ footer{
         width: 100% !important;
         max-width: 100% !important;
         overflow-x: hidden !important;
+        background-color: #070608 !important;
     }
 
+    .main-fundo{
+        width: 100% !important;
+        max-width: 100% !important;
+        background-size: cover !important; 
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+    }
     .header {
         top: 50px !important;
         left: 40px !important;
@@ -6593,14 +6599,14 @@ footer{
 
     .main-centro img {
         max-width: 50vw !important;
-        margin-left: 30px !important;
+        margin-left: 0px !important;
         padding: 0 !important;
         transform: translateY(20px) !important;
     }
 
     .abrir-trailer {
         font-size: 15px !important;
-        margin: 0 0 500px 0px !important;
+        margin: 0 30px 500px 0px !important;
         transform: translateY(30px) !important;
     }
 
@@ -7037,10 +7043,6 @@ footer{
         transform: translateX(20px) !important;
     }
     
-    .main-fundo img {
-        object-position: 50% !important;
-    }
-
     .main-personagens img:first-child {
         left: -49% !important;
         height: 55vh !important;
@@ -7053,14 +7055,14 @@ footer{
 
     .main-centro img {
         max-width: 70vw !important;
-        margin-left: 30px !important;
+        margin-left: 0px !important;
         padding: 0 !important;
         transform: translateY(20px) !important;
     }
 
     .abrir-trailer {
         font-size: 15px !important;
-        margin: 0 0 500px 0px !important;
+        margin: 0 30px 500px 0px !important;
         transform: translateY(30px) !important;
     }
 
@@ -7193,6 +7195,246 @@ footer{
 
     .footer-span{
         font-size: 12px !important;
+    }
+}
+
+@media (max-width: 425px){
+    html, body {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    .main-personagens img:first-child {
+        left: -56% !important;
+        height: 52vh !important;
+    }
+
+    .main-personagens img:last-child {
+        right: -55% !important;
+        height: 49vh !important;
+    }
+
+/*--GLOBAL--*/
+    .rhaenyra-card, 
+    .daemon-card, 
+    .rhaenys-card, 
+    .jacaerys-card, 
+    .baela-card, 
+    .alicent-card, 
+    .aegon-card, 
+    .aemond-card, 
+    .helaena-card, 
+    .criston-card{
+        width: 100% !important;
+        max-width: 290px !important;
+        max-height: 600px !important;
+    }
+
+ /*-- RHAENYS --*/
+     .rhaenys-imagem {
+        width: 50% !important;
+        height: auto !important;
+    }
+    .rhaenys-imagem img {
+        height: 220px !important;
+        transform: translateX(-30px) !important;
+    }
+
+/*-- JACAERYS--*/
+    .jacaerys-imagem img {
+        height: 260px !important;
+        transform: translateX(-30px) !important;
+    }
+
+/*-- BAELA--*/
+    .baela-imagem img {
+        height: 250px !important;
+        transform: translateX(-30px) !important;
+    }
+
+/*-- ALICENT --*/
+    .alicent-imagem img {
+        height: 280px !important;
+    }
+
+ /*-- HELAENA --*/
+
+    .helaena-imagem img {
+        height: 260px !important;
+        transform: translateX(25px) !important;
+    }
+    .helaena-card:hover .helaena-imagem img {
+       transform: scale(1.03) translateX(25px) !important;
+    }
+ /*-- AEGON --*/
+    .aegon-imagem img {
+        height: 250px !important;
+        transform: translateX(25px) !important;
+    }
+    .aegon-card:hover .aegon-imagem img {
+       transform: scale(1.03) translateX(25px) !important;
+    }
+ /*-- AEMOND --*/
+    .aemond-imagem img {
+        height: 240px !important;
+        transform: translateX(-25px) !important;
+    }
+    .aemond-card:hover .aemond-imagem img {
+       transform: scale(1.03) translateX(-25px) !important;
+    }
+     /*-- CRISTON --*/
+    .criston-imagem img {
+        height: 280px !important;
+        transform: translateX(-60px) !important;
+    }
+    .criston-card:hover .criston-imagem img {
+       transform: scale(1.03) translateX(-60px) !important;
+    }
+}
+
+@media (max-width: 375px){
+    html, body {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    .main-personagens img:first-child {
+        left: -65% !important;
+        height: 52vh !important;
+    }
+
+    .main-personagens img:last-child {
+        right: -65% !important;
+        height: 49vh !important;
+    }
+
+    .main-centro img{
+        margin: 0 !important;
+    }
+
+    .abrir-trailer{
+        font-size: 13px !important;
+        margin-right: 30px !important;
+    }
+
+    .os-negros-conteudo{
+        padding: 2vw !important;
+    }
+
+/*--GLOBAL--*/
+    .rhaenyra-card, 
+    .daemon-card, 
+    .rhaenys-card, 
+    .jacaerys-card, 
+    .baela-card, 
+    .alicent-card, 
+    .aegon-card, 
+    .aemond-card, 
+    .helaena-card, 
+    .criston-card {
+        width: 100% !important;
+        max-width: 250px !important;
+        max-height: 600px !important;
+    }
+
+    .rhaenyra-citação-final,
+    .daemon-citação-final,
+    .rhaenys-citação-final,
+    .jacaerys-citação-final,
+    .baela-citação-final,
+    .alicent-citação-final,
+    .aegon-citação-final,
+    .aemond-citação-final,
+    .helaena-citação-final,
+    .criston-citação-final {
+        padding: 0 !important;
+    }
+
+/*-- RHAENYS --*/
+    .rhaenyra-imagem img {
+        height: 250px !important;
+    }
+
+/*-- DAEMON --*/
+    .daemon-imagem img {
+        height: 260px !important;
+        transform: translateX(20px) !important;
+    }
+
+    .daemon-card:hover .daemon-imagem img {
+       transform: scale(1.03) translateX(22px) !important;
+    }
+
+ /*-- RHAENYS --*/
+     .rhaenys-imagem {
+        width: 50% !important;
+        height: auto !important;
+    }
+    .rhaenys-imagem img {
+        height: 200px !important;
+        transform: translateX(-30px) !important;
+    }
+
+/*-- JACAERYS--*/
+    .jacaerys-conteudo{
+        margin-left: 15px !important;
+    }
+
+    .jacaerys-imagem img {
+        height: 260px !important;
+        transform: translateX(-40px) !important;
+
+        border-radius: 20px !important;
+    }
+    .jacaerys-card:hover .jacaerys-imagem img {
+       transform: scale(1.03) translateX(-40px) !important;
+    }
+
+/*-- BAELA--*/
+    .baela-imagem img {
+        height: 250px !important;
+        transform: translateX(-30px) !important;
+    }
+
+/*-- ALICENT --*/
+    .alicent-imagem img {
+        height: 280px !important;
+    }
+
+ /*-- HELAENA --*/
+
+    .helaena-imagem img {
+        height: 260px !important;
+        transform: translateX(25px) !important;
+    }
+    .helaena-card:hover .helaena-imagem img {
+       transform: scale(1.03) translateX(25px) !important;
+    }
+ /*-- AEGON --*/
+    .aegon-imagem img {
+        height: 250px !important;
+        transform: translateX(25px) !important;
+    }
+    .aegon-card:hover .aegon-imagem img {
+       transform: scale(1.03) translateX(25px) !important;
+    }
+ /*-- AEMOND --*/
+    .aemond-imagem img {
+        height: 240px !important;
+        transform: translateX(-25px) !important;
+    }
+    .aemond-card:hover .aemond-imagem img {
+       transform: scale(1.03) translateX(-25px) !important;
+    }
+     /*-- CRISTON --*/
+    .criston-imagem img {
+        height: 280px !important;
+        transform: translateX(-60px) !important;
+    }
+    .criston-card:hover .criston-imagem img {
+       transform: scale(1.03) translateX(-60px) !important;
     }
 }
 /* ============================================================
