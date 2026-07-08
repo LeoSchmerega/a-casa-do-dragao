@@ -1,3 +1,15 @@
+// GSAP para scrollar
+gsap.registerPlugin(ScrollTrigger,ScrollSmoother,SplitText)
+
+const smoother = ScrollSmoother.create({
+    wrapper: "#smooth-wrapper",
+    content: "#smooth-content",
+    smooth: 1.8,
+    effects: true,
+    normalizeScroll: true
+});
+
+// MENU
 const dadosFaccoes = {
     negros: [
         { nome: "Rhaenyra Targaryen", imagem: "MENU/RHAENYRA.png" },
@@ -15,7 +27,7 @@ const dadosFaccoes = {
     ]
 };
 
-// Caminho global da imagem de fundo padrão do menu
+
 const IMAGEM_PADRAO = "MENU/TRONO.webp"; 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -234,74 +246,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-
-
-//vnsdunvu9sn9uvw''
-
-const verdeBtn = document.querySelector('.verde-btn');
-
-const pretoBtn = document.querySelector('.preto-btn');
-
-const sessaoLealdade =
-    document.querySelector('.lealdade-sessao');
-
-const resultado =
-    document.querySelector('.resultado-lealdade');
-
-
-
-verdeBtn.addEventListener('click', () => {
-
-    sessaoLealdade.classList.remove('escolha-preto');
-
-    sessaoLealdade.classList.add('escolha-verde');
-
-    resultado.classList.add('ativo');
-
-    resultado.innerHTML =
-        'VOCÊ JUROU LEALDADE AOS VERDES';
-});
-
-
-
-pretoBtn.addEventListener('click', () => {
-
-    sessaoLealdade.classList.remove('escolha-verde');
-
-    sessaoLealdade.classList.add('escolha-preto');
-
-    resultado.classList.add('ativo');
-
-    resultado.innerHTML =
-        'VOCÊ JUROU LEALDADE A RHAENYRA';
-});
-
 //--NÉVOA--//
-/**
- * Efeito de Paralaxe Dinâmico para a Névoa da Alicent
- * Captura os movimentos do mouse e atualiza as coordenadas CSS em tempo real.
- */
+
 document.addEventListener('DOMContentLoaded', () => {
     const containerNevoa = document.querySelector('.nevoa');
 
-    // Só roda o script se o elemento realmente existir na tela (Evita erros no console)
     if (!containerNevoa) return;
 
     window.addEventListener('mousemove', (event) => {
         const { clientX, clientY } = event;
         const { innerWidth, innerHeight } = window;
 
-        // Transforma a posição do mouse em uma escala de -0.5 a 0.5 (Centro da tela é 0)
         const posX = (clientX / innerWidth) - 0.5;
         const posY = (clientY / innerHeight) - 0.5;
 
-        // Intensidade máxima do movimento em pixels (Sutil e elegante)
         const intensidade = 25; 
 
         const moverX = (posX * intensidade).toFixed(2);
         const moverY = (posY * intensidade).toFixed(2);
 
-        // Aplica os valores diretamente nas variáveis do CSS
         containerNevoa.style.setProperty('--mx', `${moverX}px`);
         containerNevoa.style.setProperty('--my', `${moverY}px`);
     });

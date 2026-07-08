@@ -204,6 +204,7 @@ ol {
 }
 
 .header-logo img {
+    position: sticky;
     width: 60px;
     height: auto;
     display: block;
@@ -221,6 +222,7 @@ ol {
 }
 
 .header-menu-btn img {
+    position: sticky;
     width: 48px;
     height: auto;
     filter: brightness(0) saturate(100%) invert(77%) sepia(26%) saturate(635%) hue-rotate(10deg);
@@ -758,7 +760,8 @@ ol {
 .fechar-trailer {
     position: absolute;
 
-    bottom: 40px;
+    top: 40px;
+    right: 50px;
 
     width: 56px;
     height: 56px;
@@ -794,7 +797,7 @@ ol {
 .proximo-trailer {
     position: absolute;
 
-    right: 50px;
+    right: 250px;
     top: 50%;
 
     transform: translateY(-50%);
@@ -836,7 +839,7 @@ ol {
 .proximo-trailer span {
     position: absolute;
 
-    right: 85px;
+    left: 80px;
     top: 50%;
 
     transform: translateY(-40%);
@@ -869,7 +872,7 @@ ol {
     opacity: 1;
     visibility: visible;
 
-    right: 95px;
+    left: 80px;
 }
 
 /* ==========================================
@@ -5178,6 +5181,22 @@ footer{
         font-size: 19px !important;
         margin-left: 20px !important;
     }
+/*--TRAILER--*/
+    .fechar-trailer{
+        right: 30px !important;
+    }
+    .proximo-trailer{
+        width: 60px !important;
+        height: 60px !important;
+        right: 30px !important;
+        font-size: 22px !important;
+    }
+    .proximo-trailer:hover{
+        font-size: 22px !important;
+    }
+    .proximo-trailer span {
+        display: none !important;
+    }
 
 /*GLOBAL*/
     .rhaenyra-card, .daemon-card, .rhaenys-card, .jacaerys-card, .baela-card,
@@ -5766,6 +5785,15 @@ footer{
         margin: 0 0 100px 20px !important;
         padding: 0 !important;
     }
+
+/*--TRAILER--*/ 
+    .trailer-conteudo, 
+    .video-trailer {
+        max-width: 93% !important;
+        margin: 0 auto !important;
+    }
+
+/*--LEALDADE--*/
     .lealdade-conteudo{
         font-size: 30px !important;
     }
@@ -6321,6 +6349,16 @@ footer{
         margin: 0 0 350px -10px !important;
         transform: translateY(70px) !important;
     }
+/* --TRAILER-- */ 
+    .trailer-conteudo, 
+    .video-trailer {
+        max-width: 90% !important;
+        margin: 0 auto !important;
+    }
+    .proximo-trailer {
+        position: absolute !important;
+    }
+
 /* --MENU-- */ 
     .lista-personagens-container {
         flex: 0 0 40% !important;         
@@ -7287,15 +7325,101 @@ footer{
         max-width: 100% !important;
         overflow-x: hidden !important;
     }
-
     .main-personagens img:first-child {
         left: -56% !important;
         height: 52vh !important;
     }
-
     .main-personagens img:last-child {
         right: -55% !important;
         height: 49vh !important;
+    }
+    .conteudo-menu {
+        display: flex !important;
+        flex-direction: column !important;
+        height: 100vh !important;
+        overflow-y: auto !important;    
+    }
+    .previa-personagem {
+        flex: 0 0 40vh !important; 
+        width: 100% !important;
+        height: 40vh !important;
+    }
+    .lista-personagens-container {
+        display: grid !important;
+        justify-content: center !important;
+        align-items: center !important;       
+    }
+    .botao-fechar-menu{
+        position: fixed !important;
+        
+        top: 20px !important;
+        right: 20px !important;
+        
+        z-index: 10000 !important;
+        
+        background: rgba(7, 6, 8, 0.5) !important;
+        border-radius: 50% !important;
+        width: 45px !important;
+        height: 45px !important;
+        
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 28px !important; 
+        line-height: 1 !important;
+    }
+
+/* --TRAILER-- */ 
+    .trailer {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        gap: 24px !important;
+    }
+    .trailer-conteudo {
+        width: 100% !important;
+        max-width: 100% !important;
+        order: 2 !important; /
+    }
+    .video-trailer {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        border-radius: 8px !important;
+    }
+    .fechar-trailer {
+        position: static !important; 
+        order: 1 !important; 
+        font-size: 24px !important;
+        cursor: pointer !important;
+        align-self: center !important; 
+        padding: 0 10px !important;
+    }
+    .proximo-trailer {
+        position: static !important; 
+        transform: none !important;
+        order: 3 !important; 
+        
+        width: 55px !important;
+        height: 55px !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+    }
+    .proximo-trailer:hover {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;        
+        background: rgba(255, 255, 255, 0.16) !important;
+        border-color: rgba(255, 255, 255, 0.3) !important;
+    }
+    .proximo-trailer span {
+        display: none !important;
     }
 
 /*--GLOBAL--*/
