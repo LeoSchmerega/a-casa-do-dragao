@@ -316,9 +316,10 @@ ol {
     height: 100%;
     display: block;
     object-fit: cover; 
-    margin-top: 10vh;
+
+    margin-top: 0;
     
-    object-position: center top; 
+    object-position: center center !important;
 
     transition: opacity 0.4s ease-in-out;
 
@@ -328,7 +329,9 @@ ol {
     transform-style: preserve-3d;
     image-rendering: -webkit-optimize-contrast;
     
-    transform: scale(1.1) translate3d(0, 0, 0);
+    transform-origin: center 5% !important;
+
+    transform: scale(1.05) translate3d(0, 0, 0);
 }
 
 .menu-overlay.ativo #imagem-previa-personagem {
@@ -472,14 +475,13 @@ ol {
 
 @keyframes hboPanAndZoom {
     0% {
-     
-        transform: scale(1.15) translate3d(0, 30px, 0);
+        transform: scale(1.05) translate3d(0, -5px, 0);
     }
     50% {
-        transform: scale(1.2) translate3d(-20px, 25px, 0); 
+        transform: scale(1.12) translate3d(-10px, 5px, 0); 
     }
     100% {
-        transform: scale(1.15) translate3d(15px, 30px, 0);   
+        transform: scale(1.05) translate3d(10px, -5px, 0);   
     }
 }
 /* =========================================
@@ -5084,33 +5086,71 @@ footer{
         max-width: 100% !important;
         overflow-x: hidden !important;
     }
-    
     .header {
         top: 50px !important;
         left: 35px !important;
         right: 60px !important;
     }
-
     .header-logo img{
         width: 80px !important;
     }
 
-    .menu-overlay{
+/* --MENU-- */ 
+    .conteudo-menu {
+        display: flex !important;
+        flex-direction: row !important;
         width: 100% !important;
-        height: auto !important;
+        height: 100vh !important;
+        align-items: stretch !important;
     }
-
-    .previa-personagem img{
-        width: 40% !important;
+    #imagem-previa-personagem {
+        object-position: center center !important;
+        transform-origin: center 15% !important; 
     }
-
-    .conteudo-menu{
-        width: 62% !important;
-        height: auto !important;
+    .previa-personagem {
+        flex: 0 0 60% !important; 
+        height: 100vh !important;
+        overflow: hidden !important;
     }
-
+    .previa-personagem img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important; 
+    }
+    .lista-personagens-container {
+        flex: 0 0 40% !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;        
+        align-items: center !important; 
+        padding: 120px 40px 40px 40px !important;        
+        box-sizing: border-box !important;
+    }
     .lista-personagens-container li{
-        font-size: 35px !important;
+        font-size: 34px !important;
+    }
+    .nav-menu {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+        gap: 30px !important; 
+        margin-bottom: 45px !important;
+        width: 100% !important;
+    }
+    .botao-aba {
+        font-size: 1.4rem !important;
+        white-space: nowrap !important; 
+    }
+    .lista-personagens {
+        width: 100% !important;
+        max-width: 600px !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 24px !important; 
+        text-align: center !important;
+        list-style: none;
+        padding: 0;
+        margin: 0;
     }
 
 /*MAIN*/
@@ -5311,7 +5351,6 @@ footer{
         overflow-x: hidden !important;
         background-color: #070608 !important;
     }
-
     .main-fundo{
         width: 100% !important;
         max-width: 100% !important;
@@ -5321,30 +5360,66 @@ footer{
     }
     .header {
         top: 50px !important;
-        left: 40px !important;
-        right: 60px !important;
+        left: 35px !important;
+        right: 40px !important;
     }
-
     .header-logo img{
-        width: 80px !important;
+        width: 70px !important;
     }
 
-    .menu-overlay{
+/* --MENU-- */ 
+    .conteudo-menu {
+        display: flex !important;
+        flex-direction: row !important;
         width: 100% !important;
-        height: auto !important;
+        height: 100vh !important;
+        align-items: stretch !important;
     }
-
-    .previa-personagem img{
-        width: 30% !important;
+    #imagem-previa-personagem {
+        object-position: center center !important;
+        transform-origin: center 15% !important;
     }
-
-    .conteudo-menu{
-        width: 62% !important;
-        height: auto !important;
+    .previa-personagem {
+        flex: 0 0 50% !important; 
+        height: 100vh !important;
+        overflow: hidden !important;
     }
-
-    .lista-personagens-container li{
-        font-size: 35px !important;
+    .previa-personagem img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important; 
+    }
+    .lista-personagens-container {
+        flex: 0 0 50% !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;        
+        align-items: center !important; 
+        padding: 120px 40px 40px 40px !important;        
+        box-sizing: border-box !important;
+    }
+    .nav-menu {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        gap: 30px !important; 
+        margin-bottom: 45px !important;
+        width: 100% !important;
+    }
+    .botao-aba {
+        font-size: 1.4rem !important;
+        white-space: nowrap !important; 
+    }
+    .lista-personagens {
+        width: 100% !important;
+        max-width: 600px !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 24px !important; 
+        text-align: center !important;
+        list-style: none;
+        padding: 0;
+        margin: 0;
     }
 
 /*MAIN*/
@@ -5634,46 +5709,63 @@ footer{
 
 @media (max-width: 1100px){
     html, body {
+        margin: 0 !important;
+        padding: 0 !important;
         width: 100% !important;
-        max-width: 100% !important;
-        overflow-x: hidden !important;
+        height: 100% !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden; 
     }
-
     .header {
         top: 50px !important;
         left: 20px !important;
-        right: 60px !important;
+        right: 25px !important;
     }   
-
     .header-logo img{
-        width: 65px !important;
+        width: 60px !important;
     }
-    
     .main-fundo img {
         object-position: 50% !important;
     }
 
+/* --MENU-- */ 
+    .lista-personagens-container {
+        flex: 0 0 40% !important;         
+    }
+    .lista-personagens {
+        width: 100% !important;
+        max-width: 600px !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 24px !important; 
+        text-align: center !important;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .lista-personagens li{
+        font-size: 22px !important;
+    }
+    .botao-aba {
+        font-size: 18px !important;
+    }
     .main-personagens img:first-child {
         left: -25% !important;
         height: 75vh !important;
     }
-
     .main-personagens img:last-child {
         right: -26% !important;
         height: 72vh !important;
     }
-
     .main-centro img {
         max-width: 32vw !important;
         padding: 0 !important;
     }
-
     .abrir-trailer {
         font-size: 14px !important;
         margin: 0 0 100px 20px !important;
         padding: 0 !important;
     }
-
     .lealdade-conteudo{
         font-size: 30px !important;
     }
@@ -5921,41 +6013,33 @@ footer{
         max-width: 100% !important;
         overflow-x: hidden !important;
     }
-
     .header {
         top: 50px !important;
-        left: 14px !important;
-        right: 30px !important;
+        left: 15px !important;
+        right: 20px !important;
     }   
-
     .header-logo img{
-        width: 60px !important;
+        width: 55px !important;
     }
-    
     .main-fundo img {
         object-position: 50% !important;
     }
-
     .main-personagens img:first-child {
         left: -30% !important;
         height: 75vh !important;
     }
-
     .main-personagens img:last-child {
         right: -31% !important;
         height: 72vh !important;
     }
-
     .main-centro img {
         max-width: 30vw !important;
         padding: 0 !important;
     }
-
     .abrir-trailer {
         font-size: 13px !important;
         margin: 0 0 150px 20px !important;
     }
-
     .lealdade-conteudo{
         font-size: 30px !important; 
     }
@@ -6201,50 +6285,63 @@ footer{
     }
 }
 
-@media (max-width: 801px){
+@media (max-width: 800px){
     html, body {
         width: 100% !important;
         max-width: 100% !important;
         overflow-x: hidden !important;
     }
-
     .header {
         top: 50px !important;
-        left: 18px !important;
-        right: 30px !important;
+        left: 15px !important;
+        right: 25px !important;
     }   
-
     .header-logo img{
         width: 60px !important;
     }
-    
     .main-fundo img {
         object-position: 50% !important;
     }
-
     .main-personagens img:first-child {
         left: -35% !important;
         height: 70vh !important;
     }
-
     .main-personagens img:last-child {
         right: -38% !important;
         height: 67vh !important;
     }
-
     .main-centro img {
         max-width: 35vw !important;
         margin-left: 20px !important;
         padding: 0 !important;
         transform: translateY(50px) !important;
     }
-
     .abrir-trailer {
         font-size: 14px !important;
         margin: 0 0 350px -10px !important;
         transform: translateY(70px) !important;
     }
-
+/* --MENU-- */ 
+    .lista-personagens-container {
+        flex: 0 0 40% !important;         
+    }
+    .botao-aba {
+        font-size: 15px !important;
+    }
+    .lista-personagens {
+        width: 100% !important;
+        max-width: 600px !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important; 
+        text-align: center !important;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .lista-personagens li{
+        font-size: 20px !important;
+    }
 /*--LEALDADE--*/
     .lealdade-conteudo{
         font-size: 30px !important; 
@@ -6572,38 +6669,31 @@ footer{
         max-width: 100% !important;
         overflow-x: hidden !important;
     }
-
     .header {
         top: 50px !important;
-        left: 10px !important;
-        right: 30px !important;
+        left: 12px !important;
+        right: 20px !important;
     }   
-
     .header-logo img{
         width: 50px !important;
     }
-    
     .main-fundo img {
         object-position: 50% !important;
     }
-
     .main-personagens img:first-child {
         left: -40% !important;
         height: 62vh !important;
     }
-
     .main-personagens img:last-child {
         right: -43% !important;
         height: 58vh !important;
     }
-
     .main-centro img {
         max-width: 50vw !important;
         margin-left: 0px !important;
         padding: 0 !important;
         transform: translateY(20px) !important;
     }
-
     .abrir-trailer {
         font-size: 15px !important;
         margin: 0 30px 500px 0px !important;
@@ -7028,38 +7118,31 @@ footer{
         max-width: 100% !important;
         overflow-x: hidden !important;
     }
-
     .header {
         top: 50px !important;
-        left: 10px !important;
-        right: 30px !important;
+        left: 8px !important;
+        right: 35px !important;
     }   
-    
     .header-logo img{
         width: 50px !important;
     }
-
     .header-menu-btn {
         transform: translateX(20px) !important;
-    }
-    
+    }  
     .main-personagens img:first-child {
         left: -49% !important;
         height: 55vh !important;
     }
-
     .main-personagens img:last-child {
         right: -50% !important;
         height: 53vh !important;
     }
-
     .main-centro img {
         max-width: 70vw !important;
         margin-left: 0px !important;
         padding: 0 !important;
         transform: translateY(20px) !important;
     }
-
     .abrir-trailer {
         font-size: 15px !important;
         margin: 0 30px 500px 0px !important;
@@ -7352,12 +7435,19 @@ footer{
         padding: 0 !important;
     }
 
-/*-- RHAENYS --*/
+/*-- RHAENYRA --*/
+    .rhaenyra-conteudo{
+        transform: translateY(-30px) !important;
+
+    }
     .rhaenyra-imagem img {
-        height: 250px !important;
+        height: 270px !important;
     }
 
 /*-- DAEMON --*/
+    .daemon-conteudo{
+        transform: translateY(-10px) !important;
+    }
     .daemon-imagem img {
         height: 260px !important;
         transform: translateX(20px) !important;
@@ -7368,17 +7458,21 @@ footer{
     }
 
  /*-- RHAENYS --*/
+    .rhaenys-conteudo{
+        transform: translateY(-30px) !important;       
+    }
      .rhaenys-imagem {
         width: 50% !important;
         height: auto !important;
     }
     .rhaenys-imagem img {
-        height: 200px !important;
+        height: 235px !important;
         transform: translateX(-30px) !important;
     }
 
 /*-- JACAERYS--*/
     .jacaerys-conteudo{
+        transform: translateY(-10px) !important;
         margin-left: 15px !important;
     }
 
@@ -7393,9 +7487,16 @@ footer{
     }
 
 /*-- BAELA--*/
+    .baela-conteudo{
+        transform: translateY(-30px) !important;
+
+    }
     .baela-imagem img {
-        height: 250px !important;
-        transform: translateX(-30px) !important;
+        height: 220px !important;
+        transform: translateX(15px) !important;
+    }
+    .baela-card:hover .baela-imagem img {
+       transform: scale(1.03) translateX(15px) !important;
     }
 
 /*-- ALICENT --*/
@@ -7403,39 +7504,374 @@ footer{
         height: 280px !important;
     }
 
- /*-- HELAENA --*/
-
-    .helaena-imagem img {
-        height: 260px !important;
-        transform: translateX(25px) !important;
-    }
-    .helaena-card:hover .helaena-imagem img {
-       transform: scale(1.03) translateX(25px) !important;
-    }
  /*-- AEGON --*/
+    .aegon-conteudo{
+        transform: translateY(-50px) !important;
+
+    }
     .aegon-imagem img {
-        height: 250px !important;
+        height: 240px !important;
         transform: translateX(25px) !important;
     }
     .aegon-card:hover .aegon-imagem img {
        transform: scale(1.03) translateX(25px) !important;
     }
+
  /*-- AEMOND --*/
+    .aemond-conteudo{
+        transform: translateY(10px) !important;
+    }
     .aemond-imagem img {
-        height: 240px !important;
+        height: 215px !important;
         transform: translateX(-25px) !important;
     }
     .aemond-card:hover .aemond-imagem img {
        transform: scale(1.03) translateX(-25px) !important;
     }
-     /*-- CRISTON --*/
+
+ /*-- HELAENA --*/
+    .helaena-conteudo{
+        transform: translateY(-45px) !important;
+
+    }
+    .helaena-imagem img {
+        height: 280px !important;
+        transform: translateX(25px) !important;
+    }
+    .helaena-card:hover .helaena-imagem img {
+       transform: scale(1.03) translateX(25px) !important;
+    }
+
+/*-- CRISTON --*/
+    .criston-conteudo{
+        transform: translateY(-20px) !important;
+    }
     .criston-imagem img {
         height: 280px !important;
-        transform: translateX(-60px) !important;
+        transform: translateX(-100px) !important;
     }
     .criston-card:hover .criston-imagem img {
+       transform: scale(1.03) translateX(-100px) !important;
+    }
+}
+
+@media (max-width: 325px){
+    html, body {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+    .header {
+        left: 1px !important;
+        right: 30px !important;
+    }   
+    .header-logo img{
+        width: 45px !important;
+    }
+    .header-menu-btn img{
+        left: 10px !important;
+    }
+    .main-personagens img:first-child {
+        left: -82% !important;
+        height: 52vh !important;
+    }
+    .main-personagens img:last-child {
+        right: -80% !important;
+        height: 49vh !important;
+    }
+    .main-centro img{
+        margin: 0 !important;
+    }
+    .abrir-trailer{
+        font-size: 12px !important;
+        margin-right: 30px !important;
+    }
+    .os-negros-conteudo{
+        padding: 2vw !important;
+    }
+    .os-negros-conteudo h2{
+        font-size: 50px !important;
+    }
+    .os-negros-citação{
+        font-size: 20px !important;
+    }
+
+/*--GLOBAL--*/
+    .rhaenyra-card, 
+    .daemon-card, 
+    .rhaenys-card, 
+    .jacaerys-card, 
+    .baela-card, 
+    .alicent-card, 
+    .aegon-card, 
+    .aemond-card, 
+    .helaena-card, 
+    .criston-card {
+        width: 100% !important;
+        min-width: 220px !important;
+        min-height: 600px !important;
+    }
+
+    .rhaenyra-conteudo,
+    .daemon-conteudo,
+    .rhaenys-conteudo,
+    .jacaerys-conteudo,
+    .baela-conteudo,
+    .alicent-conteudo,
+    .aegon-conteudo,
+    .aemond-conteudo,
+    .helaena-conteudo,
+    .criston-conteudo {
+        padding: 20px !important;
+    }
+
+    .logo-targaryen img {
+        width: 45px !important;
+    }
+
+    .daemon-sessao .logo-targaryen,
+    .jacaerys-sessao .logo-targaryen {
+        right: 20px !important;  
+    }
+
+    .daemon-sessao .logo-targaryen img,
+    .jacaerys-sessao .logo-targaryen img{
+        width: 45px !important;
+    }
+
+    .alicent-sessao .logo-targaryen-verde,
+    .aemond-sessao .logo-targaryen-verde,
+    .criston-sessao .logo-targaryen-verde{
+        right: 10px !important;  
+    }
+
+    .alicent-sessao .logo-targaryen-verde img,
+    .aemond-sessao .logo-targaryen-verde img,
+    .criston-sessao .logo-targaryen-verde img {
+        width: 60px !important;
+    }
+
+    .aegon-sessao .logo-targaryen-verde,
+    .helaena-sessao .logo-targaryen-verde {
+        position: absolute !important;
+        bottom: 15px !important;
+        top: auto !important;       
+        left: 10px !important;   
+    }
+
+    .aegon-sessao .logo-targaryen-verde img,
+    .helaena-sessao .logo-targaryen-verde img {
+        width: 60px !important;
+    }
+    
+/*-- RHAENYRA --*/
+    .rhaenyra-conteudo{
+        transform: translateY(-10px) !important;
+    }
+    .rhaenyra-imagem img {
+        height: 280px !important;
+        transform: translateX(45px) !important;
+    }  
+    .rhaenyra-card:hover .rhaenyra-imagem img {
+       transform: scale(1.03) translateX(45px) !important;
+    }
+/*-- DAEMON --*/
+    .daemon-card{
+        max-width: 220px !important;
+        overflow: hidden !important;
+    }
+
+    .daemon-conteudo{
+        margin-left: 10px !important;
+        transform: translateY(-120px) !important;
+    }
+    .daemon-imagem img {
+        height: 260px !important;
+        transform: translateX(10px) !important;
+    }
+
+    .daemon-card:hover .daemon-imagem img {
+       transform: scale(1.03) translateX(10px) !important;
+    }
+
+ /*-- RHAENYS --*/
+    .rhaenys-conteudo{
+        padding: 25px !important;
+        margin-left: 10px !important;
+        transform: translateY(-10px) !important;       
+    }
+
+    .rhaenys-imagem {
+        width: 100% !important;
+        height: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .rhaenys-imagem img {
+        height: 225px !important;
+        transform: translateX(50px) !important;
+    }
+
+    .rhaenys-card:hover .rhaenys-imagem img {
+       transform: scale(1.03) translateX(50px) !important;
+    }
+
+/*-- JACAERYS--*/
+    .jacaerys-card{
+        max-width: 220px !important;
+        overflow: hidden !important;
+    }
+    .jacaerys-conteudo{
+        transform: translateY(-120px) !important;
+        margin-left: 5px !important;
+        padding: 25px !important;
+    }
+    .jacaerys-imagem img {
+        overflow: hidden !important;
+        height: 260px !important;
+        transform: translateX(-60px) !important;
+
+        border-radius: 30px !important;
+    }
+    .jacaerys-card:hover .jacaerys-imagem img {
        transform: scale(1.03) translateX(-60px) !important;
     }
+
+/*-- BAELA--*/
+    .baela-card{
+        max-width: 220px !important;
+    }
+    .baela-conteudo{
+        margin-left: 5px !important;
+        padding: 25px !important;
+        transform: translateY(-15px) !important;
+    }
+    .baela-imagem img {
+        height: 250px !important;
+        transform: translateX(10px) !important;
+    }
+    .baela-card:hover .baela-imagem img {
+       transform: scale(1.03) translateX(10px) !important;
+    }
+
+/*-- ALICENT --*/
+    .alicent-card {
+        max-width: 220px !important;
+        position: relative !important;
+        overflow: hidden !important; 
+    }
+    .alicent-conteudo{
+        transform: translateY(-120px) !important;
+    }
+
+    .alicent-imagem img {
+        height: 280px !important;
+        transform: translateX(20px) !important;
+    }
+
+    .alicent-card:hover .alicent-imagem img {
+       transform: scale(1.03) translateX(20px) !important;
+    }
+ /*-- AEGON --*/
+    .aegon-card{
+        max-width: 220px !important;
+    }
+    .aegon-conteudo{
+        transform: translateY(-20px) !important;
+    }
+
+ /*-- AEMOND --*/
+    .aemond-card{
+        max-width: 220px !important;
+        overflow: hidden !important;
+    }
+    .aemond-conteudo{
+        transform: translateY(-110px) !important;
+    }
+    .aemond-imagem img {
+        height: 220px !important;
+        transform: translateX(-40px) !important;
+    }
+    .aemond-card:hover .aemond-imagem img {
+       transform: scale(1.03) translateX(-40px) !important;
+    }
+
+ /*-- HELAENA --*/
+    .helaena-card{
+        max-width: 220px !important;
+    }
+    .helaena-conteudo{
+        transform: translateY(-20px) !important;
+    }
+    .helaena-imagem img {
+        height: 280px !important;
+        transform: translateX(25px) !important;
+    }
+    .helaena-card:hover .helaena-imagem img {
+       transform: scale(1.03) translateX(25px) !important;
+    }
+
+/*-- CRISTON --*/
+    .criston-card{
+        max-width: 220px !important;
+    }
+    .criston-conteudo{
+        transform: translateY(-120px) !important;
+    }
+    .criston-imagem img {
+        height: 280px !important;
+        transform: translateX(-100px) !important;
+    }
+    .criston-card:hover .criston-imagem img {
+       transform: scale(1.03) translateX(-100px) !important;
+    }
+        .footer-conteudo {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 30px !important;
+        margin-top: 120px !important;
+        padding: 0 !important;  
+    }
+
+/*-- FOOTER --*/
+    .footer-logo img{
+        width: 250px !important;
+    }
+    .redes-sociais h3{
+        font-size: 12px !important;
+    }
+    .redes-sociais ul{
+        gap: 8px !important;
+    }
+
+    .redes-sociais ul li:nth-child(1) a img {
+        width: 45px !important;
+    }
+    .redes-sociais ul li:nth-child(2) a img {
+        width: 35px !important;
+    }
+    .redes-sociais ul li:nth-child(3) a img {
+        width: 35px !important;
+    }
+    .redes-sociais ul li:nth-child(4) a img {
+        width: 35px !important;
+    }
+    .redes-sociais ul li:nth-child(5) a img {
+        width: 50px !important;
+    }
+    .redes-sociais ul li:nth-child(6) a img {
+        width: 25px !important;
+        translate: 0px -5px !important;
+    }
+    .footer-texto-infinito h3{
+        font-size: 70px !important;
+    }
+    .footer-span{
+        font-size: 9px !important;
+        padding: 1vw !important;
+    }
+
 }
 /* ============================================================
    SCROLL-DRIVEN SECTION REVEALS
