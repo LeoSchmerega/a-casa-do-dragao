@@ -1,13 +1,136 @@
 // GSAP para scrollar
 gsap.registerPlugin(ScrollTrigger,ScrollSmoother,SplitText)
 
-const smoother = ScrollSmoother.create({
+const smoother = ScrollSmoother.create( {
     wrapper: "#smooth-wrapper",
     content: "#smooth-content",
     smooth: 1.8,
     effects: true,
     normalizeScroll: true
 });
+
+function animarPagina() {    
+
+// MAIN
+gsap.from(".main-fundo", {
+    opacity: 0,
+    y: -150,
+    duration: 1,
+    ease: "power3.out"
+})
+
+gsap.from(".main-personagens img", {
+    opacity: 0,
+    y: 100,
+    duration: 1,
+    ease: "power2.out"
+})
+
+gsap.from(".main-centro", {
+    opacity: 0,
+    y: 100,
+    duration: 1,
+    ease: "power2.out"
+})
+
+gsap.fromTo(".main", {
+        opacity: 1
+    }, 
+    {
+        opacity: 0, 
+        filter: "blur(10px)",
+        scrollTrigger: {
+            trigger: ".main",
+            scrub: true,
+            start: "20% 0%", 
+            end: "80% 0%"  
+        }
+    }
+);
+
+}
+// SEÇOES ANIMADAS
+const secoes = gsap.utils.toArray(".secao-animada");
+
+secoes.forEach((secao) => {
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: secao,
+            scrub: true,
+            markers: true,
+            start: "top 80%",   
+            end: "bottom 20%",  
+            invalidateOnRefresh: true
+        }
+    });
+
+    //Surgindo com fade e removendo o blur
+    tl.fromTo(secao, 
+        {
+            opacity: 0,
+            filter: "blur(15px)",
+            y: 80
+        },
+        {
+            opacity: 1,
+            filter: "blur(0px)",
+            y: 0,
+            duration: 1
+        }
+    );
+
+    //Esmaecendo e subindo levemente ao continuar o scroll
+    tl.to(secao, {
+        opacity: 0,
+        filter: "blur(15px)",
+        y: -80,
+        duration: 1
+    }, "+=0.5"); 
+});
+
+// PRE-LOADER 
+const tl = gsap.timeline( {  
+   onComplete() {
+    animarPagina()
+            gsap.to("#pre-loader", {
+                    opacity: 0,
+                    display: "none"
+                }
+            )
+        }
+}   )
+
+    tl.to("#pre-loader path", {
+        duration: 1,
+    strokeDashoffset: 0
+    })
+
+    tl.to("#pre-loader path", {
+        duration: 1,
+        strokeDashoffset: 2450
+    })
+
+    tl.to("#pre-loader path", {
+        stroke: "#d4af37cb",
+        duration: .2,
+        strokeDashoffset: 0
+    })
+
+// HEADER - esconder quando abrir o trailer
+const header = document.querySelector("header");
+const abrirTrailer = document.querySelector(".abrir-trailer");
+const fecharTrailer = document.querySelector(".fechar-trailer");
+
+function esconderHeader() {
+    header.classList.add("header--hidden")
+}
+function mostrarHeader() {
+    header.classList.remove("header--hidden")
+}
+if (header && abrirTrailer && fecharTrailer) {
+    abrirTrailer.addEventListener('click', esconderHeader);
+    fecharTrailer.addEventListener('click', mostrarHeader);
+}
 
 // MENU
 const dadosFaccoes = {
@@ -27,8 +150,7 @@ const dadosFaccoes = {
     ]
 };
 
-
-const IMAGEM_PADRAO = "MENU/TRONO.webp"; 
+const imagemPadrao = "MENU/TRONO.webp"; 
 
 document.addEventListener('DOMContentLoaded', () => {
     const menuOverlay = document.getElementById('menu-overlay');
@@ -52,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.paddingRight = `${scrollBarWidth}px`;
         } else {
             // Ao fechar, reseta para a imagem padrão imediatamente
-            imagemPrevia.src = IMAGEM_PADRAO;
+            imagemPrevia.src = imagemPadrao;
             
             // --- SUAVIZAÇÃO DO FECHAMENTO ---
             // Mantém a estrutura travada até o fadeout do CSS (0.6s) terminar
@@ -77,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // EVENTO: Quando o mouse sai da área de nomes, retorna suavemente para a imagem padrão
     if (listaPersonagens) {
         listaPersonagens.addEventListener('mouseleave', () => {
-            atualizarImagem(imagemPrevia, IMAGEM_PADRAO, "House of the Dragon Wallpaper");
+            atualizarImagem(imagemPrevia, imagemPadrao, "House of the Dragon Wallpaper");
             
             // Remove o destaque visual dourado de qualquer nome que estava ativo
             document.querySelectorAll('.lista-personagens li').forEach(li => {
@@ -105,7 +227,7 @@ function switchFaction(faccao, abrirComPadrao = false) {
     if (personagens && personagens.length > 0 && !abrirComPadrao) {
         atualizarImagem(imagemPreview, personagens[0].imagem, personagens[0].nome);
     } else if (abrirComPadrao) {
-        atualizarImagem(imagemPreview, IMAGEM_PADRAO, "House of the Dragon Wallpaper");
+        atualizarImagem(imagemPreview, imagemPadrao, "House of the Dragon Wallpaper");
     }
 
     // Renderiza dinamicamente os nomes dos personagens
