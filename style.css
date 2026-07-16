@@ -34,11 +34,12 @@ html {
     background-color: #0d0d0d;
 }
 
+
 body {
     width: 100% !important;
     max-width: 100% !important;
     overflow-x: hidden !important;
-    background-color: var(--color-void);
+    background-color: #000000 !important;
     color: var(--color-parchment);
     font-family: var(--font-body);
     line-height: 1.6;
@@ -64,6 +65,29 @@ ol {
     list-style: none;
 }
 
+/* Estado inicial invisível para evitar flashes antes do carregamento do JS */
+.faccao-personagens .caracteristica-card,
+.faccao-personagens [class$="-fundo"],
+.faccao-personagens [class$="-overlay"],
+.faccao-personagens [class$="-glass"],
+.faccao-personagens [class$="-imagem"],
+.faccao-personagens .faisca,
+.faccao-personagens .nevoa,
+.faccao-personagens .nevoa-camada,
+.faccao-personagens .logo-targaryen,
+.faccao-personagens .logo-targaryen-verde,
+.faccao-personagens [class$="-conteudo"] > * {
+    opacity: 0;
+}
+
+/* Garante o correto preenchimento da imagem de fundo dentro do card */
+.caracteristica-card div[class$="-card-fundo"] img,
+.caracteristica-card div[class$="-fundo-card-fundo"] img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 /* ============================================================
    02 · DESIGN TOKENS / CSS VARIABLES
    ============================================================ */
@@ -915,8 +939,7 @@ ol {
 
 .lealdade-sessao {
     width: 100%;
-    height: 100%;
-    min-height: 100vh;
+    height: 100vh;
 
     position: relative;
 
@@ -928,9 +951,39 @@ ol {
 
     background-position: center;
     background-size: cover;
-    background-image: url('WALLPAPERS/WALLPAPER 1 - LEALDADE.webp');
 
     transition: background-color 0.6s ease;
+}
+.lealdade-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Prepara o navegador para otimização de performance via hardware (GPU) */
+    will-change: transform, opacity, filter;
+}
+.midia-bg {
+    position: absolute;
+    inset: 0; /* 3. Substitui 'top: 0; left: 0; width: 100%; height: 100%' de forma limpa e moderna */
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* 4. Corrigido: O seletor agora afeta especificamente as mídias internas do bloco */
+.midia-bg img, 
+.midia-bg canvas, 
+.midia-bg video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: opacity 0.5s ease;
 }
 
 .lealdade-fundo-overlay {
@@ -1202,17 +1255,17 @@ ol {
 
 .os-negros-conteudo {
     width: 100%;
-    max-width: 900px; 
+    max-width: 1100px; 
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
 
-    padding: 50px;
+    padding: 20px 40px;
 
     position: relative;
-
+    box-sizing: border-box;
     z-index: 2;
 }
 
@@ -1226,13 +1279,14 @@ ol {
     line-height: 1.4;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
     opacity: 0.9;
-
+    word-break: break-word;
 }
 
 .os-negros-conteudo h2 {
     font-size: 100px;
     color: var(--color-gold, #c9a84c); 
     letter-spacing: 0.18em;
+    padding-top: 25px;
     text-shadow:
         var(--shadow-text-gold, 0 0 10px rgba(201, 168, 76, 0.5)),
         0 0 80px rgba(201, 168, 76, 0.25);
@@ -1242,212 +1296,138 @@ ol {
 /* ==========================================================
    RHAENYRA SECTION
 ========================================================== */
-
-.rhaenyra-sessao {
+.faccao-personagens {
     position: relative;
-
     width: 100%;
-    min-height: 100vh;
-
+    height: 100vh;
+    overflow: hidden;
+    background-color: #000000;
+}
+.rhaenyra-sessao {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    overflow: hidden;
-
     padding: 8rem 4rem;
+    perspective: 1600px;
 }
-
+.rhaenyra-sessao .caracteristica-card,
+.rhaenyra-sessao [class*="-imagem"],
+.rhaenyra-sessao [class*="-fundo"],
+.rhaenyra-sessao [class*="-overlay"],
+.rhaenyra-sessao [class*="-conteudo"] > *,
+.rhaenyra-sessao .faisca,
+.rhaenyra-sessao .neblina {
+    opacity: 0;
+}
 .syrax-fundo {
     position: absolute;
     inset: 0;
-
     z-index: 0;
 }
-
 .syrax-fundo img {
     width: 100%;
     height: 100%;
-
     object-fit: cover;
     object-position: center;
-
-    filter:
-        brightness(0.25) saturate(0.7) blur(0px);
-
+    filter: brightness(0.25) saturate(0.7) blur(0px);
     transform: scale(1.05);
+    will-change: transform, filter, opacity;
 }
-
 .syrax-overlay {
     position: absolute;
     inset: 0;
-
     z-index: 1;
-
     background:
-        radial-gradient(circle at center,
-            rgba(201, 168, 76, 0.08),
-            transparent 5%),
+        radial-gradient(circle at center, rgba(201, 168, 76, 0.08), transparent 5%),
         linear-gradient(to bottom,
             rgba(4, 4, 6, 0.92),
             rgba(4, 4, 6, 0.55),
             rgba(4, 4, 6, 0.92));
+    will-change: opacity;
 }
-
 .rhaenyra-card {
     position: relative;
-
     z-index: 3;
-
     width: 100%;
     max-width: 1400px;
-
     height: 720px;
-
     border-radius: 42px;
-
     overflow: visible;
-
-
     border: 1px solid rgba(201, 168, 76, 0.28);
-
-
     background:
-        linear-gradient(135deg,
-            rgba(14, 14, 16, 0.92),
-            rgba(8, 8, 10, 0.82));
-
+        linear-gradient(135deg, rgba(14, 14, 16, 0.92), rgba(8, 8, 10, 0.82));
     backdrop-filter: blur(18px);
-
-
     box-shadow:
         0 0 40px rgba(201, 168, 76, 0.08),
         0 0 80px rgba(201, 168, 76, 0.04),
         inset 0 0 20px rgba(201, 168, 76, 0.04);
-
-    transition:
-        transform 0.6s ease,
-        box-shadow 0.6s ease,
-        border-color 0.6s ease;
+    transform-style: preserve-3d;
+    will-change: transform, opacity, filter;
 }
-
 .rhaenyra-card::before {
     content: '';
-
     position: absolute;
-
     inset: 0;
-
     border-radius: inherit;
-
     padding: 1px;
-
     background:
         linear-gradient(135deg,
             rgba(255, 215, 90, 0.7),
             rgba(201, 168, 76, 0.15),
             rgba(255, 215, 90, 0.7));
-
     pointer-events: none;
-
     opacity: 0.45;
-
-    transition: 0.6s ease;
+    transition: opacity 0.6s ease, filter 0.6s ease;
 }
-
-.rhaenyra-card:hover {
-
-    transform:
-        translateY(-6px) scale(1.005);
-
-    border-color:
-        rgba(255, 215, 90, 0.75);
-
-    box-shadow:
-        0 0 30px rgba(255, 215, 90, 0.18),
-        0 0 60px rgba(255, 215, 90, 0.16),
-        0 0 120px rgba(255, 215, 90, 0.12),
-        0 0 180px rgba(255, 215, 90, 0.08),
-
-        inset 0 0 30px rgba(255, 215, 90, 0.06);
-}
-
-.rhaenyra-card:hover::before {
+.rhaenyra-card.is-hovering::before {
     opacity: 1;
-
     filter:
-        drop-shadow(0 0 10px rgba(255, 215, 90, 0.6)) drop-shadow(0 0 25px rgba(255, 215, 90, 0.4));
+        drop-shadow(0 0 10px rgba(255, 215, 90, 0.6))
+        drop-shadow(0 0 25px rgba(255, 215, 90, 0.4));
 }
-
 .syrax-card-fundo {
     position: absolute;
     inset: 0;
-
     z-index: 0;
-
     border-radius: 42px;
-
     overflow: hidden;
 }
-
 .syrax-card-fundo img {
     width: 100%;
     height: 100%;
-
     object-fit: cover;
     object-position: center;
-
-    filter:
-        brightness(0.22) saturate(0.8);
-
+    filter: brightness(0.22) saturate(0.8);
     transform: scale(1.08);
 }
-
 .syrax-card-glass {
     position: absolute;
     inset: 0;
-
     z-index: 1;
-
     border-radius: 42px;
-
     background:
-        linear-gradient(135deg,
-            rgba(255, 255, 255, 0.05),
-            rgba(255, 255, 255, 0.02));
-
+        linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
     backdrop-filter: blur(2px);
+    will-change: opacity, filter;
 }
-
 .rhaenyra-conteudo {
     position: relative;
-
     z-index: 4;
-
     height: 100%;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
-
     gap: 15px;
-
     padding: 8vw;
 }
 
 .rhaenyra-conteudo h1 {
     font-size: 38px;
-
     margin-bottom: 50px;
-
     color: var(--color-gold);
-
     line-height: 1;
-
     letter-spacing: 0.12em;
-
     text-transform: uppercase;
-
     text-shadow:
         0 0 20px rgba(201, 168, 76, 0.25),
         0 0 40px rgba(201, 168, 76, 0.12);
@@ -1455,83 +1435,59 @@ ol {
 
 .rhaenyra-citação {
     font-size: 18px;
-
     color: rgba(201, 168, 76, 0.82);
-
     letter-spacing: 0.08em;
-
     line-height: 1.8;
 }
 
 .rhaenyra-conteudo h2 {
     margin-top: 33px;
-
     letter-spacing: 0.12em;
-
     color: var(--color-gold-bright);
-
     text-transform: uppercase;
-
     font-family: var(--font-display);
 }
 
 .rhaenyra-conteudo p {
     font-size: 18px;
-
     line-height: 2;
-
     letter-spacing: 0.08em;
-
     color: rgba(230, 220, 205, 0.82);
-
     max-width: 480px;
 }
 
 .titulo-syrax {
-
     text-transform: uppercase;
-
     color: rgba(201, 168, 76, 0.65);
 }
 
 .rhaenyra-citação-final {
-
     padding-top: 1rem;
-
     border-top: 1px solid rgba(201, 168, 76, 0.12);
-
     font-style: italic;
-
     color: rgba(201, 168, 76, 0.58);
-
     line-height: 1.8;
 }
 
 .rhaenyra-imagem {
     position: absolute;
-
     z-index: 6;
-
     right: -1px;
     bottom: 0px;
-
     height: 850px;
-
     display: flex;
     align-items: flex-end;
     justify-content: center;
-
     pointer-events: none;
-
     overflow: hidden;
-
     border-bottom-right-radius: 42px;
     border-top-right-radius: 42px;
-
-    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%), 
-                        linear-gradient(to right, transparent 0%, black 15%);
-    mask-image: linear-gradient(to top, transparent 0%, black 15%), 
-                linear-gradient(to right, transparent 0%, black 15%);
+    -webkit-mask-image:
+        linear-gradient(to top, transparent 0%, black 15%),
+        linear-gradient(to right, transparent 0%, black 15%);
+    mask-image:
+        linear-gradient(to top, transparent 0%, black 15%),
+        linear-gradient(to right, transparent 0%, black 15%);
     -webkit-mask-composite: source-in;
     mask-composite: intersect;
 }
@@ -1539,56 +1495,27 @@ ol {
 .rhaenyra-imagem img {
     height: 100%;
     width: auto;
-
     object-fit: contain;
     object-position: bottom center;
-
     filter:
-        drop-shadow(0 0 60px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 25px rgba(201, 168, 76, 0.12));
-
-    transition:
-        transform 0.7s ease,
-        filter 0.7s ease,
-        brightness 0.7s ease;
-
+        drop-shadow(0 0 60px rgba(0, 0, 0, 0.95))
+        drop-shadow(0 0 25px rgba(201, 168, 76, 0.12));
     transform-origin: bottom center;
-}
-
-.rhaenyra-card:hover .rhaenyra-imagem img {
-    transform:
-        scale(1.03) translateX(-8px);
-
-    filter:
-        brightness(1.06) contrast(1.05) drop-shadow(0 0 90px rgba(0, 0, 0, 1)) drop-shadow(0 0 40px rgba(201, 168, 76, 0.30));
+    will-change: transform, filter, opacity;
 }
 
 .logo-targaryen {
     position: absolute;
-
     left: 40px;
     bottom: 40px;
-
     z-index: 8;
 }
 
 .logo-targaryen img {
     width: 78px;
-
     opacity: 0.75;
-
-    filter:
-        drop-shadow(0 0 12px rgba(201, 168, 76, 0.35));
-
-    transition: 0.4s ease;
-}
-
-.rhaenyra-card:hover .logo-targaryen img {
-    transform: scale(1.08);
-
-    opacity: 1;
-
-    filter:
-        drop-shadow(0 0 18px rgba(201, 168, 76, 0.55));
+    filter: drop-shadow(0 0 12px rgba(201, 168, 76, 0.35));
+    will-change: transform, filter, opacity;
 }
 
 /* ==========================================================
