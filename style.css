@@ -65,29 +65,6 @@ ol {
     list-style: none;
 }
 
-/* Estado inicial invisível para evitar flashes antes do carregamento do JS */
-.faccao-personagens .caracteristica-card,
-.faccao-personagens [class$="-fundo"],
-.faccao-personagens [class$="-overlay"],
-.faccao-personagens [class$="-glass"],
-.faccao-personagens [class$="-imagem"],
-.faccao-personagens .faisca,
-.faccao-personagens .nevoa,
-.faccao-personagens .nevoa-camada,
-.faccao-personagens .logo-targaryen,
-.faccao-personagens .logo-targaryen-verde,
-.faccao-personagens [class$="-conteudo"] > * {
-    opacity: 0;
-}
-
-/* Garante o correto preenchimento da imagem de fundo dentro do card */
-.caracteristica-card div[class$="-card-fundo"] img,
-.caracteristica-card div[class$="-fundo-card-fundo"] img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
 /* ============================================================
    02 · DESIGN TOKENS / CSS VARIABLES
    ============================================================ */
@@ -1296,34 +1273,28 @@ ol {
 /* ==========================================================
    RHAENYRA SECTION
 ========================================================== */
-.faccao-personagens {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    background-color: #000000;
-}
+
 .rhaenyra-sessao {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8rem 4rem;
-    perspective: 1600px;
+
+    overflow: hidden;
+
+    padding: 8vw;
 }
-.rhaenyra-sessao .caracteristica-card,
-.rhaenyra-sessao [class*="-imagem"],
-.rhaenyra-sessao [class*="-fundo"],
-.rhaenyra-sessao [class*="-overlay"],
-.rhaenyra-sessao [class*="-conteudo"] > *,
-.rhaenyra-sessao .faisca,
-.rhaenyra-sessao .neblina {
-    opacity: 0;
-}
+
 .syrax-fundo {
     position: absolute;
     inset: 0;
     z-index: 0;
 }
+
 .syrax-fundo img {
     width: 100%;
     height: 100%;
@@ -1333,6 +1304,7 @@ ol {
     transform: scale(1.05);
     will-change: transform, filter, opacity;
 }
+
 .syrax-overlay {
     position: absolute;
     inset: 0;
@@ -1340,11 +1312,12 @@ ol {
     background:
         radial-gradient(circle at center, rgba(201, 168, 76, 0.08), transparent 5%),
         linear-gradient(to bottom,
-            rgba(4, 4, 6, 0.92),
-            rgba(4, 4, 6, 0.55),
-            rgba(4, 4, 6, 0.92));
+            rgba(4, 4, 6, 0.65),
+            rgba(4, 4, 6, 0.30),
+            rgba(4, 4, 6, 0.65));
     will-change: opacity;
 }
+
 .rhaenyra-card {
     position: relative;
     z-index: 3;
@@ -1363,7 +1336,12 @@ ol {
         inset 0 0 20px rgba(201, 168, 76, 0.04);
     transform-style: preserve-3d;
     will-change: transform, opacity, filter;
+    transition: 
+        transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+        border-color 0.5s ease, 
+        box-shadow 0.5s ease;
 }
+
 .rhaenyra-card::before {
     content: '';
     position: absolute;
@@ -1379,12 +1357,27 @@ ol {
     opacity: 0.45;
     transition: opacity 0.6s ease, filter 0.6s ease;
 }
-.rhaenyra-card.is-hovering::before {
+
+.rhaenyra-card:hover {
+    transform:
+        translateY(-6px) scale(1.005);
+    border-color:
+        rgba(255, 215, 90, 0.75);
+    box-shadow:
+        0 0 30px rgba(255, 215, 90, 0.22),
+        0 0 60px rgba(255, 215, 90, 0.18),
+        0 0 120px rgba(255, 215, 90, 0.12),
+        0 0 180px rgba(255, 215, 90, 0.08),
+        inset 0 0 30px rgba(255, 215, 90, 0.08);
+}
+
+.rhaenyra-card:hover::before {
     opacity: 1;
     filter:
-        drop-shadow(0 0 10px rgba(255, 215, 90, 0.6))
-        drop-shadow(0 0 25px rgba(255, 215, 90, 0.4));
+        drop-shadow(0 0 10px rgba(255, 215, 90, .7))
+        drop-shadow(0 0 25px rgba(255, 215, 90, .45));
 }
+
 .syrax-card-fundo {
     position: absolute;
     inset: 0;
@@ -1392,14 +1385,27 @@ ol {
     border-radius: 42px;
     overflow: hidden;
 }
+
 .syrax-card-fundo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
-    filter: brightness(0.22) saturate(0.8);
+    filter: brightness(0.22) saturate(0.85);
     transform: scale(1.08);
+    transition:
+        transform .9s ease,
+        filter .9s ease;
 }
+
+.rhaenyra-card:hover .syrax-card-fundo img {
+    transform: scale(1.1);
+    filter:
+        brightness(.28)
+        saturate(1)
+        contrast(1.05);
+}
+
 .syrax-card-glass {
     position: absolute;
     inset: 0;
@@ -1409,7 +1415,18 @@ ol {
         linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
     backdrop-filter: blur(2px);
     will-change: opacity, filter;
+    transition: .6s ease;
 }
+
+.rhaenyra-card:hover .syrax-card-glass {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, .07),
+            rgba(255, 215, 90, .03)
+        );
+}
+
 .rhaenyra-conteudo {
     position: relative;
     z-index: 4;
@@ -1502,6 +1519,19 @@ ol {
         drop-shadow(0 0 25px rgba(201, 168, 76, 0.12));
     transform-origin: bottom center;
     will-change: transform, filter, opacity;
+    transition:
+        transform .7s ease,
+        filter .7s ease;
+}
+
+.rhaenyra-card:hover .rhaenyra-imagem img {
+    transform:
+        scale(1.03)
+        translateX(8px);
+    filter:
+        brightness(.98)
+        drop-shadow(0 0 70px rgba(70,45,0,.8))
+        drop-shadow(0 0 40px rgba(255,215,90,.28));
 }
 
 .logo-targaryen {
@@ -1516,6 +1546,18 @@ ol {
     opacity: 0.75;
     filter: drop-shadow(0 0 12px rgba(201, 168, 76, 0.35));
     will-change: transform, filter, opacity;
+    transition:
+        transform .45s ease,
+        filter .45s ease,
+        opacity .45s ease;
+}
+
+.rhaenyra-card:hover .logo-targaryen img {
+    opacity: .95;
+    transform:
+        scale(1.08);
+    filter:
+        drop-shadow(0 0 18px rgba(255,215,90,.7));
 }
 
 /* ==========================================================
@@ -1552,7 +1594,7 @@ ol {
     object-position: center;
 
     filter:
-        brightness(0.18) saturate(0.9) blur(2px) hue-rotate(-8deg);
+        brightness(0.8) saturate(0.9) blur(2px) hue-rotate(-8deg);
 
     transform: scale(1.05);
 }
@@ -1569,9 +1611,9 @@ ol {
             transparent 60%),
 
         linear-gradient(to bottom,
-            rgba(5, 3, 3, 0.95),
-            rgba(25, 5, 5, 0.55),
-            rgba(5, 3, 3, 0.95));
+            rgba(4, 4, 6, 0.65),
+            rgba(4, 4, 6, 0.30),
+            rgba(4, 4, 6, 0.65));
 }
 
 .daemon-card {
@@ -1907,7 +1949,7 @@ ol {
     object-position: center;
 
     filter:
-        brightness(0.20) saturate(0.9) blur(2px) hue-rotate(-15deg);
+        brightness(0.9) saturate(0.9) blur(2px) hue-rotate(-15deg);
 
     transform: scale(1.05);
 }
@@ -1924,9 +1966,9 @@ ol {
             transparent 60%),
 
         linear-gradient(to bottom,
-            rgba(5, 3, 3, 0.95),
-            rgba(18, 5, 5, 0.55),
-            rgba(5, 3, 3, 0.95));
+            rgba(4, 4, 6, 0.65),
+            rgba(4, 4, 6, 0.30),
+            rgba(4, 4, 6, 0.65));
 }
 
 .rhaenys-card {
@@ -2257,7 +2299,7 @@ ol {
     object-position: center;
 
     filter:
-        brightness(0.18) saturate(0.85) blur(2px) hue-rotate(-12deg);
+        brightness(0.9) saturate(0.85) blur(2px) hue-rotate(-12deg);
 
     transform: scale(1.05);
 }
@@ -2274,9 +2316,9 @@ ol {
             transparent 60%),
 
         linear-gradient(to bottom,
-            rgba(5, 8, 5, 0.95),
-            rgba(10, 20, 10, 0.55),
-            rgba(5, 8, 5, 0.95));
+            rgba(4, 4, 6, 0.65),
+            rgba(4, 4, 6, 0.30),
+            rgba(4, 4, 6, 0.65));
 }
 
 .jacaerys-card {
@@ -2613,7 +2655,7 @@ ol {
     object-position: center;
 
     filter:
-        brightness(0.18) saturate(1) blur(2px) hue-rotate(-18deg);
+        brightness(0.9) saturate(1) blur(2px) hue-rotate(-18deg);
 
     transform: scale(1.05);
 }
@@ -2630,9 +2672,9 @@ ol {
             transparent 60%),
 
         linear-gradient(to bottom,
-            rgba(10, 5, 2, 0.95),
-            rgba(30, 10, 5, 0.55),
-            rgba(10, 5, 2, 0.95));
+            rgba(4, 4, 6, 0.65),
+            rgba(4, 4, 6, 0.30),
+            rgba(4, 4, 6, 0.65));
 }
 
 .baela-card {
@@ -3005,7 +3047,7 @@ ol {
 }
 
 .os-verdes-titulo{
-    padding-top: 50px;
+    padding: 0;
 }
 
 .os-verdes-conteudo h2 {
@@ -3055,7 +3097,7 @@ ol {
     object-position: center;
 
     filter:
-        brightness(0.16) saturate(0.9) blur(2px) hue-rotate(8deg);
+        brightness(0.9) saturate(0.9) blur(2px) hue-rotate(8deg);
 
     transform: scale(1.05);
 }
@@ -3072,9 +3114,9 @@ ol {
             transparent 60%),
 
         linear-gradient(to bottom,
-            rgba(5, 15, 8, 0.96),
-            rgba(10, 25, 12, 0.58),
-            rgba(5, 15, 8, 0.96));
+            rgba(4, 4, 6, 0.65),
+            rgba(4, 4, 6, 0.30),
+            rgba(4, 4, 6, 0.65));
 }
 
 .alicent-card {
@@ -3329,7 +3371,7 @@ ol {
     color: rgba(180, 255, 200, 0.48);
 }
 
-.alicent-card .logo-targaryen-verde {
+.alicent-card .logo-verde-targaryen {
     position: absolute;
 
     left: 1270px;
@@ -3338,7 +3380,7 @@ ol {
     z-index: 8;
 }
 
-.alicent-card .logo-targaryen-verde img {
+.alicent-card .logo-verde-targaryen img {
     width: 100px;
 
     opacity: 0.75;
@@ -3349,7 +3391,7 @@ ol {
     transition: 0.4s ease;
 }
 
-.alicent-card:hover .logo-targaryen-verde img {
+.alicent-card:hover .logo-verde-targaryen img {
     transform: scale(1.08);
 
     opacity: 1;
@@ -3393,7 +3435,7 @@ ol {
     object-position: center;
 
     filter:
-        brightness(0.18)
+        brightness(0.9)
         saturate(1)
         blur(2px);
 
@@ -3415,9 +3457,9 @@ ol {
 
         linear-gradient(
             to bottom,
-            rgba(10,5,2,0.95),
-            rgba(30,18,5,0.55),
-            rgba(10,5,2,0.95)
+            rgba(10,5,2,0.65),
+            rgba(30,18,5,0.30),
+            rgba(10,5,2,0.65)
         );
 }
 
@@ -3691,7 +3733,7 @@ ol {
 
 /* LOGO */
 
-.aegon-card .logo-targaryen-verde {
+.aegon-card .logo-verde-targaryen {
     position: absolute;
 
     left: 25px;
@@ -3700,7 +3742,7 @@ ol {
     z-index: 8;
 }
 
-.aegon-card .logo-targaryen-verde img {
+.aegon-card .logo-verde-targaryen img {
     width: 100px;
 
     opacity: 0.75;
@@ -3711,7 +3753,7 @@ ol {
     transition: 0.4s ease;
 }
 
-.aegon-card:hover .logo-targaryen-verde img {
+.aegon-card:hover .logo-verde-targaryen img {
     transform: scale(1.08);
 
     opacity: 1;
@@ -3754,7 +3796,7 @@ ol {
     object-position: center;
 
     filter:
-        brightness(0.16)
+        brightness(0.9)
         saturate(0.9)
         blur(2px)
         hue-rotate(8deg);
@@ -3777,9 +3819,9 @@ ol {
 
         linear-gradient(
             to bottom,
-            rgba(5,15,8,0.96),
-            rgba(10,25,12,0.58),
-            rgba(5,15,8,0.96)
+            rgba(4, 4, 6, 0.65),
+            rgba(4, 4, 6, 0.30),
+            rgba(4, 4, 6, 0.65)
         );
 }
 
@@ -4051,7 +4093,7 @@ background: radial-gradient(
     line-height: 1.8;
 }
 
-.aemond-card .logo-targaryen-verde {
+.aemond-card .logo-verde-targaryen {
     position: absolute;
 
     left: 1270px;
@@ -4060,7 +4102,7 @@ background: radial-gradient(
     z-index: 8;
 }
 
-.aemond-card .logo-targaryen-verde img {
+.aemond-card .logo-verde-targaryen img {
     width: 100px;
 
     opacity: 0.75;
@@ -4071,7 +4113,7 @@ background: radial-gradient(
     transition: 0.4s ease;
 }
 
-.aemond-card:hover .logo-targaryen-verde img {
+.aemond-card:hover .logo-verde-targaryen img {
     transform: scale(1.08);
 
     opacity: 1;
@@ -4114,7 +4156,7 @@ background: radial-gradient(
     object-position: center;
 
     filter:
-        brightness(0.18)
+        brightness(0.9)
         saturate(1)
         blur(2px);
 
@@ -4136,9 +4178,9 @@ background: radial-gradient(
 
         linear-gradient(
             to bottom,
-            rgba(10,5,2,0.95),
-            rgba(30,18,5,0.55),
-            rgba(10,5,2,0.95)
+            rgba(4, 4, 6, 0.65),
+            rgba(4, 4, 6, 0.30),
+            rgba(4, 4, 6, 0.65)
         );
 }
 
@@ -4395,7 +4437,7 @@ height: 100%;
     line-height: 1.8;
 }
 
-.helaena-card .logo-targaryen-verde {
+.helaena-card .logo-verde-targaryen {
     position: absolute;
 
     left: 25px;
@@ -4404,7 +4446,7 @@ height: 100%;
     z-index: 8;
 }
 
-.helaena-card .logo-targaryen-verde img {
+.helaena-card .logo-verde-targaryen img {
     width: 100px;
 
     opacity: 0.75;
@@ -4415,7 +4457,7 @@ height: 100%;
     transition: 0.4s ease;
 }
 
-.helaena-card:hover .logo-targaryen-verde img {
+.helaena-card:hover .logo-verde-targaryen img {
     transform: scale(1.08);
 
     opacity: 1;
@@ -4457,7 +4499,7 @@ height: 100%;
     object-position: center;
 
     filter:
-        brightness(0.16)
+        brightness(0.9)
         saturate(0.9)
         blur(2px)
         hue-rotate(8deg);
@@ -4479,9 +4521,9 @@ height: 100%;
         ),
         linear-gradient(
             to bottom,
-            rgba(5,15,8,0.96),
-            rgba(10,25,12,0.58),
-            rgba(5,15,8,0.96)
+            rgba(4, 4, 6, 0.65),
+            rgba(4, 4, 6, 0.30),
+            rgba(4, 4, 6, 0.65)
         );
 }
 
@@ -4752,7 +4794,7 @@ height: 100%;
     line-height: 1.8;
 }
 
-.criston-card .logo-targaryen-verde {
+.criston-card .logo-verde-targaryen {
     position: absolute;
 
     left: 1270px;
@@ -4761,7 +4803,7 @@ height: 100%;
     z-index: 8;
 }
 
-.criston-card .logo-targaryen-verde img {
+.criston-card .logo-verde-targaryen img {
     width: 100px;
 
     opacity: 0.75;
@@ -4772,7 +4814,7 @@ height: 100%;
     transition: 0.4s ease;
 }
 
-.criston-card:hover .logo-targaryen-verde img {
+.criston-card:hover .logo-verde-targaryen img {
     transform: scale(1.08);
 
     opacity: 1;
@@ -5237,9 +5279,9 @@ footer{
         bottom: 40px !important; 
     }
 
-    .alicent-sessao .logo-targaryen-verde,
-    .aemond-sessao .logo-targaryen-verde,
-    .criston-sessao .logo-targaryen-verde{
+    .alicent-sessao .logo-verde-targaryen,
+    .aemond-sessao .logo-verde-targaryen,
+    .criston-sessao .logo-verde-targaryen{
         position: absolute !important;
         right: 40px !important;  
         left: auto !important;   
@@ -5505,9 +5547,9 @@ footer{
         bottom: 40px !important; 
     }
 
-    .alicent-sessao .logo-targaryen-verde,
-    .aemond-sessao .logo-targaryen-verde,
-    .criston-sessao .logo-targaryen-verde{
+    .alicent-sessao .logo-verde-targaryen,
+    .aemond-sessao .logo-verde-targaryen,
+    .criston-sessao .logo-verde-targaryen{
         position: absolute !important;
         right: 40px !important;  
         left: auto !important;   
@@ -5827,18 +5869,18 @@ footer{
         width: 65px !important;
     }
 
-    .alicent-sessao .logo-targaryen-verde,
-    .aemond-sessao .logo-targaryen-verde,
-    .criston-sessao .logo-targaryen-verde{
+    .alicent-sessao .logo-verde-targaryen,
+    .aemond-sessao .logo-verde-targaryen,
+    .criston-sessao .logo-verde-targaryen{
         position: absolute !important;
         right: 40px !important;  
         left: auto !important;   
         bottom: 40px !important; 
     }
 
-    .alicent-sessao .logo-targaryen-verde img,
-    .aemond-sessao .logo-targaryen-verde img,
-    .criston-sessao .logo-targaryen-verde img {
+    .alicent-sessao .logo-verde-targaryen img,
+    .aemond-sessao .logo-verde-targaryen img,
+    .criston-sessao .logo-verde-targaryen img {
         width: 85px !important;
     }
 
@@ -5886,8 +5928,8 @@ footer{
         width: 65px !important;
     }
 
-    .aegon-sessao .logo-targaryen-verde img,
-    .helaena-sessao .logo-targaryen-verde img {
+    .aegon-sessao .logo-verde-targaryen img,
+    .helaena-sessao .logo-verde-targaryen img {
         width: 85px !important;
     }
 
@@ -6103,18 +6145,18 @@ footer{
         width: 65px;
     }
 
-    .alicent-sessao .logo-targaryen-verde,
-    .aemond-sessao .logo-targaryen-verde,
-    .criston-sessao .logo-targaryen-verde{
+    .alicent-sessao .logo-verde-targaryen,
+    .aemond-sessao .logo-verde-targaryen,
+    .criston-sessao .logo-verde-targaryen{
         position: absolute !important;
         right: 40px !important;  
         left: auto !important;   
         bottom: 40px !important; 
     }
 
-    .alicent-sessao .logo-targaryen-verde img,
-    .aemond-sessao .logo-targaryen-verde img,
-    .criston-sessao .logo-targaryen-verde img {
+    .alicent-sessao .logo-verde-targaryen img,
+    .aemond-sessao .logo-verde-targaryen img,
+    .criston-sessao .logo-verde-targaryen img {
         width: 75px;
     }
 
@@ -6162,8 +6204,8 @@ footer{
         width: 60px !important;
     }
 
-    .aegon-sessao .logo-targaryen-verde img,
-    .helaena-sessao .logo-targaryen-verde img {
+    .aegon-sessao .logo-verde-targaryen img,
+    .helaena-sessao .logo-verde-targaryen img {
         width: 75px;
     }
 
@@ -6422,18 +6464,18 @@ footer{
         width: 55px !important;
     }
 
-    .alicent-sessao .logo-targaryen-verde,
-    .aemond-sessao .logo-targaryen-verde,
-    .criston-sessao .logo-targaryen-verde{
+    .alicent-sessao .logo-verde-targaryen,
+    .aemond-sessao .logo-verde-targaryen,
+    .criston-sessao .logo-verde-targaryen{
         position: absolute !important;
         right: 20px !important;  
         left: auto !important;   
         bottom: 20px !important; 
     }
 
-    .alicent-sessao .logo-targaryen-verde img,
-    .aemond-sessao .logo-targaryen-verde img,
-    .criston-sessao .logo-targaryen-verde img {
+    .alicent-sessao .logo-verde-targaryen img,
+    .aemond-sessao .logo-verde-targaryen img,
+    .criston-sessao .logo-verde-targaryen img {
         width: 70px !important;
     }
 
@@ -6488,16 +6530,16 @@ footer{
         width: 55px !important;
     }
 
-    .aegon-sessao .logo-targaryen-verde,
-    .helaena-sessao .logo-targaryen-verde {
+    .aegon-sessao .logo-verde-targaryen,
+    .helaena-sessao .logo-verde-targaryen {
         position: absolute !important;
         bottom: 15px !important;
         top: auto !important;       
         left: 20px !important;   
     }
 
-    .aegon-sessao .logo-targaryen-verde img,
-    .helaena-sessao .logo-targaryen-verde img {
+    .aegon-sessao .logo-verde-targaryen img,
+    .helaena-sessao .logo-verde-targaryen img {
         width: 70px !important;
     }
 
@@ -6780,18 +6822,18 @@ footer{
         width: 55px !important;
     }
 
-    .alicent-sessao .logo-targaryen-verde,
-    .aemond-sessao .logo-targaryen-verde,
-    .criston-sessao .logo-targaryen-verde{
+    .alicent-sessao .logo-verde-targaryen,
+    .aemond-sessao .logo-verde-targaryen,
+    .criston-sessao .logo-verde-targaryen{
         position: absolute !important;
         right: 20px !important;  
         left: auto !important;   
         bottom: 20px !important; 
     }
 
-    .alicent-sessao .logo-targaryen-verde img,
-    .aemond-sessao .logo-targaryen-verde img,
-    .criston-sessao .logo-targaryen-verde img {
+    .alicent-sessao .logo-verde-targaryen img,
+    .aemond-sessao .logo-verde-targaryen img,
+    .criston-sessao .logo-verde-targaryen img {
         width: 70px !important;
     }
 
@@ -6847,16 +6889,16 @@ footer{
         width: 55px !important;
     }
 
-    .aegon-sessao .logo-targaryen-verde,
-    .helaena-sessao .logo-targaryen-verde {
+    .aegon-sessao .logo-verde-targaryen,
+    .helaena-sessao .logo-verde-targaryen {
         position: absolute !important;
         bottom: 15px !important;
         top: auto !important;       
         left: 20px !important;   
     }
 
-    .aegon-sessao .logo-targaryen-verde img,
-    .helaena-sessao .logo-targaryen-verde img {
+    .aegon-sessao .logo-verde-targaryen img,
+    .helaena-sessao .logo-verde-targaryen img {
         width: 70px !important;
     }
 
@@ -7724,28 +7766,28 @@ footer{
         width: 45px !important;
     }
 
-    .alicent-sessao .logo-targaryen-verde,
-    .aemond-sessao .logo-targaryen-verde,
-    .criston-sessao .logo-targaryen-verde{
+    .alicent-sessao .logo-verde-targaryen,
+    .aemond-sessao .logo-verde-targaryen,
+    .criston-sessao .logo-verde-targaryen{
         right: 10px !important;  
     }
 
-    .alicent-sessao .logo-targaryen-verde img,
-    .aemond-sessao .logo-targaryen-verde img,
-    .criston-sessao .logo-targaryen-verde img {
+    .alicent-sessao .logo-verde-targaryen img,
+    .aemond-sessao .logo-verde-targaryen img,
+    .criston-sessao .logo-verde-targaryen img {
         width: 60px !important;
     }
 
-    .aegon-sessao .logo-targaryen-verde,
-    .helaena-sessao .logo-targaryen-verde {
+    .aegon-sessao .logo-verde-targaryen,
+    .helaena-sessao .logo-verde-targaryen {
         position: absolute !important;
         bottom: 15px !important;
         top: auto !important;       
         left: 10px !important;   
     }
 
-    .aegon-sessao .logo-targaryen-verde img,
-    .helaena-sessao .logo-targaryen-verde img {
+    .aegon-sessao .logo-verde-targaryen img,
+    .helaena-sessao .logo-verde-targaryen img {
         width: 60px !important;
     }
     

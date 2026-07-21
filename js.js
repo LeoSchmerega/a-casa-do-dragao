@@ -35,3 +35,30 @@ function inicializarSecoesAnimadas() {
         }, "+=0.5"); 
     });
 }
+
+//ANIMAÇÃO DA SECAO LEALDADE
+function inicializarVideoLealdade() {
+    const video = document.getElementById("video-midia-bg");
+    if (!video) return;
+
+    const videoDuracao = 6;
+
+    gsap.to(video, {
+        backgroundColor: "black",
+        currentTime: videoDuracao,
+        ease: "none",
+        scrollTrigger: {
+            markers: true,
+            trigger: "#video-midia-bg",
+            start: "0% 90%",
+            end: "30% 10%",
+            scrub: 0.1, // Reduzido de 1 para 0.1 para resposta instantânea ao scroll físico
+            onUpdate: (self) => {
+                // Força o renderizador do navegador a atualizar o frame de forma síncrona
+                if (video.paused) {
+                    video.play().then(() => video.pause());
+                }
+            }
+        }
+    });
+}
