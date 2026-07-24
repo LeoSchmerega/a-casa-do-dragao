@@ -1139,7 +1139,7 @@ body {
     overflow: hidden;
     position: relative;
 
-    background: url('WALLPAPERS/WALLPAPER 3 - LEALDADE.webp');
+    background: url('assets/WALLPAPERS/WALLPAPER 3 - LEALDADE.webp');
     background-position: center;
     background-size: cover;
 }
@@ -2908,7 +2908,7 @@ body {
     overflow: hidden;
     position: relative;
 
-    background: url('WALLPAPERS/WALLPAPER 4 - LEALDADE.webp');
+    background: url('assets/WALLPAPERS/WALLPAPER 4 - LEALDADE.webp');
     background-position: 15% 85%;
     background-size: cover;
 
@@ -4822,7 +4822,7 @@ footer{
     flex-direction: column;
     align-items: center;
 
-    background: url('WALLPAPERS/footer.png');
+    background: url('assets/WALLPAPERS/footer.png');
     background-size: cover;
     background-position: center;
 
@@ -5695,7 +5695,7 @@ footer{
         position: relative !important;
         width: 100% !important;
         min-height: 100vh !important;
-        background: url('LEALDADE_-_VIDEO_frames/frame_001.jpg') center/cover no-repeat !important;
+        background: url('assets/LEALDADE_-_VIDEO_frames/frame_001.jpg') center/cover no-repeat !important;
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;

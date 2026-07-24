@@ -477,22 +477,22 @@ if (header && abrirTrailer && fecharTrailer) {
 // --------------------------------------------------------------------------
 const dadosFaccoes = {
     negros: [
-        { nome: "Rhaenyra Targaryen", imagem: "MENU/RHAENYRA.webp" },
-        { nome: "Daemon Targaryen", imagem: "MENU/DAEMON.webp" },
-        { nome: "Rhaenys Targaryen", imagem: "MENU/RHAENYS.webp" },
-        { nome: "Jacaerys Velaryon", imagem: "MENU/JACAERYS.webp" },
-        { nome: "Baela Targaryen", imagem: "MENU/BAELA.webp" }
+        { nome: "Rhaenyra Targaryen", imagem: "assets/MENU/RHAENYRA.webp" },
+        { nome: "Daemon Targaryen", imagem: "assets/MENU/DAEMON.webp" },
+        { nome: "Rhaenys Targaryen", imagem: "assets/MENU/RHAENYS.webp" },
+        { nome: "Jacaerys Velaryon", imagem: "assets/MENU/JACAERYS.webp" },
+        { nome: "Baela Targaryen", imagem: "assets/MENU/BAELA.webp" }
     ],
     verdes: [
-        { nome: "Alicent Hightower", imagem: "MENU/alicent.webp" },
-        { nome: "Aegon II Targaryen", imagem: "MENU/aegon.webp" },
-        { nome: "Aemond Targaryen", imagem: "MENU/aemond.webp" }, 
-        { nome: "Helaena Targaryen", imagem: "MENU/helaena.webp" },
-        { nome: "Criston Cole", imagem: "MENU/criston.webp" }
+        { nome: "Alicent Hightower", imagem: "assets/MENU/alicent.webp" },
+        { nome: "Aegon II Targaryen", imagem: "assets/MENU/aegon.webp" },
+        { nome: "Aemond Targaryen", imagem: "assets/MENU/aemond.webp" }, 
+        { nome: "Helaena Targaryen", imagem: "assets/MENU/helaena.webp" },
+        { nome: "Criston Cole", imagem: "assets/MENU/criston.webp" }
     ]
 };
 
-const imagemPadrao = "MENU/TRONO.webp"; 
+const imagemPadrao = "assets/MENU/TRONO.webp"; 
 
 document.addEventListener('DOMContentLoaded', () => {
     const menuOverlay = document.getElementById('menu-overlay');
