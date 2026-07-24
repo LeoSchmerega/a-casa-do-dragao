@@ -8,7 +8,6 @@ ScrollTrigger.config({
     smooth: 2
 });
 
-// Instância principal do matchMedia do GSAP
 const mm = gsap.matchMedia();
 
 // --------------------------------------------------------------------------
@@ -27,7 +26,7 @@ const tlPreloader = gsap.timeline({
                 opacity: 0,
                 display: "none",
                 duration: 0.5,
-                onComplete: () => ScrollTrigger.refresh() // Restaurado para recalcular pins/scrolls
+                onComplete: () => ScrollTrigger.refresh() 
             });
         });
     }
