@@ -12,11 +12,11 @@
 <!-- CABEÇALHO -->
 <header class="header">
     <a href="index.html" class="header-logo" aria-label="Voltar para a página inicial">
-        <img src="PRIMEIRA TELA/ICONE - TARGARYEN DOURADO.png" alt="Logo Targaryen">
+        <img src="PRIMEIRA TELA/ICONE - TARGARYEN DOURADO.webp" alt="Logo Targaryen">
     </a>
     
     <button class="header-menu-btn" id="menu-open-btn" aria-label="Abrir menu de facções" aria-expanded="false">
-        <img src="PRIMEIRA TELA/ICONE - LISTA.png" alt="Ícone de Menu">
+        <img src="PRIMEIRA TELA/ICONE - LISTA.webp" alt="Ícone de Menu">
     </button>
 
     <div id="menu-overlay" class="menu-overlay">
@@ -48,20 +48,20 @@
 <!-- MAIN -->
 <main class="main">
 
-    <div class="main-fundo" data-speed = ".5">
+    <div class="main-fundo" data-speed = ".4">
         <img src="PRIMEIRA TELA/MAIN FUNDO 1.webp" alt="">
     </div>
 
     <section class="main-conteudo">
 
         <div class="main-personagens">
-            <img src="PRIMEIRA TELA/MAIN - Alicent.png" alt="Alicent Hightower">
+            <img src="PRIMEIRA TELA/MAIN - Alicent.webp" alt="Alicent Hightower">
             
-            <img src="PRIMEIRA TELA/MAIN - Rhaenyra.png" alt="Rhaenyra Targaryen">
+            <img src="PRIMEIRA TELA/MAIN - Rhaenyra.webp" alt="Rhaenyra Targaryen">
         </div>
 
         <div class="main-centro">
-            <img src="PRIMEIRA TELA/HBO ORIGINAL - A CASA DO DRAGÃO.png" alt="Logo A Casa do Dragão">
+            <img src="PRIMEIRA TELA/HBO ORIGINAL - A CASA DO DRAGÃO.webp" alt="Logo A Casa do Dragão">
     
             <button class="abrir-trailer">
                 ASSISTA O TRAILER
@@ -107,16 +107,26 @@
 
 <section class="lealdade-sessao secao-animada">
     
-    <div class="lealdade-wrapper">
-        
-        <div class="midia-bg">
-            <canvas id="video-canvas"></canvas>
-            <img 
-                id="canvas-fallback" 
-                src="WALLPAPERS/WALLPAPER 1 - LEALDADE.webp" 
-                alt="Lealdade imagem de carregamento"
-            >
-        </div>
+<div class="lealdade-wrapper">
+
+    <div class="midia-bg">
+
+        <video
+            id="video-lealdade"
+            preload="auto"
+            muted
+            playsinline
+        >
+            <source src="WALLPAPERS/Lealdade_Fixed.webm" type="video/webm">
+        </video>
+
+        <img
+            id="canvas-fallback"
+            src="WALLPAPERS/WALLPAPER 1 - LEALDADE.webp"
+            alt="Lealdade imagem de carregamento"
+        >
+
+    </div>
     <!-- OVERLAY -->
     <div class="lealdade-fundo-overlay"></div>
 
@@ -196,7 +206,7 @@
 
     <!-- FUNDO TOTAL DA SECTION -->
     <div class="syrax-fundo">
-        <img src="DRAGOES/SYRAX/SYRAX.png" alt="Syrax fundo">
+        <img src="DRAGOES/SYRAX/SYRAX.webp" alt="Syrax fundo">
     </div>
 
     <!-- OVERLAY ESCURO -->
@@ -207,7 +217,7 @@
 
         <!-- FUNDO PERSONALIZADO DO CARD -->
         <div class="syrax-card-fundo">
-            <img src="DRAGOES/SYRAX/SYRAX.png" alt="Syrax">
+            <img src="DRAGOES/SYRAX/SYRAX.webp" alt="Syrax">
         </div>
 
         <!-- GLASS -->
@@ -215,14 +225,14 @@
 
         <!-- PERSONAGEM -->
         <div class="rhaenyra-imagem"> 
-            <img src="PERSONAGENS/RHAENYRA/RHAENYRA 1.png" alt="Rhaenyra Targaryen">
+            <img src="PERSONAGENS/RHAENYRA/RHAENYRA 1.webp" alt="Rhaenyra Targaryen">
         </div>
 
        <!-- FAISCA -->
             <div class="faisca">
-                <img src="FAISCA.png" alt="Faisca" class="spark-item">
-                <img src="FAISCA.png" alt="Faisca" class="spark-item">
-                <img src="FAISCA.png" alt="Faisca" class="spark-item">
+                <img src="FAISCA.webp" alt="Faisca" class="spark-item">
+                <img src="FAISCA.webp" alt="Faisca" class="spark-item">
+                <img src="FAISCA.webp" alt="Faisca" class="spark-item">
             </div>
 
         <!-- CONTEÚDO -->
@@ -255,7 +265,7 @@
 
         <!-- LOGO -->
         <div class="logo-targaryen">
-            <img src="PRIMEIRA TELA/ICONE - TARGARYEN DOURADO.png" alt="Logo Targaryen Dourado">
+            <img src="PRIMEIRA TELA/ICONE - TARGARYEN DOURADO.webp" alt="Logo Targaryen Dourado">
         </div>
 
     </div>
@@ -270,7 +280,7 @@
 
     <!-- FUNDO TOTAL DA SECTION -->
     <div class="caraxes-fundo">
-        <img src="DRAGOES/CARAXES/CARAXES.png" alt="Caraxes">
+        <img src="DRAGOES/CARAXES/CARAXES.webp" alt="Caraxes">
     </div>
 
     <!-- OVERLAY -->
@@ -281,7 +291,7 @@
 
         <!-- FUNDO PERSONALIZADO -->
         <div class="caraxes-card-fundo">
-            <img src="DRAGOES/CARAXES/CARAXES.png" alt="Caraxes fundo">
+            <img src="DRAGOES/CARAXES/CARAXES.webp" alt="Caraxes fundo">
         </div>
 
         <!-- GLASS -->
@@ -289,14 +299,14 @@
 
         <!-- PERSONAGEM -->
         <div class="daemon-imagem">
-            <img src="PERSONAGENS/DAEMON/DAEMON.png" alt="Daemon Targaryen">
+            <img src="PERSONAGENS/DAEMON/DAEMON.webp" alt="Daemon Targaryen">
         </div>
 
         <!-- FAISCA -->
             <div class="faisca">
-                <img src="FAISCA.png" alt="Faisca" class="spark-item">
-                <img src="FAISCA.png" alt="Faisca" class="spark-item">
-                <img src="FAISCA.png" alt="Faisca" class="spark-item">
+                <img src="FAISCA.webp" alt="Faisca" class="spark-item">
+                <img src="FAISCA.webp" alt="Faisca" class="spark-item">
+                <img src="FAISCA.webp" alt="Faisca" class="spark-item">
             </div>
 
         <!-- CONTEÚDO -->
@@ -330,7 +340,7 @@
 
         <!-- LOGO -->
         <div class="logo-targaryen">
-            <img src="PRIMEIRA TELA/ICONE - TARGARYEN DOURADO.png" alt="Logo Targaryen Dourado">
+            <img src="PRIMEIRA TELA/ICONE - TARGARYEN DOURADO.webp" alt="Logo Targaryen Dourado">
         </div>
 
     </div>
@@ -345,7 +355,7 @@
 
     <!-- FUNDO TOTAL DA SECTION -->
     <div class="meleys-fundo">
-        <img src="DRAGOES/MELEYS/MELEYS.png" alt="Meleys">
+        <img src="DRAGOES/MELEYS/MELEYS.webp" alt="Meleys">
     </div>
 
     <!-- OVERLAY -->
@@ -356,7 +366,7 @@
 
         <!-- FUNDO PERSONALIZADO -->
         <div class="meleys-card-fundo">
-            <img src="DRAGOES/MELEYS/MELEYS.png" alt="Meleys fundo">
+            <img src="DRAGOES/MELEYS/MELEYS.webp" alt="Meleys fundo">
         </div>
 
         <!-- GLASS -->
@@ -364,14 +374,14 @@
 
         <!-- PERSONAGEM -->
         <div class="rhaenys-imagem">
-            <img src="PERSONAGENS/RHAENYS/RHAENYS.png" alt="Rhaenys Targaryen">
+            <img src="PERSONAGENS/RHAENYS/RHAENYS.webp" alt="Rhaenys Targaryen">
         </div>
 
       <!-- FAISCA -->
             <div class="faisca">
-                <img src="FAISCA.png" alt="Faisca" class="spark-item">
-                <img src="FAISCA.png" alt="Faisca" class="spark-item">
-                <img src="FAISCA.png" alt="Faisca" class="spark-item">
+                <img src="FAISCA.webp" alt="Faisca" class="spark-item">
+                <img src="FAISCA.webp" alt="Faisca" class="spark-item">
+                <img src="FAISCA.webp" alt="Faisca" class="spark-item">
             </div>
 
         <!-- CONTEÚDO -->
@@ -404,7 +414,7 @@
 
         <!-- LOGO -->
         <div class="logo-targaryen">
-            <img src="PRIMEIRA TELA/ICONE - TARGARYEN DOURADO.png" alt="Logo Targaryen Dourado">
+            <img src="PRIMEIRA TELA/ICONE - TARGARYEN DOURADO.webp" alt="Logo Targaryen Dourado">
         </div>
 
     </div>
@@ -419,7 +429,7 @@
 
     <!-- FUNDO TOTAL DA SECTION -->
     <div class="vermax-fundo">
-        <img src="DRAGOES/VERMAX/VERMAX 1.png" alt="Vermax">
+        <img src="DRAGOES/VERMAX/VERMAX 1.webp" alt="Vermax">
     </div>
 
     <!-- OVERLAY -->
@@ -430,7 +440,7 @@
 
         <!-- FUNDO PERSONALIZADO -->
         <div class="vermax-card-fundo">
-            <img src="DRAGOES/VERMAX/VERMAX 1.png" alt="Vermax fundo">
+            <img src="DRAGOES/VERMAX/VERMAX 1.webp" alt="Vermax fundo">
         </div>
 
         <!-- GLASS -->
@@ -438,14 +448,14 @@
 
         <!-- PERSONAGEM -->
         <div class="jacaerys-imagem">
-            <img src="PERSONAGENS/JACAERYS/JACAERYS 2.png" alt="Jacaerys Velaryon">
+            <img src="PERSONAGENS/JACAERYS/JACAERYS 2.webp" alt="Jacaerys Velaryon">
         </div>
 
        <!-- FAISCA -->
             <div class="faisca">
-                <img src="FAISCA.png" alt="Faisca" class="spark-item">
-                <img src="FAISCA.png" alt="Faisca" class="spark-item">
-                <img src="FAISCA.png" alt="Faisca" class="spark-item">
+                <img src="FAISCA.webp" alt="Faisca" class="spark-item">
+                <img src="FAISCA.webp" alt="Faisca" class="spark-item">
+                <img src="FAISCA.webp" alt="Faisca" class="spark-item">
             </div>
 
         <!-- CONTEÚDO -->
@@ -475,7 +485,7 @@
 
         <!-- LOGO -->
         <div class="logo-targaryen">
-            <img src="PRIMEIRA TELA/ICONE - TARGARYEN DOURADO.png" alt="Logo Targaryen Dourado">
+            <img src="PRIMEIRA TELA/ICONE - TARGARYEN DOURADO.webp" alt="Logo Targaryen Dourado">
         </div>
 
     </div>
@@ -490,7 +500,7 @@
 
     <!-- FUNDO TOTAL DA SECTION -->
     <div class="moondancer-fundo">
-        <img src="DRAGOES/MOONDANCER/MOONDANCER 4.png" alt="MoonDancer">
+        <img src="DRAGOES/MOONDANCER/MOONDANCER 4.webp" alt="MoonDancer">
     </div>
 
     <!-- OVERLAY -->
@@ -501,7 +511,7 @@
 
         <!-- FUNDO PERSONALIZADO -->
         <div class="moondancer-card-fundo">
-            <img src="DRAGOES/MOONDANCER/MOONDANCER 4.png" alt="MoonDancer fundo">
+            <img src="DRAGOES/MOONDANCER/MOONDANCER 4.webp" alt="MoonDancer fundo">
         </div>
 
         <!-- GLASS -->
@@ -509,14 +519,14 @@
 
         <!-- PERSONAGEM -->
         <div class="baela-imagem">
-            <img src="PERSONAGENS/BAELA/BAELA 1.png" alt="Baela Targaryen">
+            <img src="PERSONAGENS/BAELA/BAELA 1.webp" alt="Baela Targaryen">
         </div>
 
       <!-- FAISCA -->
             <div class="faisca">
-                <img src="FAISCA.png" alt="Faisca" class="spark-item">
-                <img src="FAISCA.png" alt="Faisca" class="spark-item">
-                <img src="FAISCA.png" alt="Faisca" class="spark-item">
+                <img src="FAISCA.webp" alt="Faisca" class="spark-item">
+                <img src="FAISCA.webp" alt="Faisca" class="spark-item">
+                <img src="FAISCA.webp" alt="Faisca" class="spark-item">
             </div>
 
         <!-- CONTEÚDO -->
@@ -548,7 +558,7 @@
 
         <!-- LOGO -->
         <div class="logo-targaryen">
-            <img src="PRIMEIRA TELA/ICONE - TARGARYEN DOURADO.png" alt="Logo Targaryen Dourado">
+            <img src="PRIMEIRA TELA/ICONE - TARGARYEN DOURADO.webp" alt="Logo Targaryen Dourado">
         </div>
 
     </div>
@@ -587,7 +597,7 @@
 
     <!-- FUNDO TOTAL DA SECTION -->
     <div class="alicent-fundo">
-        <img src="PERSONAGENS/ALICENT/STANDART DOS VERDES.png" alt="Bandeira">
+        <img src="PERSONAGENS/ALICENT/STANDART DOS VERDES.webp" alt="Bandeira">
     </div>
 
     <!-- OVERLAY -->
@@ -598,7 +608,7 @@
 
         <!-- FUNDO PERSONALIZADO -->
         <div class="alicent-card-fundo">
-            <img src="PERSONAGENS/ALICENT/STANDART DOS VERDES.png" alt="Bandeira">
+            <img src="PERSONAGENS/ALICENT/STANDART DOS VERDES.webp" alt="Bandeira">
         </div>
 
         <!-- GLASS -->
@@ -606,16 +616,14 @@
 
         <!-- PERSONAGEM -->
         <div class="alicent-imagem">
-            <img src="PERSONAGENS/ALICENT/ALICENT.png" alt="Alicent Hightower">
+            <img src="PERSONAGENS/ALICENT/ALICENT.webp" alt="Alicent Hightower">
         </div>
 
         <!-- NEVOA -->
         <div class="nevoa">
-            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada">
-            
-            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada">
-            
-            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada">
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.webp" alt="" class="nevoa-camada">
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.webp" alt="" class="nevoa-camada">
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.webp" alt="" class="nevoa-camada">
         </div>
       
         <!-- CONTEÚDO -->
@@ -647,7 +655,7 @@
 
         <!-- LOGO -->
         <div class="logo-verde-targaryen">
-            <img src="PRIMEIRA TELA/ICONE - logo dos verdes.png" alt="Logo Targaryen Verde">
+            <img src="PRIMEIRA TELA/ICONE - logo dos verdes.webp" alt="Logo Targaryen Verde">
         </div>
 
     </div>
@@ -662,7 +670,7 @@
 
     <!-- FUNDO TOTAL DA SECTION -->
     <div class="sunfyre-fundo">
-        <img src="DRAGOES/SUNFYRE/SUNFYRE 1.png" alt="Sunfyre">
+        <img src="DRAGOES/SUNFYRE/SUNFYRE 1.webp" alt="Sunfyre">
     </div>
 
     <!-- OVERLAY -->
@@ -673,7 +681,7 @@
 
         <!-- FUNDO PERSONALIZADO -->
         <div class="sunfyre-card-fundo">
-            <img src="DRAGOES/SUNFYRE/SUNFYRE 1.png" alt="Sunfyre">
+            <img src="DRAGOES/SUNFYRE/SUNFYRE 1.webp" alt="Sunfyre">
         </div>
 
         <!-- GLASS -->
@@ -681,16 +689,14 @@
 
         <!-- PERSONAGEM -->
         <div class="aegon-imagem">
-            <img src="PERSONAGENS/AEGON II/Aegon ll Targaryen.png" alt="Aegon II Targaryen">
+            <img src="PERSONAGENS/AEGON II/Aegon ll Targaryen.webp" alt="Aegon II Targaryen">
         </div>
 
         <!-- NEVOA -->
         <div class="nevoa">
-            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-1">
-            
-            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-2">
-            
-            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-3">
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.webp" alt="" class="nevoa-camada">
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.webp" alt="" class="nevoa-camada">
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.webp" alt="" class="nevoa-camada">
         </div>
 
         <!-- CONTEÚDO -->
@@ -723,7 +729,7 @@
 
         <!-- LOGO -->
         <div class="logo-verde-targaryen">
-            <img src="PRIMEIRA TELA/ICONE - logo dos verdes.png" alt="Logo Targaryen Verde">
+            <img src="PRIMEIRA TELA/ICONE - logo dos verdes.webp" alt="Logo Targaryen Verde">
         </div>
 
     </div>
@@ -738,7 +744,7 @@
 
     <!-- FUNDO TOTAL DA SECTION -->
     <div class="vhagar-fundo">
-        <img src="DRAGOES/VHAGAR/VHAGAR.png" alt="Vhagar">
+        <img src="DRAGOES/VHAGAR/VHAGAR.webp" alt="Vhagar">
     </div>
 
     <!-- OVERLAY -->
@@ -749,7 +755,7 @@
 
         <!-- FUNDO PERSONALIZADO -->
         <div class="vhagar-card-fundo">
-            <img src="DRAGOES/VHAGAR/VHAGAR.jpg" alt="Vhagar">
+            <img src="DRAGOES/VHAGAR/VHAGAR.webp" alt="Vhagar">
         </div>
 
         <!-- GLASS -->
@@ -757,16 +763,14 @@
 
         <!-- PERSONAGEM -->
         <div class="aemond-imagem">
-            <img src="PERSONAGENS/AEMOND/AEMOND.png" alt="Aemond Targaryen">
+            <img src="PERSONAGENS/AEMOND/AEMOND.webp" alt="Aemond Targaryen">
         </div>
 
         <!-- NEVOA -->
         <div class="nevoa">
-            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-1">
-            
-            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-2">
-            
-            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-3">
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.webp" alt="" class="nevoa-camada">
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.webp" alt="" class="nevoa-camada">
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.webp" alt="" class="nevoa-camada">
         </div>
 
         <!-- CONTEÚDO -->
@@ -781,8 +785,7 @@
             <p>
                 PRÍNCIPE DA CASA TARGARYEN E GUERREIRO TEMIDO POR
                 ALIADOS E INIMIGOS, AEMOND É MARCADO PELA DISCIPLINA,
-                AMBIÇÃO E SEDE DE PODER. MONTADOR DE VHAGAR, TORNOU-SE UMA
-                DAS FIGURAS MAIS PERIGOSAS DA DANÇA DOS DRAGÕES.  
+                AMBIÇÃO E SEDE DE PODER. MONTADOR DE VHAGAR.  
             </p>
 
             <h2>VHAGAR</h2> 
@@ -799,7 +802,7 @@
 
         <!-- LOGO -->
         <div class="logo-verde-targaryen">
-            <img src="PRIMEIRA TELA/ICONE - logo dos verdes.png" alt="Logo Targaryen Verde">
+            <img src="PRIMEIRA TELA/ICONE - logo dos verdes.webp" alt="Logo Targaryen Verde">
         </div>
 
     </div>
@@ -814,7 +817,7 @@
 
     <!-- FUNDO TOTAL DA SECTION -->
     <div class="dreamfyre-fundo">
-        <img src="DRAGOES/DREAMFYRE/DREAMFYRE.png" alt="Dreamfyre">
+        <img src="DRAGOES/DREAMFYRE/DREAMFYRE.webp" alt="Dreamfyre">
     </div>
 
     <!-- OVERLAY -->
@@ -825,7 +828,7 @@
 
         <!-- FUNDO PERSONALIZADO -->
         <div class="dreamfyre-card-fundo">
-            <img src="DRAGOES/DREAMFYRE/DREAMFYRE.png" alt="Dreamfyre">
+            <img src="DRAGOES/DREAMFYRE/DREAMFYRE.webp" alt="Dreamfyre">
         </div>
 
         <!-- GLASS -->
@@ -833,16 +836,14 @@
 
         <!-- PERSONAGEM -->
         <div class="helaena-imagem">
-            <img src="PERSONAGENS/HELAENA/HELAENA 2.png" alt="Helaena Targaryen">
+            <img src="PERSONAGENS/HELAENA/HELAENA 2.webp" alt="Helaena Targaryen">
         </div>
 
         <!-- NEVOA -->
         <div class="nevoa">
-            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-1">
-            
-            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-2">
-            
-            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-3">
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.webp" alt="" class="nevoa-camada">
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.webp" alt="" class="nevoa-camada">
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.webp" alt="" class="nevoa-camada">
         </div>
 
         <!-- CONTEÚDO -->
@@ -874,7 +875,7 @@
 
         <!-- LOGO -->
         <div class="logo-verde-targaryen">
-            <img src="PRIMEIRA TELA/ICONE - logo dos verdes.png" alt="Logo Targaryen Verde">
+            <img src="PRIMEIRA TELA/ICONE - logo dos verdes.webp" alt="Logo Targaryen Verde">
         </div>
 
     </div>
@@ -889,7 +890,7 @@
 
     <!-- FUNDO TOTAL DA SECTION -->
     <div class="criston-fundo">
-        <img src="PERSONAGENS/ALICENT/STANDART DOS VERDES.png" alt="Bandeira">
+        <img src="PERSONAGENS/ALICENT/STANDART DOS VERDES.webp" alt="Bandeira">
     </div>
 
     <!-- OVERLAY -->
@@ -900,7 +901,7 @@
 
         <!-- FUNDO PERSONALIZADO -->
         <div class="criston-fundo-card-fundo">
-            <img src="PERSONAGENS/ALICENT/STANDART DOS VERDES.png" alt="Bandeira">
+            <img src="PERSONAGENS/ALICENT/STANDART DOS VERDES.webp" alt="Bandeira">
         </div>
 
         <!-- GLASS -->
@@ -908,16 +909,14 @@
 
         <!-- PERSONAGEM -->
         <div class="criston-imagem">
-            <img src="PERSONAGENS/CRISTON COLE/CRISTON COLE.png" alt="Criston Cole">
+            <img src="PERSONAGENS/CRISTON COLE/CRISTON COLE.webp" alt="Criston Cole">
         </div>
 
         <!-- NEVOA -->
         <div class="nevoa">
-            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-1">
-            
-            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-2">
-            
-            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.png" alt="" class="nevoa-camada camada-3">
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.webp" alt="" class="nevoa-camada">
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.webp" alt="" class="nevoa-camada">
+            <img src="PERSONAGENS/ALICENT/NEVOA VERDE.webp" alt="" class="nevoa-camada">
         </div>
 
         <!-- CONTEÚDO -->
@@ -949,7 +948,7 @@
 
         <!-- LOGO -->
         <div class="logo-verde-targaryen">
-            <img src="PRIMEIRA TELA/ICONE - logo dos verdes.png" alt="Logo Targaryen Verde">
+            <img src="PRIMEIRA TELA/ICONE - logo dos verdes.webp" alt="Logo Targaryen Verde">
         </div>
 
     </div>
@@ -960,7 +959,7 @@
 
     <div class="footer-conteudo">
         <div class="footer-logo">
-            <img src="PRIMEIRA TELA/HBO ORIGINAL - A CASA DO DRAGÃO.png" alt="Logo A Casa do Dragão">
+            <img src="PRIMEIRA TELA/HBO ORIGINAL - A CASA DO DRAGÃO.webp" alt="Logo A Casa do Dragão">
         </div>
 
         <div class="redes-sociais">
@@ -1014,8 +1013,6 @@
     </div>
 
 </footer>
-    </div>
-</div>
 
 <div id="pre-loader">
 <svg width="400" height="352" viewBox="0 0 400 352" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

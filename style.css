@@ -4,148 +4,64 @@
    Medieval Dark Fantasy · HBO Premium Interface
    ============================================================ */
 
-/* ============================================================
-   01 · RESET
-   ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+/* --------------------------------------------------------------------------
+   1. IMPORTS & FONTS
+   -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Roboto:wght@400;700&display=swap');
 
-*,
-*::before,
-*::after {
+/* --------------------------------------------------------------------------
+   3. RESET & BASE STYLES
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-
-    user-select: none;
-
-    -webkit-user-select: none;
-
-    -moz-user-select: none;
-
-    -ms-user-select: none;
 }
 
 html {
     scroll-behavior: smooth;
-    font-size: 16px;
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow-x: hidden !important;
-    background-color: #0d0d0d;
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-light);
+    font-family: var(--font-primary);
 }
-
 
 body {
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow-x: hidden !important;
-    background-color: #000000 !important;
-    color: var(--color-parchment);
-    font-family: var(--font-body);
-    line-height: 1.6;
+    width: 100%;
+    min-height: 100vh;
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-button {
-    cursor: pointer;
-    border: none;
-    background: none;
-    font-family: inherit;
-}
-
-ul,
-ol {
-    list-style: none;
-}
-
-/* ============================================================
-   02 · DESIGN TOKENS / CSS VARIABLES
-   ============================================================ */
-
+/* --------------------------------------------------------------------------
+   2. CUSTOM PROPERTIES / CSS VARIABLES
+   -------------------------------------------------------------------------- */
 :root {
+    /* Typography */
+    --font-primary: 'Cinzel', Georgia, serif;
+    --font-display: 'Cinzel Decorative', serif;
+    --font-body: 'EB Garamond', serif;
 
-    /* --- Palette --- */
-    --color-void: #070608;
-    --color-charcoal: #0d0b0e;
-    --color-obsidian: #111015;
-    --color-ash: #1a1820;
-    --color-smoke: #2a2730;
+    /* Color Palette */
+    --color-bg-dark: #080808;
+    --color-black: #000000;
+    --color-gold: #d4af37;
+    --color-gold-light: #f3e5ab;
+    --color-green-verdes: #1b3d26;
+    --color-green-accent: #78ffa0;
+    --color-black-negros: #121212;
+    --color-text-light: #f0f0f0;
+    --color-text-muted: #a0a0a0;
 
-    /* Gold */
-    --color-gold: #c9a84c;
-    --color-gold-bright: #e8c76a;
-    --color-gold-dim: #8a6e2e;
-    --color-gold-glow: rgba(201, 168, 76, 0.18);
-    --color-gold-glow-sm: rgba(201, 168, 76, 0.10);
+    /* Tints & Overlays */
+    --active-tint: rgba(27, 61, 38, 0.4);
+    --overlay-dark: rgba(0, 0, 0, 0.75);
 
-    /* Green (Os Verdes) */
-    --color-green: #2d5a27;
-    --color-green-bright: #4a8f40;
-    --color-green-dark: #1a3518;
-    --color-green-glow: rgba(45, 90, 39, 0.25);
-    --color-green-glow-sm: rgba(74, 143, 64, 0.12);
-
-    /* Red / Ember */
-    --color-ember: #8b2a1a;
-    --color-ember-dim: #5a1a0d;
-    --color-ember-glow: rgba(139, 42, 26, 0.20);
-
-    /* Text */
-    --color-parchment: #e8dfc8;
-    --color-parchment-dim: #b8a888;
-    --color-ivory: #f5f0e8;
-    --color-muted: #7a7068;
-
-    /* --- Typography --- */
-    --font-title: 'Cinzel Decorative', 'Trajan Pro', Georgia, serif;
-    --font-display: 'Cinzel', 'Palatino Linotype', Georgia, serif;
-    --font-body: 'EB Garamond', 'Palatino Linotype', Georgia, serif;
-    --font-caption: 'Cinzel', Georgia, serif;
-
-    /* --- Spacing --- */
-    --space-xs: 0.5rem;
-    --space-sm: 1rem;
-    --space-md: 1.5rem;
-    --space-lg: 2.5rem;
-    --space-xl: 4rem;
-    --space-xxl: 7rem;
-
-    /* --- Borders --- */
-    --border-gold: 1px solid rgba(201, 168, 76, 0.30);
-    --border-gold-bright: 1px solid rgba(201, 168, 76, 0.60);
-    --border-green: 1px solid rgba(74, 143, 64, 0.35);
-
-    /* --- Radii --- */
-    --radius-card: 12px;
-    --radius-btn: 3px;
-
-    /* --- Shadows --- */
-    --shadow-deep: 0 30px 80px rgba(0, 0, 0, 0.85);
-    --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.75), 0 4px 20px rgba(0, 0, 0, 0.60);
-    --shadow-gold: 0 0 40px rgba(201, 168, 76, 0.20), 0 0 80px rgba(201, 168, 76, 0.08);
-    --shadow-green: 0 0 40px rgba(45, 90, 39, 0.25), 0 0 80px rgba(45, 90, 39, 0.10);
-    --shadow-text-gold: 0 0 20px rgba(201, 168, 76, 0.60), 0 2px 6px rgba(0, 0, 0, 0.80);
-    --shadow-text: 0 2px 8px rgba(0, 0, 0, 0.90);
-
-    /* --- Transitions --- */
-    --ease-cinematic: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    --transition-sm: all 0.3s var(--ease-cinematic);
-    --transition-md: all 0.5s var(--ease-cinematic);
-    --transition-lg: all 0.8s var(--ease-cinematic);
-
-    /* --- Z-index layers --- */
-    --z-bg: 0;
-    --z-overlay: 1;
-    --z-content: 2;
-    --z-card: 3;
-    --z-header: 100;
+    /* Easing & Transitions */
+    --ease-cinematic: cubic-bezier(0.25, 1, 0.5, 1);
+    --transition-sm: all 0.2s ease;
+    --transition-md: all 0.4s ease;
+    --transition-lg: all 0.8s ease;
+    --transition-cinematic: all 0.6s var(--ease-cinematic);
 }
 
 /* ============================================================
@@ -187,29 +103,29 @@ ol {
 ========================================================== */
 #pre-loader {
     position: fixed;
-
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100vh;
-
+    height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    background-color: black;
-
+    background-color: var(--color-black);
     z-index: 9999;
+}
 
- svg {
+#pre-loader svg {
     width: 12vw;
+    min-width: 120px;
     height: auto;
+}
 
-  path {
+#pre-loader svg path {
     fill: rgba(255, 234, 0, 0);  
-    stroke: #d4af377e;
+    stroke: rgba(212, 175, 55, 0.5);
     stroke-dasharray: 2450;
     stroke-dashoffset: 2450;
-    }
-  }
+    transition: var(--transition-cinematic);
 }
 
 /* ==========================================================
@@ -302,7 +218,6 @@ ol {
     font-size: 40px;
     cursor: pointer;
     line-height: 1;
-    transition: transform 0.3s ease;
     transition:
         transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
         background 0.3s ease,
@@ -311,8 +226,7 @@ ol {
 
 .botao-fechar-menu:hover {
     border-color: rgba(255, 255, 255, 0.3);
-
-    transform: rotate(90deg)
+    transform: rotate(90deg);
 }
 
 .conteudo-menu {
@@ -529,7 +443,7 @@ ol {
     position: relative;
 
     width: 100%;
-    min-height: 100vh;
+    min-height: 90vh;
 
     overflow: hidden;
 
@@ -675,6 +589,7 @@ ol {
 
     color: #f1e2a4;
 
+    font-style: var(--font-primary);
     font-size: 20px;
     font-weight: 500;
 
@@ -687,7 +602,6 @@ ol {
 
     transform: translateY(100px);
     left: 15px;
-
 }
 
 .abrir-trailer::after {
@@ -731,7 +645,7 @@ ol {
 
     background: rgba(0, 0, 0, 0.92);
 
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(8px);
 
     z-index: 9999;
 
@@ -807,7 +721,7 @@ ol {
 
     border: 1px solid rgba(255, 255, 255, 0.12);
 
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
 
     color: #fff;
 
@@ -846,7 +760,7 @@ ol {
 
     border: 1px solid rgba(255, 255, 255, 0.12);
 
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
 
     color: #fff;
 
@@ -951,16 +865,34 @@ ol {
 }
 
 /* 4. Corrigido: O seletor agora afeta especificamente as mídias internas do bloco */
-.midia-bg img, 
-.midia-bg canvas, 
+.midia-bg img,
 .midia-bg video {
     position: absolute;
     inset: 0;
+
     width: 100%;
     height: 100%;
+
     object-fit: cover;
     object-position: center;
-    transition: opacity 0.5s ease;
+
+    transition: opacity .5s ease;
+}
+
+#video-lealdade {
+    opacity: 0;
+
+    z-index: 1;
+
+    will-change: opacity, transform;
+}
+
+#canvas-fallback {
+    opacity: 1;
+
+    z-index: 2;
+
+    transition: opacity .5s ease;
 }
 
 .lealdade-fundo-overlay {
@@ -1207,7 +1139,7 @@ ol {
     overflow: hidden;
     position: relative;
 
-    background: url('WALLPAPERS/WALLPAPER\ 3\ -\ LEALDADE.webp');
+    background: url('WALLPAPERS/WALLPAPER 3 - LEALDADE.webp');
     background-position: center;
     background-size: cover;
 }
@@ -1329,7 +1261,7 @@ ol {
     border: 1px solid rgba(201, 168, 76, 0.28);
     background:
         linear-gradient(135deg, rgba(14, 14, 16, 0.92), rgba(8, 8, 10, 0.82));
-    backdrop-filter: blur(18px);
+    backdrop-filter: blur(8px);
     box-shadow:
         0 0 40px rgba(201, 168, 76, 0.08),
         0 0 80px rgba(201, 168, 76, 0.04),
@@ -1413,7 +1345,6 @@ ol {
     border-radius: 42px;
     background:
         linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-    backdrop-filter: blur(2px);
     will-change: opacity, filter;
     transition: .6s ease;
 }
@@ -1460,9 +1391,8 @@ ol {
 .rhaenyra-conteudo h2 {
     margin-top: 33px;
     letter-spacing: 0.12em;
-    color: var(--color-gold-bright);
+    color: var(--color-gold);
     text-transform: uppercase;
-    font-family: var(--font-display);
 }
 
 .rhaenyra-conteudo p {
@@ -1481,7 +1411,7 @@ ol {
 .rhaenyra-citação-final {
     padding-top: 1rem;
     border-top: 1px solid rgba(201, 168, 76, 0.12);
-    font-style: italic;
+    font-style: var(--font-primary) ;
     color: rgba(201, 168, 76, 0.58);
     line-height: 1.8;
 }
@@ -1637,7 +1567,7 @@ ol {
             rgba(18, 8, 8, 0.92),
             rgba(10, 4, 4, 0.88));
 
-    backdrop-filter: blur(18px);
+    backdrop-filter: blur(8px);
 
     box-shadow:
         0 0 40px rgba(255, 50, 20, 0.08),
@@ -1734,8 +1664,6 @@ ol {
         linear-gradient(135deg,
             rgba(255, 255, 255, 0.03),
             rgba(255, 255, 255, 0.01));
-
-    backdrop-filter: blur(2px);
 }
 
 .daemon-imagem {
@@ -1992,7 +1920,7 @@ ol {
             rgba(16, 10, 10, 0.92),
             rgba(8, 4, 4, 0.88));
 
-    backdrop-filter: blur(18px);
+    backdrop-filter: blur(8px);
 
     box-shadow:
         0 0 40px rgba(220, 50, 40, 0.08),
@@ -2088,8 +2016,6 @@ ol {
         linear-gradient(135deg,
             rgba(255, 255, 255, 0.04),
             rgba(255, 255, 255, 0.01));
-
-    backdrop-filter: blur(2px);
 }
 
 .rhaenys-imagem {
@@ -2342,7 +2268,7 @@ ol {
             rgba(10, 14, 10, 0.92),
             rgba(6, 10, 6, 0.88));
 
-    backdrop-filter: blur(18px);
+    backdrop-filter: blur(8px);
 
     box-shadow:
         0 0 40px rgba(120, 180, 90, 0.08),
@@ -2435,8 +2361,6 @@ ol {
         linear-gradient(135deg,
             rgba(255, 255, 255, 0.03),
             rgba(255, 255, 255, 0.01));
-
-    backdrop-filter: blur(2px);
 }
 
 .jacaerys-imagem {
@@ -2698,7 +2622,7 @@ ol {
             rgba(18, 8, 4, 0.92),
             rgba(10, 4, 2, 0.88));
 
-    backdrop-filter: blur(18px);
+    backdrop-filter: blur(8px);
 
     box-shadow:
         0 0 40px rgba(255, 120, 40, 0.08),
@@ -2790,8 +2714,6 @@ ol {
         linear-gradient(135deg,
             rgba(255, 255, 255, 0.03),
             rgba(255, 255, 255, 0.01));
-
-    backdrop-filter: blur(2px);
 }
 
 .baela-imagem {
@@ -2986,7 +2908,7 @@ ol {
     overflow: hidden;
     position: relative;
 
-    background: url('WALLPAPERS/WALLPAPER 4 - LEALDADE.png');
+    background: url('WALLPAPERS/WALLPAPER 4 - LEALDADE.webp');
     background-position: 15% 85%;
     background-size: cover;
 
@@ -3051,6 +2973,7 @@ ol {
 }
 
 .os-verdes-conteudo h2 {
+    padding: 50px;
     font-family: var(--font-title);
     font-size: clamp(2.5rem, 6vw, 5rem);
     font-weight: 700;
@@ -3140,7 +3063,7 @@ ol {
             rgba(8, 18, 10, 0.92),
             rgba(4, 10, 6, 0.88));
 
-    backdrop-filter: blur(18px);
+    backdrop-filter: blur(8px);
 
     box-shadow:
         0 0 40px rgba(80, 255, 120, 0.06),
@@ -3231,7 +3154,6 @@ ol {
             rgba(255, 255, 255, 0.025),
             rgba(255, 255, 255, 0.008));
 
-    backdrop-filter: blur(2px);
 }
 
 .alicent-imagem {
@@ -3485,8 +3407,7 @@ ol {
         rgba(3, 8, 5, 0.84)
     );
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(8px);
 
     box-shadow:
         0 0 40px rgba(80,255,120,0.06),
@@ -3581,8 +3502,6 @@ ol {
             rgba(255,255,255,0.03),
             rgba(255,255,255,0.01)
         );
-
-    backdrop-filter: blur(2px);
 }
 
 .aegon-imagem {
@@ -3847,8 +3766,7 @@ background: linear-gradient(
         rgba(3, 8, 5, 0.84)
     );
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(8px);
 
     box-shadow:
         0 0 40px rgba(80,255,120,0.06),
@@ -3978,21 +3896,13 @@ background: radial-gradient(
 .aemond-imagem img {
     height: 90%;
     width: auto;
-
     object-fit: contain;
     object-position: bottom center;
+    filter: 
+        drop-shadow(0 0 60px rgba(0, 0, 0, 0.95))
+        drop-shadow(0 0 25px rgba(120, 255, 160, 0.18));
 
-    filter:
-        drop-shadow(0 0 60px rgba(0,0,0,0.95))
-        drop-shadow(0 0 25px rgba(80,255,120,0.12));
-
-    transition:
-        transform 0.7s ease,
-        filter 0.7s ease;
-
-    transform-origin: bottom center;
-
-    will-change: transform;
+    transition: filter 0.5s ease, transform 0.5s ease;
 }
 
 .aemond-card:hover .aemond-imagem img {
@@ -4000,11 +3910,9 @@ background: radial-gradient(
         scale(1.03)
         translateX(-8px);
 
-    filter:
-        brightness(1.04)
-        contrast(1.02)
-        drop-shadow(0 0 90px rgba(0,0,0,1))
-        drop-shadow(0 0 40px rgba(120,255,160,0.18));
+    filter: 
+        drop-shadow(0 0 70px rgba(0, 0, 0, 1))
+        drop-shadow(0 0 35px rgba(120, 255, 160, 0.35));
 }
 
 .aemond-conteudo {
@@ -4205,7 +4113,8 @@ background: linear-gradient(
         rgba(12, 8, 3, 0.75),
         rgba(7, 4, 1, 0.85)
     );
-    backdrop-filter: blur(18px);
+    backdrop-filter: blur(8px);
+
     box-shadow:
         0 0 40px rgba(255,190,70,0.08),
         0 0 80px rgba(255,190,70,0.04),
@@ -4298,8 +4207,6 @@ background: linear-gradient(
             rgba(255,255,255,0.03),
             rgba(255,255,255,0.01)
         );
-
-    backdrop-filter: blur(2px);
 }
 
 .helaena-imagem {
@@ -4550,7 +4457,7 @@ height: 100%;
             rgba(4,10,6,0.88)
         );
 
-    backdrop-filter: blur(18px);
+    backdrop-filter: blur(8px);
 
     box-shadow:
         0 0 40px rgba(80,255,120,0.06),
@@ -4644,8 +4551,6 @@ height: 100%;
             rgba(255,255,255,0.025),
             rgba(255,255,255,0.008)
         );
-
-    backdrop-filter: blur(2px);
 }
 
 .criston-imagem {
@@ -4911,7 +4816,6 @@ height: 100%;
 /* ============================================================
    12 · FOOTER
    ============================================================ */
-
 footer{
     width: 100%;
     display: flex;
@@ -4923,17 +4827,14 @@ footer{
     background-position: center;
 
 }
-
 .footer-conteudo{
     width: 100%;
     padding: 7vw;
     display: flex;
 }
-
 .footer-logo img{
     width: 500px;
 }
-
 .redes-sociais{
     display: flex;
     flex-direction: column;
@@ -4941,7 +4842,6 @@ footer{
     justify-content: center;
     align-items: flex-end;
 }
-
 .redes-sociais h3{
     color: #d4af37;
 
@@ -4961,7 +4861,6 @@ footer{
         0 0 10px rgba(212,175,55,0.25),
         0 0 20px rgba(212,175,55,0.12);
 }
-
 .redes-sociais h3::after{
     content: "";
 
@@ -4979,12 +4878,11 @@ footer{
         transparent
     );
 }
-
 .redes-sociais ul{
     display: flex;
-    gap: 13px;
+    gap: 12px;
+    list-style: none;
 }
-
 .redes-sociais a img{
     width: 70px;
 
@@ -4994,7 +4892,6 @@ footer{
 
     filter: brightness(0.9);
 }
-
 .redes-sociais a img:hover{
     transform: scale(1.1);
 
@@ -5002,26 +4899,21 @@ footer{
         brightness(1.2)
         drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
 }
-
 .redes-sociais ul li:nth-child(1) a img {
     width: 80px; 
 }
-
 .redes-sociais ul li:nth-child(5) a img {
     width: 90px; 
     transform: translateY(-10px);
 }
-
 .redes-sociais ul li:nth-child(6) a img {
     width: 50px; 
     transform: translateY(10px);
 }
-
 .footer-texto-infinito{
     display: flex;
     width: max-content;
 }
-
 .footer-texto-infinito h3 {
     font-size: 12vw;
     font-family: trajan pro, serif;
@@ -5048,7 +4940,6 @@ footer{
 
     opacity: 0.95;
 }
-
 @keyframes footer-texto-infinito {
     100% {
         transform: translateX(-100%);
@@ -5062,7 +4953,6 @@ footer{
 
     padding-bottom: 20px;
 }
-
 .footer-span p {
         background: linear-gradient(
         to bottom,
@@ -5088,9 +4978,12 @@ footer{
    ============================================================ */
 @media (max-width: 1500px) {
     html, body {
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow-x: hidden !important;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    #pre-loader svg {
+    width: 18vw !important;
     }
     .header {
         top: 50px !important;
@@ -5209,6 +5102,7 @@ footer{
         height: 600px !important; 
         max-height: 600px !important;
         overflow: visible !important;
+        backdrop-filter: none !important;
     }
 
     .rhaenyra-imagem, .daemon-imagem, .rhaenys-imagem, .jacaerys-imagem, .baela-imagem,
@@ -5478,6 +5372,7 @@ footer{
         height: 600px !important; 
         max-height: 600px !important;
         overflow: visible !important;
+        backdrop-filter: none !important;
     }
 
     .rhaenyra-imagem, .daemon-imagem, .rhaenys-imagem, .jacaerys-imagem, .baela-imagem,
@@ -5796,6 +5691,33 @@ footer{
         margin: 0 auto !important;
     }
 
+.lealdade-sessao {
+        position: relative !important;
+        width: 100% !important;
+        min-height: 100vh !important;
+        background: url('LEALDADE_-_VIDEO_frames/frame_001.jpg') center/cover no-repeat !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 40px 20px !important;
+    }
+
+.faccao-personagens,
+    .faccao-personagens * {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+    }
+
+    /* 2. Oculta apenas os efeitos visuais pesados no mobile */
+    .faisca,
+    .spark-item,
+    .nevoa,
+    .nevoa-camada {
+        display: none !important;
+    }
 /*--LEALDADE--*/
     .lealdade-conteudo{
         font-size: 30px !important;
@@ -5814,6 +5736,8 @@ footer{
     .criston-card{
         max-width: 900px !important;
         max-height: 550px !important;
+        backdrop-filter: none !important;
+
     }
 
 /*--PERSONAGENS DO LADO ESQUERDO--*/
@@ -6321,6 +6245,9 @@ footer{
         width: 100% !important;
         max-width: 100% !important;
         overflow-x: hidden !important;
+    }
+    #pre-loader svg {
+    width: 25vw !important;
     }
     .header {
         top: 50px !important;
@@ -7159,6 +7086,9 @@ footer{
         max-width: 100% !important;
         overflow-x: hidden !important;
     }
+    #pre-loader svg {
+    width: 30vw !important;
+    }
     .header {
         top: 50px !important;
         left: 8px !important;
@@ -7190,6 +7120,10 @@ footer{
         transform: translateY(30px) !important;
     }
 
+    .lista-personagens-container {
+        padding: 40px 40px 40px 40px !important;        
+    }
+
 /*--GLOBAL--*/
     .rhaenyra-card, 
     .daemon-card, 
@@ -7204,6 +7138,7 @@ footer{
         width: 100% !important;
         max-width: 350px !important;
         max-height: 600px !important;
+        backdrop-filter: none !important;
     }
 
 /*--PERSONAGENS DO LADO ESQUERDO--*/
@@ -7424,6 +7359,9 @@ footer{
     .proximo-trailer span {
         display: none !important;
     }
+    .footer-span{
+        font-size: 10x !important;
+    }
 
 /*--GLOBAL--*/
     .rhaenyra-card, 
@@ -7545,7 +7483,7 @@ footer{
     .helaena-card, 
     .criston-card {
         width: 100% !important;
-        max-width: 250px !important;
+        max-width: 240px !important;
         max-height: 600px !important;
     }
 
@@ -7594,7 +7532,10 @@ footer{
     }
     .rhaenys-imagem img {
         height: 235px !important;
-        transform: translateX(-30px) !important;
+        transform: translateX(-10px) !important;
+    }
+        .rhaenys-card:hover .rhaenys-imagem img {
+       transform: scale(1.03) translateX(-10px) !important;
     }
 
 /*-- JACAERYS--*/
@@ -7680,6 +7621,9 @@ footer{
     .criston-card:hover .criston-imagem img {
        transform: scale(1.03) translateX(-100px) !important;
     }
+    .footer-span{
+        font-size: 8px !important;
+    }
 }
 
 @media (max-width: 325px){
@@ -7735,7 +7679,7 @@ footer{
     .helaena-card, 
     .criston-card {
         width: 100% !important;
-        min-width: 220px !important;
+        min-width: 250px !important;
         min-height: 600px !important;
     }
 
@@ -7753,7 +7697,7 @@ footer{
     }
 
     .logo-targaryen img {
-        width: 45px !important;
+        width: 35px !important;
     }
 
     .daemon-sessao .logo-targaryen,
@@ -7995,7 +7939,7 @@ footer{
         font-size: 70px !important;
     }
     .footer-span{
-        font-size: 9px !important;
+        font-size: 8px !important;
         padding: 1vw !important;
     }
 
