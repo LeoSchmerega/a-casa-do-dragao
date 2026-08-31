@@ -33,12 +33,25 @@ const tlPreloader = gsap.timeline({
   },
 });
 
-tlPreloader.to("#pre-loader path", { duration: 1, strokeDashoffset: 0 });
-tlPreloader.to("#pre-loader path", { duration: 1, strokeDashoffset: 2450 });
+// Durações equilibradas entre si (sem o antigo trecho final de 0.2s, muito
+// mais rápido que o resto) para o traço complexo do SVG não precisar ser
+// redesenhado repentinamente em poucos frames, o que gerava o "soluço" no
+// final do preloader.
+tlPreloader.to("#pre-loader path", {
+  duration: 1,
+  strokeDashoffset: 0,
+  ease: "power1.inOut",
+});
+tlPreloader.to("#pre-loader path", {
+  duration: 1,
+  strokeDashoffset: 2450,
+  ease: "power1.inOut",
+});
 tlPreloader.to("#pre-loader path", {
   stroke: "#d4af37cb",
-  duration: 0.2,
+  duration: 0.8,
   strokeDashoffset: 0,
+  ease: "power1.inOut",
 });
 
 // --------------------------------------------------------------------------
@@ -50,6 +63,9 @@ function configurarAplicacao() {
   // ======================================================================
   mm.add("(min-width: 1101px)", () => {
     let smoother = null;
+    let cancelado = false;
+    let rafSetup1 = null;
+    let rafSetup2 = null;
     const splitInstances = [];
     const eventCleanupCallbacks = [];
 
@@ -65,24 +81,7 @@ function configurarAplicacao() {
     }
 
     // --- Hero / Main (Desktop) ---
-    gsap.from(".main-fundo", {
-      opacity: 0,
-      y: -150,
-      duration: 2,
-      ease: "power3.out",
-    });
-    gsap.from(".main-personagens img", {
-      opacity: 0,
-      y: 100,
-      duration: 2,
-      ease: "power2.out",
-    });
-    gsap.from(".main-centro", {
-      opacity: 0,
-      y: 100,
-      duration: 2,
-      ease: "power2.out",
-    });
+    animarHeroDesktop();
 
     gsap.fromTo(
       ".main",
@@ -100,15 +99,29 @@ function configurarAplicacao() {
     );
 
     // --- Módulos Interativos Desktop ---
-    inicializarVideoLealdadeDesktop(splitInstances);
-    inicializarPersonagensDesktop(splitInstances);
-    inicializarParallaxCardsDesktop(eventCleanupCallbacks);
-    inicializarFooterDesktop();
-    inicializarSplitTextGeralDesktop(splitInstances);
-    inicializarSecoesAnimadasDesktop();
+    // Adiados para depois dos 2 primeiros paints: SplitText + criação de vários
+    // ScrollTriggers é trabalho pesado e síncrono. Se rodar junto com o início
+    // do hero, ele bloqueia a thread principal e a timeline do hero "pula"
+    // frames assim que a thread libera (o soluço que você via). Deixando pra
+    // depois, o hero entra liso e esse setup roda por baixo, imperceptível.
+    rafSetup1 = requestAnimationFrame(() => {
+      rafSetup2 = requestAnimationFrame(() => {
+        if (cancelado) return;
+        inicializarVideoLealdadeDesktop(splitInstances);
+        inicializarPersonagensDesktop(splitInstances);
+        inicializarParallaxCardsDesktop(eventCleanupCallbacks);
+        inicializarFooterDesktop();
+        inicializarSplitTextGeralDesktop(splitInstances);
+        inicializarSecoesAnimadasDesktop();
+        ScrollTrigger.refresh();
+      });
+    });
 
     // CLEANUP DESKTOP
     return () => {
+      cancelado = true;
+      if (rafSetup1) cancelAnimationFrame(rafSetup1);
+      if (rafSetup2) cancelAnimationFrame(rafSetup2);
       if (smoother) smoother.kill();
       ScrollTrigger.normalizeScroll(false);
 
@@ -172,6 +185,53 @@ function configurarAplicacao() {
 // --------------------------------------------------------------------------
 // 4. FUNÇÕES DE SUPORTE (DESKTOP)
 // --------------------------------------------------------------------------
+
+function animarHeroDesktop() {
+  const fundo = document.querySelector(".main-fundo");
+  const personagens = gsap.utils.toArray(".main-personagens img");
+  const centro = document.querySelector(".main-centro");
+  const elementos = [fundo, ...personagens, centro].filter(Boolean);
+
+  if (!elementos.length) return;
+
+  // Estado inicial já aplicado (evita flash do conteúdo em opacidade/posição
+  // final antes da animação começar).
+  if (fundo) gsap.set(fundo, { opacity: 0, y: -150 });
+  if (personagens.length) gsap.set(personagens, { opacity: 0, y: 100 });
+  if (centro) gsap.set(centro, { opacity: 0, y: 100 });
+
+  const imagens = elementos.flatMap((el) =>
+    el.tagName === "IMG" ? [el] : Array.from(el.querySelectorAll("img")),
+  );
+
+  // Só dispara a entrada depois que as imagens do hero estiverem decodificadas.
+  // Sem isso, a animação podia começar e "engasgar" no meio enquanto o
+  // navegador ainda decodifica as imagens grandes (fundo/personagens),
+  // competindo pela mesma thread com o próprio tween.
+  Promise.all(
+    imagens.map((img) =>
+      img.decode ? img.decode().catch(() => {}) : Promise.resolve(),
+    ),
+  ).then(() => {
+    const tlHero = gsap.timeline({
+      defaults: { ease: "power3.out", overwrite: "auto" },
+    });
+
+    if (fundo) tlHero.to(fundo, { opacity: 1, y: 0, duration: 1.6 }, 0);
+    if (personagens.length)
+      tlHero.to(
+        personagens,
+        { opacity: 1, y: 0, duration: 1.6, ease: "power2.out" },
+        0.12,
+      );
+    if (centro)
+      tlHero.to(
+        centro,
+        { opacity: 1, y: 0, duration: 1.6, ease: "power2.out" },
+        0.24,
+      );
+  });
+}
 
 function inicializarVideoLealdadeDesktop(splitInstances) {
   const video = document.getElementById("video-lealdade");
